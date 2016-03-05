@@ -3,7 +3,6 @@
 
 var React = require('react-native');
 var styles = require('../Styles/style');
-var NavigationBar = require('react-native-navbar');
 var ButtonRounded = require('../Components/ButtonRounded');
 var Button = require('../Components/Button');
 var Actions = require('react-native-router-flux').Actions;
@@ -18,7 +17,7 @@ var {
 
 var SettingScreen = React.createClass({
   componentDidMount: function() {
-    
+
   },
 
 	render: function() {

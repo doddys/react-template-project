@@ -17,7 +17,6 @@ var {
 var dismissKeyboard = require('dismissKeyboard');
 
 //var styles = require('../Styles/style');
-var NavigationBar = require('react-native-navbar');
 var ButtonRounded = require('../Components/ButtonRounded');
 var Button = require('../Components/Button');
 var TaskCell = require('../Components/TaskCell');
