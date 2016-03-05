@@ -1,0 +1,39 @@
+{
+  "name": "JasaRaharjaMobileApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "@remobile/react-native-splashscreen": "^1.0.3",
+    "base-64": "^0.1.0",
+    "events": "^1.1.0",
+    "immutable": "^3.7.6",
+    "keymirror": "^0.1.1",
+    "object-assign": "^4.0.1",
+    "react-native": "^0.20.0",
+    "react-native-button": "^1.4.2",
+    "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
+    "react-native-device-info": "^0.8.4",
+    "react-native-drawer": "^1.16.7",
+    "react-native-image-picker": "^0.15.0",
+    "react-native-localization": "^0.1.11",
+    "react-native-maps": "^0.3.0",
+    "react-native-material-kit": "^0.3.0",
+    "react-native-navbar": "^1.2.1",
+    "react-native-router-flux": "^2.3.1",
+    "react-native-vector-icons": "^1.2.1",
+    "react-redux": "^4.4.0",
+    "react-transmit": "^3.1.7",
+    "redux": "^3.3.1",
+    "redux-immutable": "^3.0.5",
+    "redux-logger": "^2.6.0",
+    "redux-storage": "^4.0.0",
+    "redux-storage-decorator-filter": "^1.1.0",
+    "redux-storage-decorator-immutablejs": "^1.0.0",
+    "redux-storage-engine-reactnativeasyncstorage": "^1.0.0",
+    "redux-storage-merger-immutablejs": "^1.0.1",
+    "redux-thunk": "^1.0.3"
+  }
+}
