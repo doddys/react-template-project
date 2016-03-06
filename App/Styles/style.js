@@ -1,27 +1,15 @@
 var React = require('react-native');
 
 var {
-    AppRegistry,
     StyleSheet,
-    Text,
-    View,
-    Navigator
 } = React;
 
 var styles = StyleSheet.create({
 
     container: {
       flex: 1,
-      //       backgroundColor: '#475577',
+      //backgroundColor: '#475577',
        backgroundColor: '#475577',
-    },
-
-    welcome: {
-      color: 'black',
-  		textAlign: 'center',
-  		fontSize: 20,
-  		marginBottom: 20,
-  		marginTop: 20
     },
 
     transparent: {
@@ -29,10 +17,11 @@ var styles = StyleSheet.create({
         padding: 15,
         backgroundColor: 'transparent',
         flex: 1
-
     },
+
+    // General Background Color
     bg : {
-//      backgroundColor: '#3B3738',
+      //backgroundColor: '#3B3738',
       backgroundColor: 'white',
       flex: 1,
     },
@@ -86,12 +75,15 @@ var styles = StyleSheet.create({
       fontSize: 20,
       color: '#fff'
     },
+
+    // used in login screen title
     logo: {
       color: '#fff',
       fontSize: 25,
       textAlign: 'center',
       marginTop: -50
     },
+    // used in login screen title
      desc: {
       color: '#fff',
       fontSize: 20,
@@ -99,6 +91,7 @@ var styles = StyleSheet.create({
       marginTop: 10,
       marginBottom: 10
     },
+
     controlPanelWelcome: {
       fontSize: 20,
       textAlign: 'center',
@@ -117,16 +110,29 @@ var styles = StyleSheet.create({
       margin: 10,
     },
 
-    button: {
-      backgroundColor: 'white',
-      padding: 10,
-      borderColor: '#eeeeee',
-      borderWidth:1,
-      borderBottomColor: '#aaaaaa',
-      marginRight:20,
-      marginLeft:20,
-      alignSelf: 'center',
-      marginTop: 10
+    // Global Rounded Button
+    buttonRounded: {
+      backgroundColor: '#05A5D1',
+  	  padding: 10,
+  	  borderColor: '#05A5D1',
+  	  borderWidth:0,
+  	  borderBottomColor: '#05A5D1',
+  	  alignSelf: 'center',
+  		borderRadius: 10,
+  		width: 200,
+  		marginTop: 8,
+    },
+
+    // Global Button Text
+    buttonText: {
+      color: '#fff',
+  		alignSelf: 'center',
+  		fontSize: 20
+    },
+
+    //Routing Styles
+    routerScene: {
+        //paddingTop: Navigator.NavigationBar.Styles.General.NavBarHeight,
     },
     navigationBar: {
       flex: 1,
@@ -145,14 +151,6 @@ var styles = StyleSheet.create({
     },
     barButtonText: {
 
-    },
-    routerScene: {
-//      paddingTop: Navigator.NavigationBar.Styles.General.NavBarHeight,
-
-    },
-    toolbar: {
-      height: 55,
-      backgroundColor: '#2880BE'
     },
 
 });

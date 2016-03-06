@@ -2,11 +2,9 @@
 'use strict';
 
 var React = require('react-native');
-//var styles = require('../Styles/style');
-var ButtonRounded = require('../Components/ButtonRounded');
-var Button = require('../Components/Button');
 var Actions = require('react-native-router-flux').Actions;
 var MapView = require('react-native-maps');
+var styles = require('../Styles/style');
 
 var {
     Text,
@@ -15,6 +13,7 @@ var {
     StyleSheet,
     Dimensions,
     TouchableOpacity,
+    InteractionManager,
 } = React;
 
 
@@ -27,13 +26,11 @@ const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 let id = 0;
 
-function randomColor() {
-  return '#'+Math.floor(Math.random()*16777215).toString(16);
-}
 
 var MapScreen = React.createClass({
   getInitialState: function () {
     return {
+      renderPlaceholderOnly: true,
       region: {
        latitude: LATITUDE,
        longitude: LONGITUDE,
@@ -44,31 +41,52 @@ var MapScreen = React.createClass({
     };
   },
 
-  onMapPress(e) {
+  componentDidMount: function(){
+    InteractionManager.runAfterInteractions(() => {
+      this.setState({renderPlaceholderOnly: false});
+    });
+  },
+
+  _randomColor() {
+    return '#'+Math.floor(Math.random()*16777215).toString(16);
+  },
+
+  _onMapPress(e) {
     this.setState({
       markers: [
         ...this.state.markers,
         {
           coordinate: e.nativeEvent.coordinate,
           key: id++,
-          color: randomColor(),
+          color: this._randomColor(),
         },
       ],
     });
   },
 
-  onRegionChange: function (region) {
+  _onRegionChange: function (region) {
     this.setState({ region });
   },
 
+  _renderPlaceholderView: function() {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
+  },
+
 	render: function() {
+      if (this.state.renderPlaceholderOnly){
+        return this._renderPlaceholderView();
+      }
 
 	    return (
-        <View style={styles.container}>
+        <View style={localStyles.container}>
         <MapView
-          style={styles.map}
+          style={localStyles.map}
           initialRegion={this.state.region}
-          onPress={this.onMapPress}
+          onPress={this._onMapPress}
         >
           {this.state.markers.map(marker => (
             <MapView.Marker
@@ -78,8 +96,8 @@ var MapScreen = React.createClass({
             />
           ))}
         </MapView>
-        <View style={styles.buttonContainer}>
-          <View style={styles.bubble}>
+        <View style={localStyles.buttonContainer}>
+          <View style={localStyles.bubble}>
             <Text>Tap to create a marker of random color</Text>
           </View>
         </View>
@@ -88,7 +106,7 @@ var MapScreen = React.createClass({
   }
 });
 
-var styles = StyleSheet.create({
+var localStyles = StyleSheet.create({
   container: {
     position: 'absolute',
     top: 0,

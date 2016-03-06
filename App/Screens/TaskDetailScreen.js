@@ -2,10 +2,6 @@
 'use strict';
 
 var React = require('react-native');
-var styles = require('../Styles/style');
-var ButtonRounded = require('../Components/ButtonRounded');
-var Actions = require('react-native-router-flux').Actions;
-
 var {
     Text,
     Image,
@@ -14,8 +10,14 @@ var {
     ScrollView
 } = React;
 
+var Actions = require('react-native-router-flux').Actions;
+var Button = require('react-native-button');
+var i18n = require('../i18n.js');
+var styles = require('../Styles/style');
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
 import { acceptTask, rejectTask } from '../Actions/TaskAction'
 import { getImageSource, getStyleFromScore, getTextFromScore } from '../Api/Common';
 
@@ -59,8 +61,18 @@ var TaskDetailScreen = React.createClass({
           <View style={localStyles.separator} />
 
           <View style={localStyles.actionButton}>
-            <ButtonRounded onPress={this.props.acceptTask} text="Accept"/>
-            <ButtonRounded onPress={this.props.rejectTask} text="Reject"/>
+            <Button
+              onPress={this.props.acceptTask}
+              style={styles.buttonText}
+              containerStyle={styles.buttonRounded,localStyles.buttonRounded}>
+              {i18n.accept}
+            </Button>
+            <Button
+              onPress={this.props.rejectTask}
+              style={styles.buttonText}
+              containerStyle={styles.buttonRounded,localStyles.buttonRounded}>
+              {i18n.reject}
+            </Button>
           </View>
 
         </ScrollView>
@@ -151,6 +163,9 @@ var localStyles = StyleSheet.create({
       justifyContent: 'space-around',
       flex: 1,
     },
+    buttonRounded: {
+      width: 150,
+    }
   });
 
   var mapStateToProps = function(state) {

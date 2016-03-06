@@ -2,10 +2,9 @@
 'use strict';
 
 var React = require('react-native');
-var styles = require('../Styles/style');
-var ButtonRounded = require('../Components/ButtonRounded');
-var Button = require('../Components/Button');
 var Actions = require('react-native-router-flux').Actions;
+var styles = require('../Styles/style');
+var i18n = require('../i18n.js');
 
 var {
     Text,
@@ -19,7 +18,7 @@ var ApprovalListScreen = React.createClass({
 
 	    return (
 	     	<View style={styles.bg}>
-	     		<Text style={styles.welcome}>
+	     		<Text style={localStyles.welcome}>
 	     			Approval Screen
 	 			</Text>
 
@@ -28,9 +27,9 @@ var ApprovalListScreen = React.createClass({
   }
 });
 
-const approvalListScreen = StyleSheet.create({
+const localStyles = StyleSheet.create({
 	welcome: {
-		color: '#fff',
+		color: 'black',
 		textAlign: 'center',
 		fontSize: 20,
 		marginBottom: 20,

@@ -3,7 +3,6 @@
 var React = require('react-native');
 var Drawer = require('react-native-drawer');
 var ControlPanel = require('./ControlPanel.js');
-var ControlPanel = require('./ControlPanel.js');
 var ToolbarAndroid = require('ToolbarAndroid');
 var { Platform } = React;
 

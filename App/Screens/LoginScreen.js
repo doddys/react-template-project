@@ -11,11 +11,12 @@ var {
   Platform
  } = React;
 
-var styles = require('../Styles/style');
-var Button = require('../Components/Button');
+var Button = require('react-native-button');
 var Actions = require('react-native-router-flux').Actions;
-var i18n = require('../i18n.js');
 var dismissKeyboard = require('dismissKeyboard');
+
+var i18n = require('../i18n.js');
+var styles = require('../Styles/style');
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -61,28 +62,28 @@ var LoginScreen = React.createClass({
 
     render: function() {
         return (
-            <View  style={loginScreen.bg}>
+            <View  style={localStyles.bg}>
 
-                <Image source={require('image!logo')} style={loginScreen.logo}/>
+                <Image source={require('image!logo')} style={localStyles.logo}/>
                 <Text style={styles.logo}>
-                Permata
+                Jasa Raharja
                 </Text>
                 <Text style={styles.desc}>
                 Mobile Application
                 </Text>
-                <View style={loginScreen.border}>
+                <View style={localStyles.border}>
                     <TextInput
                         ref="username"
-                        style={loginScreen.textInput}
+                        style={localStyles.textInput}
                         placeholder={'USERNAME'}
                         onChangeText={text => this.setState({'username': text})}
                         onSubmitEditing={() => this.refs.password.focus()}
                         placeholderTextColor={'rgba(255, 255, 255, 0.7'} />
                 </View>
-                <View style={loginScreen.border}>
+                <View style={localStyles.border}>
                     <TextInput
                         ref="password"
-                        style={loginScreen.textInput}
+                        style={localStyles.textInput}
                         placeholder={'PASSWORD'}
                         onChangeText={text => this.setState({'password':text})}
                         onSubmitEditing={this._login}
@@ -91,21 +92,18 @@ var LoginScreen = React.createClass({
                 </View>
                 <View style={{marginTop: 15}}>
                 <Button
-                    onPress={this._login}
-                    text={i18n.login} />
+                  onPress={this._login}
+                  style={styles.buttonText}
+                  containerStyle={styles.buttonRounded}  >
+                  {i18n.login}
+                </Button>
                 </View>
             </View>
         );
     }
 });
 
-const loginScreen = StyleSheet.create({
-	textInput: {
-		height: 40,
-		backgroundColor: 'transparent',
-		color: 'rgba(255, 255, 255, 0.9)',
-		paddingLeft: 10,
-	},
+const localStyles = StyleSheet.create({
 	bg : {
 		backgroundColor: '#3B3738',
 		flex: 1,
@@ -113,23 +111,17 @@ const loginScreen = StyleSheet.create({
 		padding: 15
 
 	},
-	loginLogo: {
-		width: 100,
-	},
-	background: {
+  background: {
         flex: 1,
         resizeMode: 'stretch'
-    },
-	logo: {
+  },
+  logo: {
 		marginBottom: 60,
 		marginTop: -50,
 		alignSelf: 'center',
 		width: 250,
 		height: 250,
 		resizeMode: 'stretch'
-	},
-	navbar: {
-		borderBottomColor: 'transparent',
 	},
 	border: {
 		alignSelf: 'stretch',
@@ -143,7 +135,13 @@ const loginScreen = StyleSheet.create({
 		marginRight: 10,
 		marginLeft: 10,
 		height: 40
-	}
+	},
+  textInput: {
+		height: 40,
+		backgroundColor: 'transparent',
+		color: 'rgba(255, 255, 255, 0.9)',
+		paddingLeft: 10,
+	},
 });
 
 

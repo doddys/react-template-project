@@ -2,33 +2,33 @@
 'use strict';
 
 var React = require('react-native');
-var styles = require('../Styles/style');
-var ButtonRounded = require('../Components/ButtonRounded');
-var Button = require('../Components/Button');
 var Actions = require('react-native-router-flux').Actions;
+var styles = require('../Styles/style');
+var i18n = require('../i18n.js');
 
 var {
     Text,
-    Image,
     View,
     StyleSheet
 } = React;
 
 var TaskEditScreen = React.createClass({
 	render: function() {
-
 	    return (
-	     	<View style={styles.bg}>
-	     		<Text style={styles.welcome}>
-	     			Task Edit Screen
-	 			</Text>
+        <View style={styles.bg}>
 
-	        </View>
-	    );
+          <Text style={localStyles.welcome}>
+            Task Edit Screen
+            
+          </Text>
+
+
+        </View>
+      );
   }
 });
 
-const taskEditScreen = StyleSheet.create({
+const localStyles = StyleSheet.create({
 	welcome: {
 		color: '#fff',
 		textAlign: 'center',

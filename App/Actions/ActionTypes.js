@@ -1,5 +1,6 @@
 'use strict';
 
+// may use keymirror for more efficient writing
 export const SEARCH_TASK_STARTED = 'SEARCH_TASK_STARTED';
 export const SEARCH_TASK_RESULT = 'SEARCH_TASK_RESULT';
 export const SEARCH_TASK_FAILED = 'SEARCH_TASK_FAILED';

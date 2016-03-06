@@ -10,9 +10,9 @@ var {
     Dimensions,
     TouchableHighlight,
 } = React;
-//var styles = require('../Styles/style');
-var ButtonRounded = require('../Components/ButtonRounded');
-var Button = require('../Components/Button');
+
+var styles = require('../Styles/style');
+var Button = require('react-native-button');
 var Actions = require('react-native-router-flux').Actions;
 var ImagePickerManager = require('NativeModules').ImagePickerManager;
 
@@ -108,44 +108,19 @@ var CameraScreen = React.createClass({
 	render: function() {
 
 	    return (
-        <View style={styles.container}>
-          <Image source={this.state.avatarSource} style={styles.base} />
-            <Button onPress={this.selectPhoto} text="Capture"/>
-          {/*<Camera
-            style={styles.camera}
-            ref="camera"
-            type={this.state.type}
-            captureTarget={Camera.constants.CaptureTarget.cameraRoll}>
-            <TouchableHighlight
-
-              style={styles.captureButton}
-
-              onPress={() => {component.refs.cam.capture({ sampleSize: 10 }).then(function(capturedBase64) {
-                component.setState({ capturedBase64 })});}}>
-                <Text style={{textAlign: 'center'}}>Capture</Text>
-              </TouchableHighlight>
-              () => {component.refs.cam.capture({ sampleSize: 10 }).then(function(capturedBase64) {
-                component.setState({ capturedBase64 })});}
-            </Camera>*/}
-            {/*<Camera
-              ref="camera"
-              style={styles.preview}
-              type={this.state.type}
-              aspect={Camera.constants.Aspect.fill}
-              captureTarget={Camera.constants.CaptureTarget.cameraRoll}
-              orientation={Camera.constants.Orientation.auto}>
-              <Button onPress={this.takePicture} text="Capture"/>
-            </Camera>*/}
-            {/*<Button onPress={this.takePicture} text="Capture"/>*/}
-          </View>
+        <View style={styles.bg}>
+          <Image source={this.state.avatarSource} style={localStyles.preview} />
+          <Button onPress={this.selectPhoto}
+            style={styles.buttonText}
+            containerStyle={styles.buttonRounded}>
+            Capture
+          </Button>
+        </View>
 	    );
   }
 });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
+const localStyles = StyleSheet.create({
   preview: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -160,10 +135,6 @@ const styles = StyleSheet.create({
     color: '#000',
     padding: 10,
     margin: 40
-  },
-  base: {
-    width: 400,
-    height: 400,
   },
 });
 

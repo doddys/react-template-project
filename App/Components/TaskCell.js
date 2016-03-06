@@ -15,9 +15,6 @@ import type { StyleObj } from 'StyleSheetTypes';
 import { getImageSource, getStyleFromScore, getTextFromScore } from '../Api/Common';
 
 var TaskCell = React.createClass({
-
-
-
   render: function() {
     var criticsScore = this.props.task.ratings.critics_score;
     var TouchableElement = TouchableHighlight;

@@ -3,8 +3,6 @@
 
 var React = require('react-native');
 var {
-    Text,
-    Image,
     View,
     ListView,
     StyleSheet,
@@ -15,12 +13,11 @@ var {
 } = React;
 
 var dismissKeyboard = require('dismissKeyboard');
-
-//var styles = require('../Styles/style');
-var ButtonRounded = require('../Components/ButtonRounded');
-var Button = require('../Components/Button');
-var TaskCell = require('../Components/TaskCell');
 var Actions = require('react-native-router-flux').Actions;
+
+var i18n = require('../i18n.js');
+var styles = require('../Styles/style');
+var TaskCell = require('../Components/TaskCell');
 var debug = require('../debug');
 
 import { bindActionCreators } from 'redux';
@@ -74,13 +71,13 @@ var TaskListScreen = React.createClass({
   _renderTask: function (task) {
     debug("Render Task");
     return (
-      <View style={styles.container}>
+      <View style={styles.bg}>
         <Image
           source={{uri: task.posters.thumbnail}}
-          style={styles.thumbnail}/>
-        <View style={styles.rightContainer}>
-          <Text style={styles.title}>{task.title}</Text>
-          <Text style={styles.year}>{task.year}</Text>
+          style={localStyles.thumbnail}/>
+        <View style={localStyles.rightContainer}>
+          <Text style={localStyles.title}>{task.title}</Text>
+          <Text style={localStyles.year}>{task.year}</Text>
         </View>
       </View>
     );
@@ -111,10 +108,10 @@ var TaskListScreen = React.createClass({
 
   _renderFooter: function() {
     if (!this._hasMore() || !this.state.isLoadingTail) {
-      return <View style={styles.scrollSpinner} />;
+      return <View style={localStyles.scrollSpinner} />;
     }
     if (Platform.OS === 'ios') {
-      return <ActivityIndicatorIOS style={styles.scrollSpinner} />;
+      return <ActivityIndicatorIOS style={localStyles.scrollSpinner} />;
     } else {
       return (
         <View  style={{alignItems: 'center'}}>
@@ -129,9 +126,9 @@ var TaskListScreen = React.createClass({
     rowID: number | string,
     adjacentRowHighlighted: boolean
   ) {
-    var style = styles.rowSeparator;
+    var style = localStyles.rowSeparator;
     if (adjacentRowHighlighted) {
-        style = [style, styles.rowSeparatorHide];
+        style = [style, localStyles.rowSeparatorHide];
     }
     return (
       <View key={'SEP_' + sectionID + '_' + rowID}  style={style}/>
@@ -188,7 +185,7 @@ var TaskListScreen = React.createClass({
 
 	    return (
         <PullToRefreshViewAndroid
-          style={styles.container}
+          style={styles.bg}
           refreshing={this.state.isLoading}
           onRefresh={this._reloadTask}
           colors={['#ff0000', '#00ff00', '#0000ff']}
@@ -208,14 +205,14 @@ var NoTask = React.createClass({
       // If we're looking at the latest tasks, aren't currently loading, and
       // still have no results, show a message
       return (
-        <View style={[styles.container, styles.centerText]}>
-          <Text style={styles.noTasksText}> No Task Found </Text>
+        <View style={[styles.bg, localStyles.centerText]}>
+          <Text style={localStyles.noTasksText}> No Task Found </Text>
         </View>
 
       );
     } else {
       if (Platform.OS === 'ios') {
-        return <ActivityIndicatorIOS style={styles.scrollSpinner} />;
+        return <ActivityIndicatorIOS style={localStyles.scrollSpinner} />;
       } else {
         return (
           <View  style={{alignItems: 'center'}}>
@@ -228,11 +225,8 @@ var NoTask = React.createClass({
   }
 });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
+const localStyles = StyleSheet.create({
+
   centerText: {
     alignItems: 'center',
   },

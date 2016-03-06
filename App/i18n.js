@@ -16,6 +16,8 @@ var i18n = new LocalizedStrings({
     taskEdit:"Edit Task",
     login:"Login",
     logout:"Logout",
+    accept:"Accept",
+    reject:"Reject"
   },
   id: {
     home:"Beranda",
@@ -29,6 +31,8 @@ var i18n = new LocalizedStrings({
     taskEdit:"Ubah Tugas",
     login:"Masuk",
     logout:"Keluar",
+    accept:"Terima",
+    reject:"Tolak"
   }
 });
 
