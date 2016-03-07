@@ -13,6 +13,7 @@ import android.content.Intent;
 import com.babisoft.ReactNativeLocalization.ReactNativeLocalizationPackage;
 import com.remobile.splashscreen.*;
 import com.learnium.RNDeviceInfo.*;
+import com.syarul.rnlocation.RNLocation;
 
 import java.util.Arrays;
 import java.util.List;
@@ -55,6 +56,7 @@ public class MainActivity extends ReactActivity {
         new RCTCameraPackage(),
         new AirPackage(),
         new RNDeviceInfo(),
+        new RNLocation(),
         new RCTSplashScreenPackage(this),
         mImagePicker
       );

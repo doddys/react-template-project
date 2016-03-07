@@ -28,73 +28,73 @@ var ControlPanel = React.createClass({
 
     render(){
         return (
-            <View style={localStyless.container}>
-              <View style={localStyless.header}>
-                <Icon style={localStyless.icon} name="user" size={30} />
-                <Text style={localStyless.headerText} >{this.props.currentUser} Doddy</Text>
+            <View style={localStyles.container}>
+              <View style={localStyles.header}>
+                <Icon style={localStyles.icon} name="user" size={30} />
+                <Text style={localStyles.headerText} >{this.props.currentUser} Doddy</Text>
               </View>
-              <View style={localStyless.menuList}>
+              <View style={localStyles.menuList}>
                 <TouchableHighlight
-                      style={localStyless.menu}
+                      style={localStyles.menu}
                       underlayColor="rgba(50, 105, 69, 0.4)"
                       onPress={() => this.selectMenu(Actions.home)}>
-                      <View style={localStyless.row}>
-                        <Icon style={localStyless.icon} name="home" size={25} />
-                        <Text style={localStyless.text}> {i18n.home} </Text>
+                      <View style={localStyles.row}>
+                        <Icon style={localStyles.icon} name="home" size={25} />
+                        <Text style={localStyles.text}> {i18n.home} </Text>
                       </View>
                 </TouchableHighlight>
                 <TouchableHighlight
-                      style={localStyless.menu}
+                      style={localStyles.menu}
                       underlayColor="rgba(50, 105, 69, 0.4)"
                       onPress={() => this.selectMenu(Actions.task)}>
-                      <View style={localStyless.row}>
-                        <Icon style={localStyless.icon} name="tasks" size={25} />
-                        <Text style={localStyless.text}> {i18n.taskList} </Text>
+                      <View style={localStyles.row}>
+                        <Icon style={localStyles.icon} name="tasks" size={25} />
+                        <Text style={localStyles.text}> {i18n.taskList} </Text>
                       </View>
                 </TouchableHighlight>
                 <TouchableHighlight
-                    style={localStyless.menu}
+                    style={localStyles.menu}
                     underlayColor="rgba(50, 105, 69, 0.4)"
                     onPress={() => this.selectMenu(Actions.approvalList)}>
-                    <View style={localStyless.row}>
-                      <Icon style={localStyless.icon} name="check" size={25} />
-                      <Text style={localStyless.text}> {i18n.approvalList} </Text>
+                    <View style={localStyles.row}>
+                      <Icon style={localStyles.icon} name="check" size={25} />
+                      <Text style={localStyles.text}> {i18n.approvalList} </Text>
                     </View>
                 </TouchableHighlight>
                 <TouchableHighlight
-                    style={localStyless.menu}
+                    style={localStyles.menu}
                     underlayColor="rgba(50, 105, 69, 0.4)"
                     onPress={() => this.selectMenu(Actions.setting)}>
-                    <View style={localStyless.row}>
-                      <Icon style={localStyless.icon} name="sliders" size={25} />
-                      <Text style={localStyless.text}> {i18n.setting} </Text>
+                    <View style={localStyles.row}>
+                      <Icon style={localStyles.icon} name="sliders" size={25} />
+                      <Text style={localStyles.text}> {i18n.setting} </Text>
                     </View>
                 </TouchableHighlight>
                 <TouchableHighlight
-                   style={localStyless.menu}
+                   style={localStyles.menu}
                    underlayColor="rgba(50, 105, 69, 0.4)"
                    onPress={() => this.selectMenu(Actions.map)}>
-                   <View style={localStyless.row}>
-                     <Icon style={localStyless.icon} name="map" size={25} />
-                     <Text style={localStyless.text}> {i18n.map} </Text>
+                   <View style={localStyles.row}>
+                     <Icon style={localStyles.icon} name="map" size={25} />
+                     <Text style={localStyles.text}> {i18n.map} </Text>
                    </View>
                  </TouchableHighlight>
                  <TouchableHighlight
-                    style={localStyless.menu}
+                    style={localStyles.menu}
                     underlayColor="rgba(50, 105, 69, 0.4)"
                     onPress={() => this.selectMenu(Actions.camera)}>
-                    <View style={localStyless.row}>
-                      <Icon style={localStyless.icon} name="camera" size={25} />
-                      <Text style={localStyless.text}> {i18n.camera} </Text>
+                    <View style={localStyles.row}>
+                      <Icon style={localStyles.icon} name="camera" size={25} />
+                      <Text style={localStyles.text}> {i18n.camera} </Text>
                     </View>
                  </TouchableHighlight>
                  <TouchableHighlight
-                     style={localStyless.menu}
+                     style={localStyles.menu}
                      underlayColor="rgba(50, 105, 69, 0.4)"
                      onPress={Actions.logout}>
-                     <View style={localStyless.row}>
-                       <Icon style={localStyless.icon} name="unlock" size={25} />
-                       <Text style={localStyless.text}> {i18n.logout} </Text>
+                     <View style={localStyles.row}>
+                       <Icon style={localStyles.icon} name="unlock" size={25} />
+                       <Text style={localStyles.text}> {i18n.logout} </Text>
                      </View>
                 </TouchableHighlight>
               </View>
@@ -103,7 +103,7 @@ var ControlPanel = React.createClass({
     }
 })
 
-var localStyles; = StyleSheet.create({
+var localStyles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',

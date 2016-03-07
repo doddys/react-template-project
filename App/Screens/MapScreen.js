@@ -2,8 +2,11 @@
 'use strict';
 
 var React = require('react-native');
+var { DeviceEventEmitter } = require('react-native');
 var Actions = require('react-native-router-flux').Actions;
 var MapView = require('react-native-maps');
+var Location = require('react-native-gps');
+//var { RNLocation: Location } = require('NativeModules');
 var styles = require('../Styles/style');
 
 var {
@@ -20,12 +23,14 @@ var {
 var { width, height } = Dimensions.get('window');
 
 const ASPECT_RATIO = width / height;
-const LATITUDE = 37.78825;
-const LONGITUDE = -122.4324;
-const LATITUDE_DELTA = 0.0922;
+const LATITUDE = -6.17639563;
+const LONGITUDE = 106.82624817;
+const LATITUDE_DELTA = 0.1222;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-let id = 0;
+let id = 1;
 
+// Initialize RNALocation
+Location.requestWhenInUseAuthorization();
 
 var MapScreen = React.createClass({
   getInitialState: function () {
@@ -37,6 +42,7 @@ var MapScreen = React.createClass({
        latitudeDelta: LATITUDE_DELTA,
        longitudeDelta: LONGITUDE_DELTA,
       },
+      currentLocation: {},
       markers: [],
     };
   },
@@ -45,6 +51,45 @@ var MapScreen = React.createClass({
     InteractionManager.runAfterInteractions(() => {
       this.setState({renderPlaceholderOnly: false});
     });
+
+    DeviceEventEmitter.addListener('locationUpdated', function(location) {
+        console.log("New Location", location);
+          this.state.region.latitude = location.latitude;
+          this.state.region.longitude = location.longitude;
+          this.setState({
+            // region: {
+            //   longitude: location.longitude,
+            //   latitude: location.latitude,
+            //   latitudeDelta: LATITUDE_DELTA,
+            //   longitudeDelta: LONGITUDE_DELTA,
+            // },
+            markers: [
+              ...this.state.markers,
+              {
+                coordinate: {
+                  longitude: location.longitude,
+                  latitude: location.latitude,
+                },
+                key: id++,
+                color: 'red',
+              }
+
+            ],
+          });
+
+      }.bind(this));
+
+      // IOS Only
+      //Location.startMonitoringSignificantLocationChanges();
+      //Location.setDistanceFilter(20);
+
+      Location.startUpdatingLocation();
+
+  },
+
+  componentWillUnmount: function() {
+    //Location.stopMonitoringSignificantLocationChanges();
+    Location.stopUpdatingLocation();
   },
 
   _randomColor() {
@@ -85,8 +130,10 @@ var MapScreen = React.createClass({
         <View style={localStyles.container}>
         <MapView
           style={localStyles.map}
-          initialRegion={this.state.region}
+          //initialRegion={this.state.region}
+          region={this.state.region}
           onPress={this._onMapPress}
+          onRegionChange={this._onRegionChange}
         >
           {this.state.markers.map(marker => (
             <MapView.Marker

@@ -120,6 +120,7 @@ android {
 
 dependencies {
     compile project(':RNDeviceInfo')
+    compile project(':RNLocation')
     compile project(':react-native-splashscreen')
     compile project(':react-native-vector-icons')
     compile project(':react-native-material-kit')
