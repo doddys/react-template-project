@@ -11,7 +11,6 @@ import React, {
   View
 } from 'react-native';
 
-import JasaRaharjaMobileApp from './App/Root';
 
 // sample device id to store in appstate for debugging
 var DeviceInfo = require('react-native-device-info');
@@ -29,5 +28,7 @@ console.log("App Version (Readable)", DeviceInfo.getReadableVersion());  // e.g.
 console.log("Device Name", DeviceInfo.getDeviceName());  // e.g. Becca's iPhone 6
 console.log("User Agent", DeviceInfo.getUserAgent()); // e.g. Dalvik/2.1.0 (Linux; U; Android 5.1; Google Nexus 4 - 5.1.0 - API 22 - 768x1280 Build/LMY47D)
 console.log("Device Locale", DeviceInfo.getDeviceLocale()); // e.g en-US
+
+import JasaRaharjaMobileApp from './App/Root';
 
 AppRegistry.registerComponent('JasaRaharjaMobileApp', () => JasaRaharjaMobileApp);

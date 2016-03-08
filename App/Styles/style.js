@@ -2,6 +2,7 @@ var React = require('react-native');
 
 var {
     StyleSheet,
+    Navigator
 } = React;
 
 var styles = StyleSheet.create({
@@ -141,7 +142,7 @@ var styles = StyleSheet.create({
       justifyContent: 'center',
       backgroundColor: '#5aa0cc',
       borderBottomColor: 'transparent',
-      borderBottomWidth: 65
+      borderBottomWidth: 64
     },
     navigationTitle: {
       color: 'white',

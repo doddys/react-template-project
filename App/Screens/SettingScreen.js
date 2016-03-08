@@ -2,20 +2,27 @@
 'use strict';
 
 var React = require('react-native');
-var Actions = require('react-native-router-flux').Actions;
-var i18n = require('../i18n.js');
-var styles = require('../Styles/style');
-
 var {
     Text,
     Image,
     View,
     StyleSheet
 } = React;
+var Actions = require('react-native-router-flux').Actions;
+var i18n = require('../i18n.js');
+var styles = require('../Styles/style');
+
+
+import { connect } from 'react-redux';
+
 
 var SettingScreen = React.createClass({
   componentDidMount: function() {
+    console.log("componentDidMount");
+  },
 
+  componentWillUnmount: function() {
+    console.log("componentWillUnmount");
   },
 
 	render: function() {
@@ -23,7 +30,7 @@ var SettingScreen = React.createClass({
 	    return (
 	     	<View style={styles.bg}>
 	     		<Text style={localStyles.welcome}>
-	     			Setting Screen
+	     			Push Token: {this.props.pushToken}
 	 			</Text>
 
 	        </View>
@@ -43,4 +50,14 @@ const localStyles = StyleSheet.create({
 });
 
 
-module.exports = SettingScreen;
+var mapStateToProps = function(state) {
+  return {
+    pushToken: state.getIn(['currentUser','pushToken']),
+  };
+};
+
+var mapDispatchToProps = function (dispatch) {
+  return {};
+};
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(SettingScreen);

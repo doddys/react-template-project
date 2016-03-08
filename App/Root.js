@@ -5,8 +5,7 @@ var { AppRegistry, Navigator, Component, BackAndroid, StyleSheet,Text,View, Plat
 var RNRF = require('react-native-router-flux');
 var {Route, Schema, Animations, Actions, TabBar} = RNRF;
 var SplashScreen = require('@remobile/react-native-splashscreen');
-
-//import RootRouter from './Components/RootRouter';
+var PushNotification = require('react-native-push-notification');
 
 // Local Dependency
 var SideDrawer = require('./Components/SideDrawer');
@@ -34,7 +33,12 @@ import { Provider, connect } from 'react-redux';
 const Router = connect()(RNRF.Router);
 
 const hideNavBar = Platform.OS === 'android'
-const paddingTop = Platform.OS === 'android' ? 0 : 8
+const paddingTop = Platform.OS === 'android' ? {paddingTop: 0} : {paddingTop : Navigator.NavigationBar.Styles.General.NavBarHeight};
+
+import { REGISTRATION_SET_TOKEN } from './Actions/ActionTypes';
+import { SENDER_ID } from './Config/Config';
+
+var pushOption = null;
 
 if (Platform.OS === 'android'){
   BackAndroid.addEventListener('hardwareBackPress', () => {
@@ -44,14 +48,73 @@ if (Platform.OS === 'android'){
     //}
     //return false;
   });
+
+  pushOption = {
+      // (optional) Called when Token is generated (iOS and Android)
+      onRegister: function(token) {
+          console.log( 'TOKEN:', token );
+
+          //dispatch action to set token in the current state
+          store.dispatch(
+            {type: REGISTRATION_SET_TOKEN,
+            token
+          });
+      },
+      // (required) Called when a remote or local notification is opened or received
+      onNotification: function(notification) {
+          console.log( 'NOTIFICATION:', notification );
+      },
+      // ANDROID ONLY: (optional) GCM Sender ID.
+      senderID: SENDER_ID,
+  };
+
+
+} else {
+  pushOption = {
+      // (optional) Called when Token is generated (iOS and Android)
+      onRegister: function(token) {
+          console.log( 'TOKEN:', token );
+
+          //dispatch action to set token in the current state
+          store.dispatch(
+            {type: REGISTRATION_SET_TOKEN,
+            token
+          });
+      },
+      // (required) Called when a remote or local notification is opened or received
+      onNotification: function(notification) {
+          console.log( 'NOTIFICATION:', notification );
+      },
+
+      // IOS ONLY (optional): default: all - Permissions to register.
+      permissions: {
+          alert: true,
+          badge: true,
+          sound: true
+      },
+
+      /**
+        * IOS ONLY: (optional) default: true
+        * - Specified if permissions will requested or not,
+        * - if not, you must call PushNotificationsHandler.requestPermissions() later
+        */
+      requestPermissions: true,
+
+  };
+
 }
+
 
 export default class JasaRaharjaMobileApp extends Component {
   componentDidMount() {
     if (Platform.OS === 'android') {
       SplashScreen.hide();
 
+      // temporary until ios version is implemented
+      PushNotification.configure(pushOption);
     }
+
+
   }
 
   render() {
@@ -65,7 +128,7 @@ export default class JasaRaharjaMobileApp extends Component {
             type='replace'
           />
           <Schema
-            name='main'
+            name='main2'
             sceneConfig={Navigator.SceneConfigs.FloatFromRight}
             hideNavBar={hideNavBar}
           />
@@ -74,30 +137,30 @@ export default class JasaRaharjaMobileApp extends Component {
         <Route name='auth' component={LoginScreen} schema='boot' initial={true}/>
         <Route name='logout' component={LoginScreen} schema='boot'/>
 
-          <Route name='main' title={i18n.home} hideNavBar={true} type='reset'>
+        <Route name='main' title={i18n.home} hideNavBar={false} type='reset'>
             <SideDrawer>
-              <Router
-                sceneStyle={styles.routerScene}
+              <Router hideNavBar={false}
+                sceneStyle={styles.routerScene, paddingTop}
                 navigationBarStyle={styles.navigationBar}
                 titleStyle={styles.navigationTitle}
                 barButtonIconStyle={styles.barButtonIcon}
                 barButtonTextStyle={styles.barButtonText}
                 >
-                <Route name='home' component={HomeScreen} schema='main' title={i18n.home} />
-                <Route name='task' title={i18n.taskList}>
+                <Route name='home' component={HomeScreen} type='transitionToTop' schema='main2' title={i18n.home} />
+                <Route name='task' type='transitionToTop' title={i18n.taskList} hideNavBar={true}>
                   <Router>
-                    <Route name='taskList' component={TaskListScreen} schema='main' title={i18n.taskList} />
-                    <Route name='taskDetail' component={TaskDetailScreen} schema='main' title={i18n.taskDetail} />
-                    <Route name='taskEdit' component={TaskEditScreen} schema='main' title={i18n.taskEdit} />
+                    <Route name='taskList' component={TaskListScreen} schema='main2' title={i18n.taskList} />
+                    <Route name='taskDetail' component={TaskDetailScreen} schema='main2' title={i18n.taskDetail} />
+                    <Route name='taskEdit' component={TaskEditScreen} schema='main2' title={i18n.taskEdit} />
                   </Router>
                 </Route>
-                <Route name='approvalList' component={ApprovalListScreen}  schema='main' title={i18n.approvalList} />
-                <Route name='setting' component={SettingScreen}   schema='main' title={i18n.setting} />
-                <Route name='map' component={MapScreen}   schema='main' title={i18n.map} />
-                <Route name='camera' component={CameraScreen} schema='main' title={i18n.camera} />
+                <Route name='approvalList' component={ApprovalListScreen} type='transitionToTop' schema='main2' title={i18n.approvalList} />
+                <Route name='setting' component={SettingScreen} type='transitionToTop'  schema='main2' title={i18n.setting} />
+                <Route name='map' component={MapScreen} type='transitionToTop'  schema='main2' title={i18n.map} />
+                <Route name='camera' component={CameraScreen} type='transitionToTop' schema='main2' title={i18n.camera} />
               </Router>
             </SideDrawer>
-          </Route>
+        </Route>
 
         </Router>
       </Provider>

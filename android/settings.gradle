@@ -19,3 +19,5 @@ include ':RNDeviceInfo'
 project(':RNDeviceInfo').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-device-info/android')
 include ':RNLocation'
 project(':RNLocation').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-gps')
+include ':react-native-push-notification'
+project(':react-native-push-notification').projectDir = file('../node_modules/react-native-push-notification/RNPushNotificationAndroid')

@@ -14,6 +14,7 @@ import com.babisoft.ReactNativeLocalization.ReactNativeLocalizationPackage;
 import com.remobile.splashscreen.*;
 import com.learnium.RNDeviceInfo.*;
 import com.syarul.rnlocation.RNLocation;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
 public class MainActivity extends ReactActivity {
 
     private ImagePickerPackage mImagePicker;
+    private ReactNativePushNotificationPackage mReactNativePushNotificationPackage;
 
     /**
      * Returns the name of the main component registered from JavaScript.
@@ -47,6 +49,7 @@ public class MainActivity extends ReactActivity {
     @Override
     protected List<ReactPackage> getPackages() {
       mImagePicker = new ImagePickerPackage(this);
+      mReactNativePushNotificationPackage = new ReactNativePushNotificationPackage(this);
 
       return Arrays.<ReactPackage>asList(
         new MainReactPackage(),
@@ -58,7 +61,8 @@ public class MainActivity extends ReactActivity {
         new RNDeviceInfo(),
         new RNLocation(),
         new RCTSplashScreenPackage(this),
-        mImagePicker
+        mImagePicker,
+        mReactNativePushNotificationPackage
       );
     }
 
@@ -67,4 +71,11 @@ public class MainActivity extends ReactActivity {
        super.onActivityResult(requestCode, resultCode, data);
        mImagePicker.handleActivityResult(requestCode, resultCode, data);
    }
+
+   // Add onNewIntent
+    @Override
+    protected void onNewIntent (Intent intent) {
+      super.onNewIntent(intent);
+      mReactNativePushNotificationPackage.newIntent(intent);
+    }
 }

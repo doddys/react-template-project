@@ -16,7 +16,6 @@ var {
 
 var HomeScreen = React.createClass({
 
-
 	render: function() {
 
 	    return (

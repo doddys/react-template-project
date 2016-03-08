@@ -1287,9 +1287,9 @@ return arr2;}else
 {
 return Array.from(arr);}};
 })(typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : this);
-__d('image!ic_menu_white_36dp',function(global, require, module, exports) {  module.exports = {"__packager_asset":true,"path":"/Volumes/DATAX/Projects/Mobile/react/JasaRaharjaMobileApp/android/app/build/intermediates/res/merged/debug/drawable-xhdpi/ic_menu_white_36dp.png","uri":"ic_menu_white_36dp","width":72,"height":72,"deprecated":true};
+__d('image!ic_menu_white_36dp',function(global, require, module, exports) {  module.exports = {"__packager_asset":true,"path":"/Volumes/DATAX/Projects/Mobile/react/JasaRaharjaMobileApp/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_menu_white_36dp.png","uri":"ic_menu_white_36dp","width":54,"height":54,"deprecated":true};
 });
-__d('image!logo',function(global, require, module, exports) {  module.exports = {"__packager_asset":true,"path":"/Volumes/DATAX/Projects/Mobile/react/JasaRaharjaMobileApp/android/app/build/intermediates/res/merged/debug/drawable-hdpi/logo.png","uri":"logo","width":72,"height":72,"deprecated":true};
+__d('image!logo',function(global, require, module, exports) {  module.exports = {"__packager_asset":true,"path":"/Volumes/DATAX/Projects/Mobile/react/JasaRaharjaMobileApp/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/logo.png","uri":"logo","width":72,"height":72,"deprecated":true};
 });
 __d('regenerator/runtime.js',function(global, require, module, exports) {  !
 
@@ -15620,6 +15620,56 @@ throw error;}};
 
 module.exports=invariant;
 });
+__d('JasaRaharjaMobileApp/App/Actions/ActionTypes.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});
+
+
+var SEARCH_TASK_STARTED=exports.SEARCH_TASK_STARTED='SEARCH_TASK_STARTED';
+var SEARCH_TASK_RESULT=exports.SEARCH_TASK_RESULT='SEARCH_TASK_RESULT';
+var SEARCH_TASK_FAILED=exports.SEARCH_TASK_FAILED='SEARCH_TASK_FAILED';
+var MORE_SEARCH_TASK_RESULT=exports.MORE_SEARCH_TASK_RESULT='MORE_SEARCH_TASK_RESULT';
+var NEW_SEARCH_TASK=exports.NEW_SEARCH_TASK='REFRESH_SEARCH_TASK';
+
+var TASK_ACCEPT=exports.TASK_ACCEPT='TASK_ACCEPT';
+var TASK_ACCEPT_STARTED=exports.TASK_ACCEPT_STARTED='TASK_ACCEPT_STARTED';
+var TASK_ACCEPT_RESULT=exports.TASK_ACCEPT_RESULT='TASK_ACCEPT_RESULT';
+var TASK_ACCEPT_FAILED=exports.TASK_ACCEPT_FAILED='TASK_ACCEPT_FAILED';
+
+var TASK_REJECT=exports.TASK_REJECT='TASK_REJECT';
+var TASK_REJECT_STARTED=exports.TASK_REJECT_STARTED='TASK_REJECT_STARTED';
+var TASK_REJECT_RESULT=exports.TASK_REJECT_RESULT='TASK_REJECT_RESULT';
+var TASK_REJECT_FAILED=exports.TASK_REJECT_FAILED='TASK_REJECT_FAILED';
+
+var TASK_VIEW_DETAIL=exports.TASK_VIEW_DETAIL='TASK_VIEW_DETAIL';
+var TASK_EDIT=exports.TASK_EDIT='TASK_EDIT';
+var TASK_SAVE=exports.TASK_SAVE='TASK_SAVE';
+
+var TASK_SUBMIT=exports.TASK_SUBMIT='TASK_SUBMIT';
+var TASK_SUBMIT_STARTED=exports.TASK_SUBMIT_STARTED='TASK_SUBMIT_STARTED';
+var TASK_SUBMIT_RESULT=exports.TASK_SUBMIT_RESULT='TASK_SUBMIT_RESULT';
+var TASK_SUBMIT_FAILED=exports.TASK_SUBMIT_FAILED='TASK_SUBMIT_FAILED';
+
+
+
+
+
+
+var AUTH_SET_TOKEN=exports.AUTH_SET_TOKEN='AUTH_SET_TOKEN';
+var AUTH_SET_INFO=exports.AUTH_SET_INFO='AUTH_SET_INFO';
+var AUTH_REMOVE_TOKEN=exports.AUTH_REMOVE_TOKEN='AUTH_SET_INFO';
+var REGISTRATION_SET_TOKEN=exports.REGISTRATION_SET_TOKEN='REGISTRATION_SET_TOKEN';
+});
+__d('JasaRaharjaMobileApp/App/Config/Config.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});
+
+
+var DEBUG=exports.DEBUG=false;
+var SERVER_HOST=exports.SERVER_HOST="http://api.rottentomatoes.com";
+var LOGIN_URL=exports.LOGIN_URL="http://192.168.44.55:8080/jasaraharja/oauth/token";
+var API_KEY=exports.API_KEY="my-trusted-client-with-secret";
+var API_KEY2=exports.API_KEY2="somesecret";
+var BYPASS_LOGIN=exports.BYPASS_LOGIN=true;
+var STORAGE_KEY=exports.STORAGE_KEY='JasaRaharjaMobileStorage';
+var SENDER_ID=exports.SENDER_ID='204281280864';
+});
 __d('react-native-router-flux/debug.js',function(global, require, module, exports) {  Object.defineProperty(exports,"__esModule",{value:true});exports.default=debug;function debug(msg){}
 });
 __d('@exponent/react-native-navigator/ExNavigatorMixin.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.default=
@@ -17086,83 +17136,6 @@ return nativeKeys(Object(object));}
 
 module.exports=baseKeys;
 });
-__d('react-native-navbar/styles.js',function(global, require, module, exports) {  var NAV_BAR_HEIGHT=39;
-var STATUS_BAR_HEIGHT=20;
-var NAV_HEIGHT=NAV_BAR_HEIGHT+STATUS_BAR_HEIGHT;
-
-module.exports={
-navBarContainer:{
-backgroundColor:'white',
-paddingBottom:5},
-
-statusBar:{
-height:STATUS_BAR_HEIGHT},
-
-navBar:{
-height:NAV_BAR_HEIGHT,
-flexDirection:'row',
-justifyContent:'space-between'},
-
-customTitle:{
-position:'absolute',
-left:0,
-right:0,
-bottom:7,
-alignItems:'center'},
-
-navBarButton:{
-marginTop:12},
-
-navBarButtonText:{
-fontSize:17,
-letterSpacing:0.5,
-marginTop:12},
-
-navBarTitleText:{
-fontSize:17,
-letterSpacing:0.5,
-color:'#333',
-fontWeight:'500',
-position:'absolute',
-left:0,
-right:0,
-bottom:7,
-textAlign:'center'}};
-});
-__d('JasaRaharjaMobileApp/App/Actions/ActionTypes.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});
-
-var SEARCH_TASK_STARTED=exports.SEARCH_TASK_STARTED='SEARCH_TASK_STARTED';
-var SEARCH_TASK_RESULT=exports.SEARCH_TASK_RESULT='SEARCH_TASK_RESULT';
-var SEARCH_TASK_FAILED=exports.SEARCH_TASK_FAILED='SEARCH_TASK_FAILED';
-var MORE_SEARCH_TASK_RESULT=exports.MORE_SEARCH_TASK_RESULT='MORE_SEARCH_TASK_RESULT';
-var NEW_SEARCH_TASK=exports.NEW_SEARCH_TASK='REFRESH_SEARCH_TASK';
-
-
-var ACCEPT_TASK_STARTED=exports.ACCEPT_TASK_STARTED='ACCEPT_TASK_STARTED';
-var ACCEPT_TASK_RESULT=exports.ACCEPT_TASK_RESULT='ACCEPT_TASK_RESULT';
-
-var REJECT_TASK_STARTED=exports.REJECT_TASK_STARTED='REJECT_TASK_STARTED';
-var REJECT_TASK_RESULT=exports.REJECT_TASK_RESULT='REJECT_TASK_RESULT';
-
-var FINISH_TASK_STARTED=exports.FINISH_TASK_STARTED='SUBMIT_SURVEY_STARTED';
-var FINISH_TASK_RESULT=exports.FINISH_TASK_RESULT='SUBMIT_SURVEY_STARTED';
-
-
-var AUTH_SET_TOKEN=exports.AUTH_SET_TOKEN='AUTH_SET_TOKEN';
-var AUTH_SET_INFO=exports.AUTH_SET_INFO='AUTH_SET_INFO';
-var AUTH_REMOVE_TOKEN=exports.AUTH_REMOVE_TOKEN='AUTH_SET_INFO';
-});
-__d('JasaRaharjaMobileApp/App/Config/Config.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});
-
-
-var DEBUG=exports.DEBUG=true;
-var SERVER_HOST=exports.SERVER_HOST="http://api.rottentomatoes.com";
-var LOGIN_URL=exports.LOGIN_URL="http://192.168.44.55:8080/jasaraharja/oauth/token";
-var API_KEY=exports.API_KEY="my-trusted-client-with-secret";
-var API_KEY2=exports.API_KEY2="somesecret";
-var BYPASS_LOGIN=exports.BYPASS_LOGIN=true;
-var STORAGE_KEY=exports.STORAGE_KEY='JasaRaharjaMobileStorage';
-});
 __d('base-64/base64.js',function(global, require, module, exports) {  ;
 (function(root){
 
@@ -17328,6 +17301,37 @@ root.base64=base64;}})(
 
 
 this);
+});
+__d('JasaRaharjaMobileApp/App/Api/Common.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});exports.
+
+
+getImageSource=getImageSource;exports.
+
+
+
+
+
+
+
+getTextFromScore=getTextFromScore;exports.
+
+
+
+
+getStyleFromScore=getStyleFromScore;function getImageSource(task,kind){var uri=task&&task.posters?task.posters.thumbnail:null;if(uri&&kind){uri=uri.replace('tmb',kind);}return {uri:uri};};function getTextFromScore(score){return score>0?score+'%':'N/A';};function getStyleFromScore(score){
+if(score<0){
+return styles.noScore;}
+
+
+var normalizedScore=Math.round(score/100*200);
+return {
+color:'rgb('+(
+200-normalizedScore)+', '+
+normalizedScore+', '+
+0+
+')'};}
+
+;
 });
 __d('JasaRaharjaMobileApp/App/debug.js',function(global, require, module, exports) {  function 
 
@@ -21729,6 +21733,64 @@ return returnedValue;};};};}
 module.exports=createLogger;
 });
 __d('JasaRaharjaMobileApp/index.android.js',function(global, require, module, exports) {  'use strict';var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _Root=require('JasaRaharjaMobileApp/App/Root.js');var _Root2=babelHelpers.interopRequireDefault(_Root);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var DeviceInfo=require('react-native-device-info/deviceinfo.js');
+console.log("Device Unique ID",DeviceInfo.getUniqueID());
+
+console.log("Device Manufacturer",DeviceInfo.getManufacturer());
+console.log("Device Model",DeviceInfo.getModel());
+console.log("Device ID",DeviceInfo.getDeviceId());
+console.log("Device Name",DeviceInfo.getSystemName());
+console.log("Device Version",DeviceInfo.getSystemVersion());
+console.log("Bundle Id",DeviceInfo.getBundleId());
+console.log("Build Number",DeviceInfo.getBuildNumber());
+console.log("App Version",DeviceInfo.getVersion());
+console.log("App Version (Readable)",DeviceInfo.getReadableVersion());
+console.log("Device Name",DeviceInfo.getDeviceName());
+console.log("User Agent",DeviceInfo.getUserAgent());
+console.log("Device Locale",DeviceInfo.getDeviceLocale());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -66626,15 +66688,14 @@ return ReactMount.getNodeFromInstance(componentOrElement);}
 
 module.exports=findDOMNode;
 });
-__d('JasaRaharjaMobileApp/App/Root.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _reactRedux=require('react-redux/lib/index.js');
+__d('JasaRaharjaMobileApp/App/Root.js',function(global, require, module, exports) {  'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _reactRedux=require('react-redux/lib/index.js');var _ActionTypes=require('JasaRaharjaMobileApp/App/Actions/ActionTypes.js');var _Config=require('JasaRaharjaMobileApp/App/Config/Config.js');
 
 var React=require('react-native/Libraries/react-native/react-native.js');var 
 AppRegistry=React.AppRegistry;var Navigator=React.Navigator;var Component=React.Component;var BackAndroid=React.BackAndroid;var StyleSheet=React.StyleSheet;var Text=React.Text;var View=React.View;var Platform=React.Platform;
 var RNRF=require('react-native-router-flux/index.js');var 
 Route=RNRF.Route;var Schema=RNRF.Schema;var Animations=RNRF.Animations;var Actions=RNRF.Actions;var TabBar=RNRF.TabBar;
 var SplashScreen=require('@remobile/react-native-splashscreen/index.js');
-
-
+var PushNotification=require('react-native-push-notification/index.js');
 
 
 var SideDrawer=require('JasaRaharjaMobileApp/App/Components/SideDrawer.js');
@@ -66664,11 +66725,71 @@ var Router=(0,_reactRedux.connect)()(RNRF.Router);
 var hideNavBar=Platform.OS==='android';
 var paddingTop=Platform.OS==='android'?0:8;
 
+
+
+
+var pushOption=null;
+
 if(Platform.OS==='android'){
 BackAndroid.addEventListener('hardwareBackPress',function(){
 
 Actions.pop();
-return true;});}var 
+return true;});
+
+
+
+
+pushOption={
+
+onRegister:function(token){
+console.log('TOKEN:',token);
+
+
+store.dispatch(
+{type:_ActionTypes.REGISTRATION_SET_TOKEN,
+token:token});},
+
+
+
+onNotification:function(notification){
+console.log('NOTIFICATION:',notification);},
+
+
+senderID:_Config.SENDER_ID};}else 
+
+
+
+{
+pushOption={
+
+onRegister:function(token){
+console.log('TOKEN:',token);
+
+
+store.dispatch(
+{type:_ActionTypes.REGISTRATION_SET_TOKEN,
+token:token});},
+
+
+
+onNotification:function(notification){
+console.log('NOTIFICATION:',notification);},
+
+
+
+permissions:{
+alert:true,
+badge:true,
+sound:true},
+
+
+
+
+
+
+
+requestPermissions:true};}var 
+
 
 
 
@@ -66676,7 +66797,10 @@ return true;});}var
 
 JasaRaharjaMobileApp=function(_Component){babelHelpers.inherits(JasaRaharjaMobileApp,_Component);function JasaRaharjaMobileApp(){babelHelpers.classCallCheck(this,JasaRaharjaMobileApp);return babelHelpers.possibleConstructorReturn(this,Object.getPrototypeOf(JasaRaharjaMobileApp).apply(this,arguments));}babelHelpers.createClass(JasaRaharjaMobileApp,[{key:'componentDidMount',value:function componentDidMount()
 {
-SplashScreen.hide();}},{key:'render',value:function render()
+if(Platform.OS==='android'){
+SplashScreen.hide();}
+
+PushNotification.configure(pushOption);}},{key:'render',value:function render()
 
 
 {
@@ -66691,9 +66815,10 @@ type:'replace'}),
 
 React.createElement(Schema,{
 name:'main',
-
+sceneConfig:Navigator.SceneConfigs.FloatFromRight,
 hideNavBar:hideNavBar}),
 
+React.createElement(Schema,{name:'modal',sceneConfig:Navigator.SceneConfigs.FloatFromBottom}),
 
 React.createElement(Route,{name:'auth',component:LoginScreen,schema:'boot',initial:true}),
 React.createElement(Route,{name:'logout',component:LoginScreen,schema:'boot'}),
@@ -66707,7 +66832,7 @@ titleStyle:styles.navigationTitle,
 barButtonIconStyle:styles.barButtonIcon,
 barButtonTextStyle:styles.barButtonText},
 
-React.createElement(Route,{name:'home',component:HomeScreen,type:'switch',schema:'main',title:i18n.home}),
+React.createElement(Route,{name:'home',component:HomeScreen,schema:'main',title:i18n.home}),
 React.createElement(Route,{name:'task',title:i18n.taskList},
 React.createElement(Router,null,
 React.createElement(Route,{name:'taskList',component:TaskListScreen,schema:'main',title:i18n.taskList}),
@@ -66715,10 +66840,10 @@ React.createElement(Route,{name:'taskDetail',component:TaskDetailScreen,schema:'
 React.createElement(Route,{name:'taskEdit',component:TaskEditScreen,schema:'main',title:i18n.taskEdit}))),
 
 
-React.createElement(Route,{name:'approvalList',component:ApprovalListScreen,type:'switch',schema:'main',title:i18n.approvalList}),
-React.createElement(Route,{name:'setting',component:SettingScreen,type:'switch',schema:'main',title:i18n.setting}),
-React.createElement(Route,{name:'map',component:MapScreen,type:'switch',schema:'main',title:i18n.map}),
-React.createElement(Route,{name:'camera',component:CameraScreen,type:'switch',schema:'main',title:i18n.camera})))))));}}]);return JasaRaharjaMobileApp;}(Component);exports.default=JasaRaharjaMobileApp;
+React.createElement(Route,{name:'approvalList',component:ApprovalListScreen,schema:'main',title:i18n.approvalList}),
+React.createElement(Route,{name:'setting',component:SettingScreen,schema:'main',title:i18n.setting}),
+React.createElement(Route,{name:'map',component:MapScreen,schema:'main',title:i18n.map}),
+React.createElement(Route,{name:'camera',component:CameraScreen,schema:'main',title:i18n.camera})))))));}}]);return JasaRaharjaMobileApp;}(Component);exports.default=JasaRaharjaMobileApp;
 });
 __d('react-redux/lib/index.js',function(global, require, module, exports) {  'use strict';
 
@@ -70061,11 +70186,312 @@ React.NativeModules;
 
 module.exports=NativeModules.SplashScreen;
 });
+__d('react-native-push-notification/index.js',function(global, require, module, exports) {  'use strict';
+
+
+
+
+
+var RNNotificationsComponent=require('react-native-push-notification/component/index.android.js');
+
+var AppState=RNNotificationsComponent.state;
+var RNNotifications=RNNotificationsComponent.component;
+
+var Platform=require('react-native/Libraries/react-native/react-native.js').Platform;
+
+var Notifications={
+handler:RNNotifications,
+onRegister:false,
+onError:false,
+onNotification:false,
+
+loaded:false,
+
+permissions:{
+alert:true,
+badge:true,
+sound:true}};
+
+
+
+Notifications.callNative=function(name,params){
+if(typeof this.handler[name]==='function'){var _handler;
+if(typeof params!=='array'&&
+typeof params!=='object'){
+params=[];}
+
+
+return (_handler=this.handler)[name].apply(_handler,babelHelpers.toConsumableArray(params));}else 
+{
+return null;}};
+
+
+
+
+
+
+
+
+
+
+
+
+Notifications.configure=function(options){
+if(typeof options.onRegister!=='undefined'){
+this.onRegister=options.onRegister;}
+
+
+if(typeof options.onError!=='undefined'){
+this.onError=options.onError;}
+
+
+if(typeof options.onNotification!=='undefined'){
+this.onNotification=options.onNotification;}
+
+
+if(typeof options.permissions!=='undefined'){
+this.permissions=options.permissions;}
+
+
+if(typeof options.senderID!=='undefined'){
+this.senderID=options.senderID;}
+
+
+if(this.loaded===false){
+this.callNative('addEventListener',['register',this._onRegister.bind(this)]);
+this.callNative('addEventListener',['notification',this._onNotification.bind(this)]);
+
+var tempFirstNotification=this.callNative('popInitialNotification');
+
+if(tempFirstNotification!==null){
+this._onNotification(tempFirstNotification,true);}
+
+
+this.loaded=true;}
+
+
+if(options.requestPermissions!==false){
+this.requestPermissions();}};
+
+
+
+
+
+Notifications.unregister=function(){
+this.callNative('removeEventListener',['register',this._onRegister.bind(this)]);
+this.callNative('removeEventListener',['notification',this._onNotification.bind(this)]);};
+
+
+
+
+
+
+
+
+
+Notifications.localNotification=function(details){
+if(Platform.OS==='ios'){
+this.handler.presentLocalNotification({
+alertBody:details.message});}else 
+
+{
+this.handler.presentLocalNotification(details);}};
+
+
+
+
+
+
+
+
+Notifications.localNotificationSchedule=function(details){
+if(Platform.OS==='ios'){
+this.handler.scheduleLocalNotification({
+fireDate:details.date,
+alertBody:details.message});}else 
+
+{
+this.handler.scheduleLocalNotification(details);}};
+
+
+
+
+Notifications._onRegister=function(token){
+if(this.onRegister!==false){
+this.onRegister({
+token:token,
+os:Platform.OS});}};
+
+
+
+
+Notifications._onNotification=function(data){var isFromBackground=arguments.length<=1||arguments[1]===undefined?null:arguments[1];
+if(isFromBackground===null){
+if(Platform.OS==='ios'){
+isFromBackground=AppState.currentState==='background';}else 
+{
+isFromBackground=data.foreground===false;}}
+
+
+
+if(this.onNotification!==false){
+if(Platform.OS==='ios'){
+this.onNotification({
+foreground:!isFromBackground,
+message:data.getMessage(),
+data:data.getData()});}else 
+
+{
+this.onNotification({
+foreground:!isFromBackground,
+message:data.message,
+data:
+typeof data.data!=='undefined'?
+data.data:
+{}});}}};
+
+
+
+
+
+
+Notifications.requestPermissions=function(){
+if(Platform.OS==='ios'){
+return this.callNative('requestPermissions',[this.permissions]);}else 
+if(typeof this.senderID!=='undefined'){
+return this.callNative('requestPermissions',[this.senderID]);}};
+
+
+
+
+Notifications.presentLocalNotification=function(){
+return this.callNative('presentLocalNotification',arguments);};
+
+
+Notifications.scheduleLocalNotification=function(){
+return this.callNative('scheduleLocalNotification',arguments);};
+
+
+Notifications.cancelAllLocalNotifications=function(){
+return this.callNative('cancelAllLocalNotifications',arguments);};
+
+
+Notifications.cancelAllLocalNotifications=function(){
+return this.callNative('cancelAllLocalNotifications',arguments);};
+
+
+Notifications.setApplicationIconBadgeNumber=function(){
+return this.callNative('setApplicationIconBadgeNumber',arguments);};
+
+
+Notifications.getApplicationIconBadgeNumber=function(){
+return this.callNative('getApplicationIconBadgeNumber',arguments);};
+
+
+Notifications.popInitialNotification=function(){
+return this.callNative('popInitialNotification',arguments);};
+
+
+Notifications.abandonPermissions=function(){
+return this.callNative('abandonPermissions',arguments);};
+
+
+Notifications.checkPermissions=function(){
+return this.callNative('checkPermissions',arguments);};
+
+
+module.exports=Notifications;
+});
+__d('react-native-push-notification/component/index.android.js',function(global, require, module, exports) {  'use strict';var _require=
+
+
+
+
+require('react-native/Libraries/react-native/react-native.js');var NativeModules=_require.NativeModules;var DeviceEventEmitter=_require.DeviceEventEmitter;
+
+var RNPushNotification=NativeModules.RNPushNotification;
+var _notifHandlers=new Map();
+
+var DEVICE_NOTIF_EVENT='remoteNotificationReceived';
+var NOTIF_REGISTER_EVENT='remoteNotificationsRegistered';
+
+var NotificationsComponent=function(){
+this.initalPop=false;};
+
+
+NotificationsComponent.prototype.popInitialNotification=function(){
+if(this.initalPop===false&&
+RNPushNotification.initialNotification){
+this.initalPop=true;
+return JSON.parse(RNPushNotification.initialNotification);}else 
+{
+return null;}};
+
+
+
+NotificationsComponent.prototype.requestPermissions=function(senderID){
+RNPushNotification.requestPermissions(senderID);};
+
+
+NotificationsComponent.prototype.cancelAllLocalNotifications=function(){
+RNPushNotification.cancelAllLocalNotifications();};
+
+
+NotificationsComponent.prototype.presentLocalNotification=function(details){
+RNPushNotification.presentLocalNotification(details);};
+
+
+NotificationsComponent.prototype.scheduleLocalNotification=function(details){
+RNPushNotification.scheduleLocalNotification(details);};
+
+
+NotificationsComponent.prototype.abandonPermissions=function(){};
+
+
+
+NotificationsComponent.prototype.checkPermissions=function(callback){};
+
+
+
+NotificationsComponent.prototype.addEventListener=function(type,handler){
+var listener;
+if(type==='notification'){
+listener=DeviceEventEmitter.addListener(
+DEVICE_NOTIF_EVENT,
+function(notifData){
+var data=JSON.parse(notifData.dataJSON);
+handler(data);});}else 
+
+
+if(type==='register'){
+listener=DeviceEventEmitter.addListener(
+NOTIF_REGISTER_EVENT,
+function(registrationInfo){
+handler(registrationInfo.deviceToken);});}
+
+
+
+
+_notifHandlers.set(handler,listener);};
+
+
+NotificationsComponent.prototype.removeEventListener=function(type,handler){
+var listener=_notifHandlers.get(handler);
+if(!listener){
+return;}
+
+listener.remove();
+_notifHandlers.delete(handler);};
+
+
+module.exports={
+state:false,
+component:new NotificationsComponent()};
+});
 __d('JasaRaharjaMobileApp/App/Components/SideDrawer.js',function(global, require, module, exports) {  'use strict';var _reactRedux=require('react-redux/lib/index.js');
 
 var React=require('react-native/Libraries/react-native/react-native.js');
 var Drawer=require('react-native-drawer/index.js');
-var ControlPanel=require('JasaRaharjaMobileApp/App/Components/ControlPanel.js');
 var ControlPanel=require('JasaRaharjaMobileApp/App/Components/ControlPanel.js');
 var ToolbarAndroid=require('ToolbarAndroid');var 
 Platform=React.Platform;
@@ -70094,6 +70520,7 @@ componentWillUnmount:function(){},
 
 
 renderBackIcon:function(routeId){
+
 if(routeId==="taskDetail"){
 return {uri:'ic_chevron_left_white_36dp'};}else 
 {
@@ -70141,19 +70568,6 @@ main:{opacity:(2-ratio)/2}};}},
 toolbar,
 React.Children.map(this.props.children,function(c){return React.cloneElement(c,{
 route:_this.props.route});})));}});
-
-
-
-
-
-
-{}
-
-
-
-
-
-
 
 
 
@@ -70774,22 +71188,22 @@ this._break=true;};
 });
 __d('JasaRaharjaMobileApp/App/Components/ControlPanel.js',function(global, require, module, exports) {  'use strict';var _reactRedux=require('react-redux/lib/index.js');
 
+var React=require('react-native/Libraries/react-native/react-native.js');var 
+
+View=
+
+
+
+React.View;var Text=React.Text;var TouchableHighlight=React.TouchableHighlight;var StyleSheet=React.StyleSheet;
+
 var Icon=require('react-native-vector-icons/FontAwesome.js');
-var React=require('react-native/Libraries/react-native/react-native.js');
-var Button=require('JasaRaharjaMobileApp/App/Components/Button.js');
-var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
 var Actions=require('react-native-router-flux/index.js').Actions;
-var i18n=require('JasaRaharjaMobileApp/App/i18n.js');var 
+
+var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
+var i18n=require('JasaRaharjaMobileApp/App/i18n.js');
 
 
 
-
-SwitchIOS=
-
-
-
-
-React.SwitchIOS;var View=React.View;var Text=React.Text;var TouchableHighlight=React.TouchableHighlight;var StyleSheet=React.StyleSheet;
 
 var ControlPanel=React.createClass({displayName:'ControlPanel',
 selectMenu:function(selectedAction){
@@ -70802,73 +71216,73 @@ selectedAction();},
 
 render:function(){var _this=this;
 return (
-React.createElement(View,{style:cstyles.container},
-React.createElement(View,{style:cstyles.header},
-React.createElement(Icon,{style:cstyles.icon,name:'user',size:30}),
-React.createElement(Text,{style:cstyles.headerText},this.props.currentUser,' Doddy')),
+React.createElement(View,{style:localStyles.container},
+React.createElement(View,{style:localStyles.header},
+React.createElement(Icon,{style:localStyles.icon,name:'user',size:30}),
+React.createElement(Text,{style:localStyles.headerText},this.props.currentUser,' Doddy')),
 
-React.createElement(View,{style:cstyles.menuList},
+React.createElement(View,{style:localStyles.menuList},
 React.createElement(TouchableHighlight,{
-style:cstyles.menu,
+style:localStyles.menu,
 underlayColor:'rgba(50, 105, 69, 0.4)',
 onPress:function(){return _this.selectMenu(Actions.home);}},
-React.createElement(View,{style:cstyles.row},
-React.createElement(Icon,{style:cstyles.icon,name:'home',size:25}),
-React.createElement(Text,{style:cstyles.text},' ',i18n.home,' '))),
+React.createElement(View,{style:localStyles.row},
+React.createElement(Icon,{style:localStyles.icon,name:'home',size:25}),
+React.createElement(Text,{style:localStyles.text},' ',i18n.home,' '))),
 
 
 React.createElement(TouchableHighlight,{
-style:cstyles.menu,
+style:localStyles.menu,
 underlayColor:'rgba(50, 105, 69, 0.4)',
 onPress:function(){return _this.selectMenu(Actions.task);}},
-React.createElement(View,{style:cstyles.row},
-React.createElement(Icon,{style:cstyles.icon,name:'tasks',size:25}),
-React.createElement(Text,{style:cstyles.text},' ',i18n.taskList,' '))),
+React.createElement(View,{style:localStyles.row},
+React.createElement(Icon,{style:localStyles.icon,name:'tasks',size:25}),
+React.createElement(Text,{style:localStyles.text},' ',i18n.taskList,' '))),
 
 
 React.createElement(TouchableHighlight,{
-style:cstyles.menu,
+style:localStyles.menu,
 underlayColor:'rgba(50, 105, 69, 0.4)',
 onPress:function(){return _this.selectMenu(Actions.approvalList);}},
-React.createElement(View,{style:cstyles.row},
-React.createElement(Icon,{style:cstyles.icon,name:'check',size:25}),
-React.createElement(Text,{style:cstyles.text},' ',i18n.approvalList,' '))),
+React.createElement(View,{style:localStyles.row},
+React.createElement(Icon,{style:localStyles.icon,name:'check',size:25}),
+React.createElement(Text,{style:localStyles.text},' ',i18n.approvalList,' '))),
 
 
 React.createElement(TouchableHighlight,{
-style:cstyles.menu,
+style:localStyles.menu,
 underlayColor:'rgba(50, 105, 69, 0.4)',
 onPress:function(){return _this.selectMenu(Actions.setting);}},
-React.createElement(View,{style:cstyles.row},
-React.createElement(Icon,{style:cstyles.icon,name:'sliders',size:25}),
-React.createElement(Text,{style:cstyles.text},' ',i18n.setting,' '))),
+React.createElement(View,{style:localStyles.row},
+React.createElement(Icon,{style:localStyles.icon,name:'sliders',size:25}),
+React.createElement(Text,{style:localStyles.text},' ',i18n.setting,' '))),
 
 
 React.createElement(TouchableHighlight,{
-style:cstyles.menu,
+style:localStyles.menu,
 underlayColor:'rgba(50, 105, 69, 0.4)',
 onPress:function(){return _this.selectMenu(Actions.map);}},
-React.createElement(View,{style:cstyles.row},
-React.createElement(Icon,{style:cstyles.icon,name:'map',size:25}),
-React.createElement(Text,{style:cstyles.text},' ',i18n.map,' '))),
+React.createElement(View,{style:localStyles.row},
+React.createElement(Icon,{style:localStyles.icon,name:'map',size:25}),
+React.createElement(Text,{style:localStyles.text},' ',i18n.map,' '))),
 
 
 React.createElement(TouchableHighlight,{
-style:cstyles.menu,
+style:localStyles.menu,
 underlayColor:'rgba(50, 105, 69, 0.4)',
 onPress:function(){return _this.selectMenu(Actions.camera);}},
-React.createElement(View,{style:cstyles.row},
-React.createElement(Icon,{style:cstyles.icon,name:'camera',size:25}),
-React.createElement(Text,{style:cstyles.text},' ',i18n.camera,' '))),
+React.createElement(View,{style:localStyles.row},
+React.createElement(Icon,{style:localStyles.icon,name:'camera',size:25}),
+React.createElement(Text,{style:localStyles.text},' ',i18n.camera,' '))),
 
 
 React.createElement(TouchableHighlight,{
-style:cstyles.menu,
+style:localStyles.menu,
 underlayColor:'rgba(50, 105, 69, 0.4)',
 onPress:Actions.logout},
-React.createElement(View,{style:cstyles.row},
-React.createElement(Icon,{style:cstyles.icon,name:'unlock',size:25}),
-React.createElement(Text,{style:cstyles.text},' ',i18n.logout,' '))))));}});
+React.createElement(View,{style:localStyles.row},
+React.createElement(Icon,{style:localStyles.icon,name:'unlock',size:25}),
+React.createElement(Text,{style:localStyles.text},' ',i18n.logout,' '))))));}});
 
 
 
@@ -70877,7 +71291,7 @@ React.createElement(Text,{style:cstyles.text},' ',i18n.logout,' '))))));}});
 
 
 
-var cstyles=StyleSheet.create({
+var localStyles=StyleSheet.create({
 container:{
 flex:1,
 flexDirection:'column',
@@ -70900,7 +71314,7 @@ color:'#fff'},
 menuList:{
 flex:1,
 flexDirection:'column',
-justifyContent:'space-between',
+justifyContent:'space-around',
 alignItems:'stretch'},
 
 menu:{
@@ -73961,59 +74375,11 @@ isLength(value.length)&&!!typedArrayTags[objectToString.call(value)];}
 
 module.exports=isTypedArray;
 });
-__d('JasaRaharjaMobileApp/App/Components/Button.js',function(global, require, module, exports) {  var React=require('react-native/Libraries/react-native/react-native.js');var 
-
-View=
-
-
-
-React.View;var Text=React.Text;var TouchableHighlight=React.TouchableHighlight;var StyleSheet=React.StyleSheet;
-
-var Button=React.createClass({displayName:'Button',
-
-render:function(){
-return (
-React.createElement(TouchableHighlight,{
-style:styles.button,
-underlayColor:'#B5B5B5',
-onPress:this.props.onPress},
-React.createElement(Text,{style:styles.buttonText},this.props.text)));}});
-
-
-
-
-
-
-var styles=StyleSheet.create({
-button:{
-backgroundColor:'#05A5D1',
-padding:10,
-borderColor:'#05A5D1',
-borderWidth:0,
-borderBottomColor:'#05A5D1',
-alignSelf:'center',
-borderRadius:10,
-width:200,
-marginTop:8},
-
-buttonText:{
-color:'#fff',
-alignSelf:'center',
-fontSize:17}});
-
-
-
-module.exports=Button;
-});
 __d('JasaRaharjaMobileApp/App/Styles/style.js',function(global, require, module, exports) {  var React=require('react-native/Libraries/react-native/react-native.js');var 
 
 
-AppRegistry=
-
-
-
-
-React.AppRegistry;var StyleSheet=React.StyleSheet;var Text=React.Text;var View=React.View;var Navigator=React.Navigator;
+StyleSheet=
+React.StyleSheet;
 
 var styles=StyleSheet.create({
 
@@ -74023,19 +74389,12 @@ flex:1,
 backgroundColor:'#475577'},
 
 
-welcome:{
-color:'black',
-textAlign:'center',
-fontSize:20,
-marginBottom:20,
-marginTop:20},
-
-
 transparent:{
 marginTop:70,
 padding:15,
 backgroundColor:'transparent',
 flex:1},
+
 
 
 bg:{
@@ -74093,11 +74452,14 @@ linkText:{
 fontSize:20,
 color:'#fff'},
 
+
+
 logo:{
 color:'#fff',
 fontSize:25,
 textAlign:'center',
 marginTop:-50},
+
 
 desc:{
 color:'#fff',
@@ -74105,6 +74467,7 @@ fontSize:20,
 textAlign:'center',
 marginTop:10,
 marginBottom:10},
+
 
 controlPanelWelcome:{
 fontSize:20,
@@ -74124,16 +74487,29 @@ height:10,
 margin:10},
 
 
-button:{
-backgroundColor:'white',
+
+buttonRounded:{
+backgroundColor:'#05A5D1',
 padding:10,
-borderColor:'#eeeeee',
-borderWidth:1,
-borderBottomColor:'#aaaaaa',
-marginRight:20,
-marginLeft:20,
+borderColor:'#05A5D1',
+borderWidth:0,
+borderBottomColor:'#05A5D1',
 alignSelf:'center',
-marginTop:10},
+borderRadius:10,
+width:200,
+marginTop:8},
+
+
+
+buttonText:{
+color:'#fff',
+alignSelf:'center',
+fontSize:20},
+
+
+
+routerScene:{},
+
 
 navigationBar:{
 flex:1,
@@ -74150,16 +74526,8 @@ color:'white'},
 barButtonIcon:{},
 
 
-barButtonText:{},
+barButtonText:{}});
 
-
-routerScene:{},
-
-
-
-toolbar:{
-height:55,
-backgroundColor:'#2880BE'}});
 
 
 
@@ -74185,7 +74553,9 @@ taskList:"Task List",
 taskDetail:"Task Detail",
 taskEdit:"Edit Task",
 login:"Login",
-logout:"Logout"},
+logout:"Logout",
+accept:"Accept",
+reject:"Reject"},
 
 id:{
 home:"Beranda",
@@ -74198,7 +74568,9 @@ taskList:"Daftar Tugas",
 taskDetail:"Rincian Tugas",
 taskEdit:"Ubah Tugas",
 login:"Masuk",
-logout:"Keluar"}});
+logout:"Keluar",
+accept:"Terima",
+reject:"Tolak"}});
 
 
 
@@ -74527,24 +74899,17 @@ __d('JasaRaharjaMobileApp/App/Screens/HomeScreen.js',function(global, require, m
 
 
 var React=require('react-native/Libraries/react-native/react-native.js');
-var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
-var NavigationBar=require('react-native-navbar/index.js');
-var ButtonRounded=require('JasaRaharjaMobileApp/App/Components/ButtonRounded.js');
-var Button=require('JasaRaharjaMobileApp/App/Components/Button.js');
+var Button=require('react-native-button/Button.js');
 var Actions=require('react-native-router-flux/index.js').Actions;
-var i18n=require('JasaRaharjaMobileApp/App/i18n.js');var 
 
-
-
-
-
+var i18n=require('JasaRaharjaMobileApp/App/i18n.js');
+var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');var 
 
 
 Text=
 
 
-
-React.Text;var Image=React.Image;var View=React.View;var StyleSheet=React.StyleSheet;
+React.Text;var View=React.View;var StyleSheet=React.StyleSheet;
 
 var HomeScreen=React.createClass({displayName:'HomeScreen',
 
@@ -74553,23 +74918,23 @@ render:function(){
 
 return (
 React.createElement(View,{style:styles.bg},
-React.createElement(Text,{style:styles.welcome},'Hey There! Welcome!'),
+React.createElement(Text,{style:localStyles.welcome},'Hey There! Welcome!'),
 
 
-React.createElement(Button,{onPress:Actions.home,text:i18n.home}),
-React.createElement(Button,{onPress:Actions.task,text:i18n.taskList}),
-React.createElement(Button,{onPress:Actions.approvalList,text:i18n.approvalList}),
-React.createElement(Button,{onPress:Actions.setting,text:i18n.setting}),
-React.createElement(Button,{onPress:Actions.map,text:i18n.map}),
-React.createElement(Button,{onPress:Actions.camera,text:i18n.camera}),
-React.createElement(Button,{onPress:Actions.logout,text:i18n.logout})));}});
-
-
-
+React.createElement(Button,{onPress:Actions.home,style:styles.buttonText,containerStyle:styles.buttonRounded},' ',i18n.home,' '),
+React.createElement(Button,{onPress:Actions.task,style:styles.buttonText,containerStyle:styles.buttonRounded},' ',i18n.taskList,' '),
+React.createElement(Button,{onPress:Actions.approvalList,style:styles.buttonText,containerStyle:styles.buttonRounded},' ',i18n.approvalList,' '),
+React.createElement(Button,{onPress:Actions.setting,style:styles.buttonText,containerStyle:styles.buttonRounded},' ',i18n.setting,' '),
+React.createElement(Button,{onPress:Actions.map,style:styles.buttonText,containerStyle:styles.buttonRounded},' ',i18n.map,' '),
+React.createElement(Button,{onPress:Actions.camera,style:styles.buttonText,containerStyle:styles.buttonRounded},' ',i18n.camera,' '),
+React.createElement(Button,{onPress:Actions.logout,style:styles.buttonText,containerStyle:styles.buttonRounded},' ',i18n.logout,' ')));}});
 
 
 
-var homeScreen=StyleSheet.create({
+
+
+
+var localStyles=StyleSheet.create({
 welcome:{
 color:'black',
 textAlign:'center',
@@ -74582,222 +74947,10 @@ marginTop:20}});
 
 
 module.exports=HomeScreen;
-});
-__d('react-native-navbar/index.js',function(global, require, module, exports) {  var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _NavbarButton=require('react-native-navbar/NavbarButton.js');var _NavbarButton2=babelHelpers.interopRequireDefault(_NavbarButton);var _styles=require('react-native-navbar/styles.js');var _styles2=babelHelpers.interopRequireDefault(_styles);var 
 
-PixelRatio=_reactNative2.default.PixelRatio;var 
-StatusBarIOS=_reactNative2.default.StatusBarIOS;var 
-Component=_reactNative2.default.Component;var 
-Text=_reactNative2.default.Text;var 
-View=_reactNative2.default.View;var 
-PropTypes=_reactNative2.default.PropTypes;var 
-Platform=_reactNative2.default.Platform;
 
 
-
-
-var ButtonShape={
-title:PropTypes.string.isRequired,
-style:PropTypes.any,
-handler:PropTypes.func};
-
-
-var TitleShape={
-title:PropTypes.string.isRequired,
-tintColor:PropTypes.string};
-
-
-var StatusBarShape={
-style:PropTypes.oneOf(['light-content','default']),
-hidden:PropTypes.bool,
-tintColor:PropTypes.string,
-hideAnimation:PropTypes.oneOf(['fade','slide','none']),
-showAnimation:PropTypes.oneOf(['fade','slide','none'])};
-
-
-function customizeStatusBar(data){
-if(Platform.OS==='ios'){
-if(data.style){
-StatusBarIOS.setStyle(data.style,true);}
-
-var animation=data.hidden?
-data.hideAnimation||NavigationBar.defaultProps.statusBar.hideAnimation:
-data.showAnimation||NavigationBar.defaultProps.statusBar.showAnimation;
-
-StatusBarIOS.setHidden(data.hidden,animation);}}var 
-
-
-
-NavigationBar=function(_Component){babelHelpers.inherits(NavigationBar,_Component);function NavigationBar(){babelHelpers.classCallCheck(this,NavigationBar);return babelHelpers.possibleConstructorReturn(this,Object.getPrototypeOf(NavigationBar).apply(this,arguments));}babelHelpers.createClass(NavigationBar,[{key:'componentDidMount',value:function componentDidMount()
-{
-customizeStatusBar(this.props.statusBar);}},{key:'componentWillReceiveProps',value:function componentWillReceiveProps(
-
-
-props){
-customizeStatusBar(this.props.statusBar);}},{key:'getButtonElement',value:function getButtonElement()
-
-
-{var data=arguments.length<=0||arguments[0]===undefined?{}:arguments[0];var style=arguments[1];
-if(!!data.props){
-return _reactNative2.default.createElement(View,{style:_styles2.default.navBarButton},data);}
-
-
-return _reactNative2.default.createElement(_NavbarButton2.default,{
-title:data.title,
-style:[data.style,style],
-tintColor:data.tintColor,
-handler:data.handler});}},{key:'getTitleElement',value:function getTitleElement(
-
-
-data){
-if(!!data.props){
-return _reactNative2.default.createElement(View,{style:_styles2.default.customTitle},data);}
-
-
-var colorStyle=data.tintColor?{color:data.tintColor}:null;
-
-return (
-_reactNative2.default.createElement(Text,{
-style:[_styles2.default.navBarTitleText,colorStyle]},
-data.title));}},{key:'render',value:function render()
-
-
-
-
-{
-var customTintColor=this.props.tintColor?
-{backgroundColor:this.props.tintColor}:null;
-
-var customStatusBarTintColor=this.props.statusBar.tintColor?
-{backgroundColor:this.props.statusBar.tintColor}:null;
-
-var statusBar=!this.props.statusBar.hidden?
-_reactNative2.default.createElement(View,{style:[_styles2.default.statusBar,customStatusBarTintColor]}):null;
-
-return (
-_reactNative2.default.createElement(View,{style:[_styles2.default.navBarContainer,customTintColor]},
-statusBar,
-_reactNative2.default.createElement(View,{style:[_styles2.default.navBar,this.props.style]},
-this.getTitleElement(this.props.title),
-this.getButtonElement(this.props.leftButton,{marginLeft:8}),
-this.getButtonElement(this.props.rightButton,{marginRight:8}))));}}]);return NavigationBar;}(Component);NavigationBar.
-
-
-
-
-
-propTypes={
-tintColor:PropTypes.string,
-statusBar:PropTypes.shape(StatusBarShape),
-leftButton:PropTypes.oneOfType([
-PropTypes.shape(ButtonShape),
-PropTypes.element]),
-
-rightButton:PropTypes.oneOfType([
-PropTypes.shape(ButtonShape),
-PropTypes.element]),
-
-title:PropTypes.oneOfType([
-PropTypes.shape(TitleShape),
-PropTypes.element])};NavigationBar.
-
-
-
-defaultProps={
-statusBar:{
-style:'default',
-hidden:false,
-hideAnimation:'slide',
-showAnimation:'slide'},
-
-title:{
-title:''}};
-
-
-
-module.exports=NavigationBar;
-});
-__d('react-native-navbar/NavbarButton.js',function(global, require, module, exports) {  Object.defineProperty(exports,"__esModule",{value:true});var _reactNative=require('react-native/Libraries/react-native/react-native.js');var _reactNative2=babelHelpers.interopRequireDefault(_reactNative);var _styles=require('react-native-navbar/styles.js');var _styles2=babelHelpers.interopRequireDefault(_styles);var 
-
-Text=_reactNative2.default.Text;var 
-TouchableOpacity=_reactNative2.default.TouchableOpacity;var 
-Component=_reactNative2.default.Component;var 
-View=_reactNative2.default.View;var 
-PropTypes=_reactNative2.default.PropTypes;var 
-
-
-
-NavbarButton=function(_Component){babelHelpers.inherits(NavbarButton,_Component);function NavbarButton(){babelHelpers.classCallCheck(this,NavbarButton);return babelHelpers.possibleConstructorReturn(this,Object.getPrototypeOf(NavbarButton).apply(this,arguments));}babelHelpers.createClass(NavbarButton,[{key:'render',value:function render()
-{var _props=
-this.props;var style=_props.style;var tintColor=_props.tintColor;var margin=_props.margin;var title=_props.title;var handler=_props.handler;
-
-return (
-_reactNative2.default.createElement(TouchableOpacity,{onPress:handler},
-_reactNative2.default.createElement(View,{style:style},
-_reactNative2.default.createElement(Text,{style:[_styles2.default.navBarButtonText,{color:tintColor}]},title))));}}]);return NavbarButton;}(Component);NavbarButton.
-
-
-
-
-
-propTypes={
-style:PropTypes.oneOfType([
-PropTypes.object,
-PropTypes.array]),
-
-tintColor:PropTypes.string,
-title:PropTypes.string,
-handler:PropTypes.func};NavbarButton.
-
-
-defaultProps={
-style:{},
-title:'',
-tintColor:'#0076FF',
-onPress:function(){return {};}};exports.default=NavbarButton;
-});
-__d('JasaRaharjaMobileApp/App/Components/ButtonRounded.js',function(global, require, module, exports) {  var React=require('react-native/Libraries/react-native/react-native.js');var 
-
-View=
-
-
-
-React.View;var Text=React.Text;var TouchableHighlight=React.TouchableHighlight;var StyleSheet=React.StyleSheet;
-
-var ButtonRounded=React.createClass({displayName:'ButtonRounded',
-
-render:function(){
-return (
-React.createElement(TouchableHighlight,{
-style:styles.button,
-underlayColor:'rgba(5, 165, 209, 0.5)',
-onPress:this.props.onPress},
-React.createElement(Text,{style:styles.buttonText},this.props.text)));}});
-
-
-
-
-
-var styles=StyleSheet.create({
-button:{
-backgroundColor:'#05A5D1',
-padding:10,
-borderColor:'#05A5D1',
-borderWidth:0,
-borderBottomColor:'#05A5D1',
-alignSelf:'center',
-borderRadius:10,
-width:200,
-marginTop:8},
-
-buttonText:{
-color:'#fff',
-alignSelf:'center',
-fontSize:17}});
-
-
-
-module.exports=ButtonRounded;
+{}
 });
 __d('JasaRaharjaMobileApp/App/Screens/LoginScreen.js',function(global, require, module, exports) {  'use strict';var _redux=require('redux/lib/index.js');var _reactRedux=require('react-redux/lib/index.js');var _AuthAction=require('JasaRaharjaMobileApp/App/Actions/AuthAction.js');var _Config=require('JasaRaharjaMobileApp/App/Config/Config.js');
 
@@ -74812,11 +74965,12 @@ View=
 
 React.View;var Text=React.Text;var TextInput=React.TextInput;var StyleSheet=React.StyleSheet;var Image=React.Image;var Platform=React.Platform;
 
-var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
-var Button=require('JasaRaharjaMobileApp/App/Components/Button.js');
+var Button=require('react-native-button/Button.js');
 var Actions=require('react-native-router-flux/index.js').Actions;
-var i18n=require('JasaRaharjaMobileApp/App/i18n.js');
 var dismissKeyboard=require('dismissKeyboard');
+
+var i18n=require('JasaRaharjaMobileApp/App/i18n.js');
+var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
 
 
 
@@ -74862,28 +75016,28 @@ Actions.main();}},
 
 render:function(){var _this=this;
 return (
-React.createElement(View,{style:loginScreen.bg},
+React.createElement(View,{style:localStyles.bg},
 
-React.createElement(Image,{source:require('image!logo'),style:loginScreen.logo}),
-React.createElement(Text,{style:styles.logo},'Permata'),
+React.createElement(Image,{source:require('image!logo'),style:localStyles.logo}),
+React.createElement(Text,{style:styles.logo},'Jasa Raharja'),
 
 
 React.createElement(Text,{style:styles.desc},'Mobile Application'),
 
 
-React.createElement(View,{style:loginScreen.border},
+React.createElement(View,{style:localStyles.border},
 React.createElement(TextInput,{
 ref:'username',
-style:loginScreen.textInput,
+style:localStyles.textInput,
 placeholder:'USERNAME',
 onChangeText:function(text){return _this.setState({'username':text});},
 onSubmitEditing:function(){return _this.refs.password.focus();},
 placeholderTextColor:'rgba(255, 255, 255, 0.7'})),
 
-React.createElement(View,{style:loginScreen.border},
+React.createElement(View,{style:localStyles.border},
 React.createElement(TextInput,{
 ref:'password',
-style:loginScreen.textInput,
+style:localStyles.textInput,
 placeholder:'PASSWORD',
 onChangeText:function(text){return _this.setState({'password':text});},
 onSubmitEditing:this._login,
@@ -74893,29 +75047,23 @@ placeholderTextColor:'rgba(255, 255, 255, 0.7'})),
 React.createElement(View,{style:{marginTop:15}},
 React.createElement(Button,{
 onPress:this._login,
-text:i18n.login}))));}});
+style:styles.buttonText,
+containerStyle:styles.buttonRounded},
+i18n.login))));}});
 
 
 
 
 
 
-var loginScreen=StyleSheet.create({
-textInput:{
-height:40,
-backgroundColor:'transparent',
-color:'rgba(255, 255, 255, 0.9)',
-paddingLeft:10},
 
+var localStyles=StyleSheet.create({
 bg:{
 backgroundColor:'#3B3738',
 flex:1,
 justifyContent:'center',
 padding:15},
 
-
-loginLogo:{
-width:100},
 
 background:{
 flex:1,
@@ -74929,9 +75077,6 @@ width:250,
 height:250,
 resizeMode:'stretch'},
 
-navbar:{
-borderBottomColor:'transparent'},
-
 border:{
 alignSelf:'stretch',
 position:'relative',
@@ -74943,7 +75088,13 @@ borderRightWidth:0,
 marginTop:15,
 marginRight:10,
 marginLeft:10,
-height:40}});
+height:40},
+
+textInput:{
+height:40,
+backgroundColor:'transparent',
+color:'rgba(255, 255, 255, 0.9)',
+paddingLeft:10}});
 
 
 
@@ -75069,11 +75220,9 @@ __d('JasaRaharjaMobileApp/App/Screens/ApprovalListScreen.js',function(global, re
 
 
 var React=require('react-native/Libraries/react-native/react-native.js');
+var Actions=require('react-native-router-flux/index.js').Actions;
 var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
-var NavigationBar=require('react-native-navbar/index.js');
-var ButtonRounded=require('JasaRaharjaMobileApp/App/Components/ButtonRounded.js');
-var Button=require('JasaRaharjaMobileApp/App/Components/Button.js');
-var Actions=require('react-native-router-flux/index.js').Actions;var 
+var i18n=require('JasaRaharjaMobileApp/App/i18n.js');var 
 
 
 Text=
@@ -75087,7 +75236,7 @@ render:function(){
 
 return (
 React.createElement(View,{style:styles.bg},
-React.createElement(Text,{style:styles.welcome},'Approval Screen')));}});
+React.createElement(Text,{style:localStyles.welcome},'Approval Screen')));}});
 
 
 
@@ -75096,9 +75245,9 @@ React.createElement(Text,{style:styles.welcome},'Approval Screen')));}});
 
 
 
-var approvalListScreen=StyleSheet.create({
+var localStyles=StyleSheet.create({
 welcome:{
-color:'#fff',
+color:'black',
 textAlign:'center',
 fontSize:20,
 marginBottom:20,
@@ -75115,7 +75264,7 @@ __d('JasaRaharjaMobileApp/App/Screens/TaskListScreen.js',function(global, requir
 
 var React=require('react-native/Libraries/react-native/react-native.js');var 
 
-Text=
+View=
 
 
 
@@ -75123,17 +75272,14 @@ Text=
 
 
 
-
-React.Text;var Image=React.Image;var View=React.View;var ListView=React.ListView;var StyleSheet=React.StyleSheet;var PullToRefreshViewAndroid=React.PullToRefreshViewAndroid;var Platform=React.Platform;var ProgressBarAndroid=React.ProgressBarAndroid;var ActivityIndicatorIOS=React.ActivityIndicatorIOS;
+React.View;var Text=React.Text;var ListView=React.ListView;var StyleSheet=React.StyleSheet;var PullToRefreshViewAndroid=React.PullToRefreshViewAndroid;var Platform=React.Platform;var ProgressBarAndroid=React.ProgressBarAndroid;var ActivityIndicatorIOS=React.ActivityIndicatorIOS;
 
 var dismissKeyboard=require('dismissKeyboard');
-
-
-var NavigationBar=require('react-native-navbar/index.js');
-var ButtonRounded=require('JasaRaharjaMobileApp/App/Components/ButtonRounded.js');
-var Button=require('JasaRaharjaMobileApp/App/Components/Button.js');
-var TaskCell=require('JasaRaharjaMobileApp/App/Components/TaskCell.js');
 var Actions=require('react-native-router-flux/index.js').Actions;
+
+var i18n=require('JasaRaharjaMobileApp/App/i18n.js');
+var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
+var TaskCell=require('JasaRaharjaMobileApp/App/Components/TaskCell.js');
 var debug=require('JasaRaharjaMobileApp/App/debug.js');
 
 
@@ -75187,13 +75333,13 @@ debug("New Props = Old Props");}},
 _renderTask:function(task){
 debug("Render Task");
 return (
-React.createElement(View,{style:styles.container},
+React.createElement(View,{style:styles.bg},
 React.createElement(Image,{
 source:{uri:task.posters.thumbnail},
-style:styles.thumbnail}),
-React.createElement(View,{style:styles.rightContainer},
-React.createElement(Text,{style:styles.title},task.title),
-React.createElement(Text,{style:styles.year},task.year))));},
+style:localStyles.thumbnail}),
+React.createElement(View,{style:localStyles.rightContainer},
+React.createElement(Text,{style:localStyles.title},task.title),
+React.createElement(Text,{style:localStyles.year},task.year))));},
 
 
 
@@ -75204,8 +75350,9 @@ console.log("Selecting Task");
 
 if(Platform.OS==='ios'){}else 
 {
-dismissKeyboard();}},
+dismissKeyboard();}
 
+Actions.taskDetail({data:task});},
 
 
 _hasMore:function(){
@@ -75223,10 +75370,10 @@ console.log("onEndReach");},
 
 _renderFooter:function(){
 if(!this._hasMore()||!this.state.isLoadingTail){
-return React.createElement(View,{style:styles.scrollSpinner});}
+return React.createElement(View,{style:localStyles.scrollSpinner});}
 
 if(Platform.OS==='ios'){
-return React.createElement(ActivityIndicatorIOS,{style:styles.scrollSpinner});}else 
+return React.createElement(ActivityIndicatorIOS,{style:localStyles.scrollSpinner});}else 
 {
 return (
 React.createElement(View,{style:{alignItems:'center'}},
@@ -75241,9 +75388,9 @@ sectionID,
 rowID,
 adjacentRowHighlighted)
 {
-var style=styles.rowSeparator;
+var style=localStyles.rowSeparator;
 if(adjacentRowHighlighted){
-style=[style,styles.rowSeparatorHide];}
+style=[style,localStyles.rowSeparatorHide];}
 
 return (
 React.createElement(View,{key:'SEP_'+sectionID+'_'+rowID,style:style}));},
@@ -75300,7 +75447,7 @@ showsVerticalScrollIndicator:false});
 
 return (
 React.createElement(PullToRefreshViewAndroid,{
-style:styles.container,
+style:styles.bg,
 refreshing:this.state.isLoading,
 onRefresh:this._reloadTask,
 colors:['#ff0000','#00ff00','#0000ff'],
@@ -75320,14 +75467,14 @@ if(!this.props.isLoading){
 
 
 return (
-React.createElement(View,{style:[styles.container,styles.centerText]},
-React.createElement(Text,{style:styles.noTasksText},' No Task Found ')));}else 
+React.createElement(View,{style:[styles.bg,localStyles.centerText]},
+React.createElement(Text,{style:localStyles.noTasksText},' No Task Found ')));}else 
 
 
 
 {
 if(Platform.OS==='ios'){
-return React.createElement(ActivityIndicatorIOS,{style:styles.scrollSpinner});}else 
+return React.createElement(ActivityIndicatorIOS,{style:localStyles.scrollSpinner});}else 
 {
 return (
 React.createElement(View,{style:{alignItems:'center'}},
@@ -75340,10 +75487,7 @@ React.createElement(ProgressBarAndroid,{styleAttr:'Small'})));}}}});
 
 
 
-var styles=StyleSheet.create({
-container:{
-flex:1,
-backgroundColor:'white'},
+var localStyles=StyleSheet.create({
 
 centerText:{
 alignItems:'center'},
@@ -75407,6 +75551,34 @@ newSearchTask=newSearchTask;exports.
 
 
 
+viewTaskDetail=viewTaskDetail;exports.
+
+
+
+
+
+
+editTask=editTask;exports.
+
+
+
+
+
+saveTask=saveTask;exports.
+
+
+
+
+
+submitTask=submitTask;exports.
+
+
+
+
+
+
+
+
 
 runSearchTasks=runSearchTasks;exports.
 
@@ -75415,59 +75587,131 @@ runSearchTasks=runSearchTasks;exports.
 
 
 
-moreTasks=moreTasks;var _ActionTypes=require('JasaRaharjaMobileApp/App/Actions/ActionTypes.js');var types=babelHelpers.interopRequireWildcard(_ActionTypes);var TaskService=require('JasaRaharjaMobileApp/App/Api/TaskService.js');function newSearchTask(){return {type:types.NEW_SEARCH_TASK};}function runSearchTasks(username){return function(dispatch){_searchTasks(dispatch,username);};}function moreTasks(username,nextPageToken){
+moreTasks=moreTasks;exports.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+acceptTask=acceptTask;exports.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rejectTask=rejectTask;var _ActionTypes=require('JasaRaharjaMobileApp/App/Actions/ActionTypes.js');var types=babelHelpers.interopRequireWildcard(_ActionTypes);var TaskService=require('JasaRaharjaMobileApp/App/Api/TaskService.js');function newSearchTask(){return {type:types.NEW_SEARCH_TASK};}function viewTaskDetail(task){return {type:types.TASK_VIEW_DETAIL,task:task};}function editTask(){return {type:types.TASK_EDIT};}function saveTask(){return {type:types.TASK_SAVE};}function submitTask(){return {type:types.TASK_SUBMIT};}function runSearchTasks(username){return function(dispatch){_searchTasks(dispatch,username);};}function moreTasks(username,nextPageToken){return function(dispatch){_searchTasks(dispatch,username,nextPageToken);};}function _searchTasksStarted(username){return {type:types.SEARCH_TASK_STARTED,username:username};}function _searchTasksResultReceived(data){return {type:types.SEARCH_TASK_RESULT,data:data};}function _moreSearchTasksResultReceived(data){return {type:types.MORE_SEARCH_TASK_RESULT,data:data};}function _searchTasksFailed(message){return {type:types.SEARCH_TASK_FAILED,message:message};}function _searchTasks(dispatch,username){var nextPageToken=arguments.length<=2||arguments[2]===undefined?null:arguments[2];console.log("SearchTask Started");dispatch(_searchTasksStarted(username));TaskService.fetchTasks(username,nextPageToken,function(error,data){if(error){console.log("Error",error);dispatch(_searchTasksFailed(error));}else {if(nextPageToken){console.log("Sending More Data via Action");dispatch(_moreSearchTasksResultReceived(data));}else {console.log("Sending Data via Action");dispatch(_searchTasksResultReceived(data.movies));}}});}function acceptTask(task,username){return function(dispatch){console.log("AccepTask Started");dispatch(_acceptTaskStarted(task,username));var data={status:'success'};dispatch(_acceptTaskResult(data));};}function _acceptTaskStarted(task,username){return {type:types.TASK_ACCEPT_STARTED,task:task,username:username};}function _acceptTaskResult(data){return {type:types.TASK_ACCEPT_RESULT,data:data};}function _acceptTaskFailed(message){return {type:types.TASK_ACCEPT_FAILED,message:message};}function rejectTask(task,username){
 return function(dispatch){
-_searchTasks(dispatch,username,nextPageToken);};}
+console.log("RejectTask Started");
+dispatch(_rejectTaskStarted(task,username));
+
+var data={
+status:'success'};
+
+dispatch(_rejectTaskResult(data));};}
 
 
 
-
-function _searchTasksStarted(username){
+function _rejectTaskStarted(task,username){
 return {
-type:types.SEARCH_TASK_STARTED,
+type:types.TASK_REJECT_STARTED,
+task:task,
 username:username};}
 
 
 
-
-function _searchTasksResultReceived(data){
+function _rejectTaskResult(data){
 return {
-type:types.SEARCH_TASK_RESULT,
+type:types.TASK_REJECT_RESULT,
 data:data};}
 
 
 
-
-function _moreSearchTasksResultReceived(data){
+function _rejectTaskFailed(message){
 return {
-type:types.MORE_SEARCH_TASK_RESULT,
-data:data};}
-
-
-
-
-function _searchTasksFailed(message){
-return {
-type:types.SEARCH_TASK_FAILED,
+type:types.TASK_REJECT_FAILED,
 message:message};}
-
-
-
-function _searchTasks(dispatch,username){var nextPageToken=arguments.length<=2||arguments[2]===undefined?null:arguments[2];
-console.log("SearchTask Started");
-dispatch(_searchTasksStarted(username));
-
-TaskService.fetchTasks(username,nextPageToken,function(error,data){
-if(error){
-console.log("Error",error);
-dispatch(_searchTasksFailed(error));}else 
-{
-if(nextPageToken){
-console.log("Sending More Data via Action");
-dispatch(_moreSearchTasksResultReceived(data));}else 
-{
-console.log("Sending Data via Action");
-dispatch(_searchTasksResultReceived(data.movies));}}});}
 });
 __d('JasaRaharjaMobileApp/App/Api/TaskService.js',function(global, require, module, exports) {  'use strict';var _immutable=require('immutable/dist/immutable.js');var _immutable2=babelHelpers.interopRequireDefault(_immutable);
 
@@ -75516,7 +75760,7 @@ callback(err);});}};
 
 module.exports=TaskService;
 });
-__d('JasaRaharjaMobileApp/App/Components/TaskCell.js',function(global, require, module, exports) {  'use strict';
+__d('JasaRaharjaMobileApp/App/Components/TaskCell.js',function(global, require, module, exports) {  'use strict';var _Common=require('JasaRaharjaMobileApp/App/Api/Common.js');
 
 var React=require('react-native/Libraries/react-native/react-native.js');var 
 
@@ -75533,36 +75777,6 @@ React.Image;var Platform=React.Platform;var StyleSheet=React.StyleSheet;var Text
 
 
 var TaskCell=React.createClass({displayName:'TaskCell',
-
-getImageSource:function(task,kind){
-var uri=task&&task.posters?task.posters.thumbnail:null;
-if(uri&&kind){
-uri=uri.replace('tmb',kind);}
-
-return {uri:uri};},
-
-
-getTextFromScore:function(score){
-return score>0?score+'%':'N/A';},
-
-
-
-getStyleFromScore:function(score){
-if(score<0){
-return styles.noScore;}
-
-
-var normalizedScore=Math.round(score/100*200);
-return {
-color:'rgb('+(
-200-normalizedScore)+', '+
-normalizedScore+', '+
-0+
-')'};},
-
-
-
-
 render:function(){
 var criticsScore=this.props.task.ratings.critics_score;
 var TouchableElement=TouchableHighlight;
@@ -75581,7 +75795,7 @@ React.createElement(View,{style:styles.row},
 
 
 React.createElement(Image,{
-source:this.getImageSource(this.props.task,'det'),
+source:(0,_Common.getImageSource)(this.props.task,'det'),
 style:styles.cellImage}),
 
 React.createElement(View,{style:styles.textContainer},
@@ -75591,8 +75805,8 @@ this.props.task.title),
 React.createElement(Text,{style:styles.taskYear,numberOfLines:1},
 this.props.task.year,
 ' ','•',' ',
-React.createElement(Text,{style:this.getStyleFromScore(criticsScore)},'Critics ',
-this.getTextFromScore(criticsScore))))))));}});
+React.createElement(Text,{style:(0,_Common.getStyleFromScore)(criticsScore)},'Critics ',
+(0,_Common.getTextFromScore)(criticsScore))))))));}});
 
 
 
@@ -75641,74 +75855,213 @@ color:'#999999'}});
 
 module.exports=TaskCell;
 });
-__d('JasaRaharjaMobileApp/App/Screens/TaskDetailScreen.js',function(global, require, module, exports) {  'use strict';
+__d('JasaRaharjaMobileApp/App/Screens/TaskDetailScreen.js',function(global, require, module, exports) {  'use strict';var _redux=require('redux/lib/index.js');var _reactRedux=require('react-redux/lib/index.js');var _TaskAction=require('JasaRaharjaMobileApp/App/Actions/TaskAction.js');var _Common=require('JasaRaharjaMobileApp/App/Api/Common.js');
 
 
-var React=require('react-native/Libraries/react-native/react-native.js');
-var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
-var NavigationBar=require('react-native-navbar/index.js');
-var ButtonRounded=require('JasaRaharjaMobileApp/App/Components/ButtonRounded.js');
-var Button=require('JasaRaharjaMobileApp/App/Components/Button.js');
-var Actions=require('react-native-router-flux/index.js').Actions;var 
-
+var React=require('react-native/Libraries/react-native/react-native.js');var 
 
 Text=
 
 
 
-React.Text;var Image=React.Image;var View=React.View;var StyleSheet=React.StyleSheet;
+
+React.Text;var Image=React.Image;var View=React.View;var StyleSheet=React.StyleSheet;var ScrollView=React.ScrollView;
+
+var Actions=require('react-native-router-flux/index.js').Actions;
+var Button=require('react-native-button/Button.js');
+var i18n=require('JasaRaharjaMobileApp/App/i18n.js');
+var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
+
+
+
+
+
+
+
 
 var TaskDetailScreen=React.createClass({displayName:'TaskDetailScreen',
+
+componentDidMount:function(){
+console.log("Viewing Detail Page");
+console.log("DETAIL:",this.props.data);},
+
+
 render:function(){
+return (
+React.createElement(ScrollView,{contentContainerStyle:localStyles.contentContainer},
+React.createElement(View,{style:localStyles.mainSection},
+
+
+
+React.createElement(Image,{
+source:(0,_Common.getImageSource)(this.props.data,'det'),
+style:localStyles.detailsImage}),
+
+React.createElement(View,{style:localStyles.rightPane},
+React.createElement(Text,{style:localStyles.taskTitle},this.props.data.title),
+React.createElement(Text,null,this.props.data.year),
+React.createElement(View,{style:localStyles.mpaaWrapper},
+React.createElement(Text,{style:localStyles.mpaaText},
+this.props.data.mpaa_rating)))),
+
+
+
+
+
+React.createElement(View,{style:localStyles.separator}),
+React.createElement(Text,null,
+this.props.data.synopsis),
+
+React.createElement(View,{style:localStyles.separator}),
+React.createElement(Casualties,{casualties:this.props.data.abridged_cast}),
+
+React.createElement(View,{style:localStyles.separator}),
+
+React.createElement(View,{style:localStyles.actionButton},
+React.createElement(Button,{
+onPress:this.props.acceptTask,
+style:styles.buttonText,
+containerStyle:(styles.buttonRounded,localStyles.buttonRounded)},
+i18n.accept),
+
+React.createElement(Button,{
+onPress:this.props.rejectTask,
+style:styles.buttonText,
+containerStyle:(styles.buttonRounded,localStyles.buttonRounded)},
+i18n.reject))));}});
+
+
+
+
+
+
+
+
+
+
+var Casualties=React.createClass({displayName:'Casualties',
+render:function(){
+if(!this.props.casualties){
+return null;}
+
 
 return (
-React.createElement(View,{style:styles.bg},
-React.createElement(Text,{style:styles.welcome},'Task Detail Screen'),
-
-
-React.createElement(Button,{onPress:Actions.pop,text:'Back'})));}});
-
-
-
-
-
-var taskDetailScreen=StyleSheet.create({
-welcome:{
-color:'#fff',
-textAlign:'center',
-fontSize:20,
-marginBottom:20,
-marginTop:20}});
+React.createElement(View,null,
+React.createElement(Text,{style:localStyles.casualtyTitle},'Casualties'),
+this.props.casualties.map(function(casualty){return (
+React.createElement(Text,{key:casualty.name,style:localStyles.casualtyName},'• ',
+casualty.name));})));}});
 
 
 
 
 
-module.exports=TaskDetailScreen;
+
+
+
+var localStyles=StyleSheet.create({
+contentContainer:{
+padding:10},
+
+rightPane:{
+justifyContent:'space-between',
+flex:1},
+
+taskTitle:{
+flex:1,
+fontSize:16,
+fontWeight:'500'},
+
+rating:{
+marginTop:10},
+
+ratingTitle:{
+fontSize:14},
+
+ratingValue:{
+fontSize:28,
+fontWeight:'500'},
+
+mpaaWrapper:{
+alignSelf:'flex-start',
+borderColor:'black',
+borderWidth:1,
+paddingHorizontal:3,
+marginVertical:5},
+
+mpaaText:{
+fontFamily:'Palatino',
+fontSize:13,
+fontWeight:'500'},
+
+mainSection:{
+flexDirection:'row'},
+
+detailsImage:{
+width:134,
+height:200,
+backgroundColor:'#eaeaea',
+marginRight:10},
+
+separator:{
+backgroundColor:'rgba(0, 0, 0, 0.1)',
+height:StyleSheet.hairlineWidth,
+marginVertical:10},
+
+casualtyTitle:{
+fontWeight:'500',
+marginBottom:3},
+
+casualtyName:{
+marginLeft:2},
+
+actionButton:{
+flexDirection:'row',
+justifyContent:'space-around',
+flex:1},
+
+buttonRounded:{
+width:150}});
+
+
+
+var mapStateToProps=function(state){
+console.log("MappingStateToProps");
+return {};};
+
+
+
+
+var mapDispatchToProps=function(dispatch){
+return (0,_redux.bindActionCreators)({
+acceptTask:_TaskAction.acceptTask,
+rejectTask:_TaskAction.rejectTask},
+dispatch);};
+
+
+
+module.exports=(0,_reactRedux.connect)(mapStateToProps,mapDispatchToProps)(TaskDetailScreen);
 });
 __d('JasaRaharjaMobileApp/App/Screens/TaskEditScreen.js',function(global, require, module, exports) {  'use strict';
 
 
 var React=require('react-native/Libraries/react-native/react-native.js');
+var Actions=require('react-native-router-flux/index.js').Actions;
 var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
-var NavigationBar=require('react-native-navbar/index.js');
-var ButtonRounded=require('JasaRaharjaMobileApp/App/Components/ButtonRounded.js');
-var Button=require('JasaRaharjaMobileApp/App/Components/Button.js');
-var Actions=require('react-native-router-flux/index.js').Actions;var 
+var i18n=require('JasaRaharjaMobileApp/App/i18n.js');var 
 
 
 Text=
 
 
-
-React.Text;var Image=React.Image;var View=React.View;var StyleSheet=React.StyleSheet;
+React.Text;var View=React.View;var StyleSheet=React.StyleSheet;
 
 var TaskEditScreen=React.createClass({displayName:'TaskEditScreen',
 render:function(){
-
 return (
 React.createElement(View,{style:styles.bg},
-React.createElement(Text,{style:styles.welcome},'Task Edit Screen')));}});
+
+React.createElement(Text,{style:localStyles.welcome},'Task Edit Screen')));}});
 
 
 
@@ -75717,7 +76070,9 @@ React.createElement(Text,{style:styles.welcome},'Task Edit Screen')));}});
 
 
 
-var taskEditScreen=StyleSheet.create({
+
+
+var localStyles=StyleSheet.create({
 welcome:{
 color:'#fff',
 textAlign:'center',
@@ -75731,23 +76086,23 @@ marginTop:20}});
 
 module.exports=TaskEditScreen;
 });
-__d('JasaRaharjaMobileApp/App/Screens/SettingScreen.js',function(global, require, module, exports) {  'use strict';
+__d('JasaRaharjaMobileApp/App/Screens/SettingScreen.js',function(global, require, module, exports) {  'use strict';var _reactRedux=require('react-redux/lib/index.js');
 
 
-var React=require('react-native/Libraries/react-native/react-native.js');
-var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
-var NavigationBar=require('react-native-navbar/index.js');
-var ButtonRounded=require('JasaRaharjaMobileApp/App/Components/ButtonRounded.js');
-var Button=require('JasaRaharjaMobileApp/App/Components/Button.js');
-var Actions=require('react-native-router-flux/index.js').Actions;
-var TaskService=require('JasaRaharjaMobileApp/App/Api/TaskService.js');var 
-
+var React=require('react-native/Libraries/react-native/react-native.js');var 
 
 Text=
 
 
 
 React.Text;var Image=React.Image;var View=React.View;var StyleSheet=React.StyleSheet;
+var Actions=require('react-native-router-flux/index.js').Actions;
+var i18n=require('JasaRaharjaMobileApp/App/i18n.js');
+var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
+
+
+
+
 
 var SettingScreen=React.createClass({displayName:'SettingScreen',
 componentDidMount:function(){},
@@ -75758,7 +76113,8 @@ render:function(){
 
 return (
 React.createElement(View,{style:styles.bg},
-React.createElement(Text,{style:styles.welcome},'Setting Screen')));}});
+React.createElement(Text,{style:localStyles.welcome},'Push Token: ',
+this.props.pushToken)));}});
 
 
 
@@ -75766,10 +76122,9 @@ React.createElement(Text,{style:styles.welcome},'Setting Screen')));}});
 
 
 
-
-var settingScreen=StyleSheet.create({
+var localStyles=StyleSheet.create({
 welcome:{
-color:'#fff',
+color:'black',
 textAlign:'center',
 fontSize:20,
 marginBottom:20,
@@ -75779,18 +76134,28 @@ marginTop:20}});
 
 
 
-module.exports=SettingScreen;
+var mapStateToProps=function(state){
+return {
+pushToken:state.getIn(['currentUser','pushToken'])};};
+
+
+
+var mapDispatchToProps=function(dispatch){
+return {};};
+
+
+module.exports=(0,_reactRedux.connect)(mapStateToProps,mapDispatchToProps)(SettingScreen);
 });
 __d('JasaRaharjaMobileApp/App/Screens/MapScreen.js',function(global, require, module, exports) {  'use strict';
 
 
-var React=require('react-native/Libraries/react-native/react-native.js');
-
-var NavigationBar=require('react-native-navbar/index.js');
-var ButtonRounded=require('JasaRaharjaMobileApp/App/Components/ButtonRounded.js');
-var Button=require('JasaRaharjaMobileApp/App/Components/Button.js');
+var React=require('react-native/Libraries/react-native/react-native.js');var _require=
+require('react-native/Libraries/react-native/react-native.js');var DeviceEventEmitter=_require.DeviceEventEmitter;
 var Actions=require('react-native-router-flux/index.js').Actions;
-var MapView=require('react-native-maps/index.js');var 
+var MapView=require('react-native-maps/index.js');
+var Location=require('react-native-gps/RNLocation.js');
+
+var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');var 
 
 
 Text=
@@ -75799,60 +76164,124 @@ Text=
 
 
 
-React.Text;var Image=React.Image;var View=React.View;var StyleSheet=React.StyleSheet;var Dimensions=React.Dimensions;var TouchableOpacity=React.TouchableOpacity;var _Dimensions$get=
+
+React.Text;var Image=React.Image;var View=React.View;var StyleSheet=React.StyleSheet;var Dimensions=React.Dimensions;var TouchableOpacity=React.TouchableOpacity;var InteractionManager=React.InteractionManager;var _Dimensions$get=
 
 
 Dimensions.get('window');var width=_Dimensions$get.width;var height=_Dimensions$get.height;
 
 var ASPECT_RATIO=width/height;
-var LATITUDE=37.78825;
-var LONGITUDE=-122.4324;
-var LATITUDE_DELTA=0.0922;
+var LATITUDE=-6.17639563;
+var LONGITUDE=106.82624817;
+var LATITUDE_DELTA=0.1222;
 var LONGITUDE_DELTA=LATITUDE_DELTA*ASPECT_RATIO;
-var id=0;
+var id=1;
 
-function randomColor(){
-return '#'+Math.floor(Math.random()*16777215).toString(16);}
 
+Location.requestWhenInUseAuthorization();
 
 var MapScreen=React.createClass({displayName:'MapScreen',
 getInitialState:function(){
 return {
+renderPlaceholderOnly:true,
 region:{
 latitude:LATITUDE,
 longitude:LONGITUDE,
 latitudeDelta:LATITUDE_DELTA,
 longitudeDelta:LONGITUDE_DELTA},
 
+currentLocation:{},
 markers:[]};},
 
 
 
-onMapPress:function(e){
+componentDidMount:function(){var _this=this;
+InteractionManager.runAfterInteractions(function(){
+_this.setState({renderPlaceholderOnly:false});});
+
+
+DeviceEventEmitter.addListener('locationUpdated',function(location){
+console.log("New Location",location);
+this.state.region.latitude=location.latitude;
+this.state.region.longitude=location.longitude;
+this.setState({
+
+
+
+
+
+
+markers:[].concat(babelHelpers.toConsumableArray(
+this.state.markers),[
+{
+coordinate:{
+longitude:location.longitude,
+latitude:location.latitude},
+
+key:id++,
+color:'red'}])});}.
+
+
+
+
+
+bind(this));
+
+
+
+
+
+Location.startUpdatingLocation();},
+
+
+
+componentWillUnmount:function(){
+
+Location.stopUpdatingLocation();},
+
+
+_randomColor:function(){
+return '#'+Math.floor(Math.random()*16777215).toString(16);},
+
+
+_onMapPress:function(e){
 this.setState({
 markers:[].concat(babelHelpers.toConsumableArray(
 this.state.markers),[
 {
 coordinate:e.nativeEvent.coordinate,
 key:id++,
-color:randomColor()}])});},
+color:this._randomColor()}])});},
 
 
 
 
 
-onRegionChange:function(region){
+_onRegionChange:function(region){
 this.setState({region:region});},
 
 
+_renderPlaceholderView:function(){
+return (
+React.createElement(View,null,
+React.createElement(Text,null,'Loading...')));},
+
+
+
+
 render:function(){
+if(this.state.renderPlaceholderOnly){
+return this._renderPlaceholderView();}
+
 
 return (
-React.createElement(View,{style:styles.container},
+React.createElement(View,{style:localStyles.container},
 React.createElement(MapView,{
-style:styles.map,
-initialRegion:this.state.region,
-onPress:this.onMapPress},
+style:localStyles.map,
+
+region:this.state.region,
+onPress:this._onMapPress,
+onRegionChange:this._onRegionChange},
 
 this.state.markers.map(function(marker){return (
 React.createElement(MapView.Marker,{
@@ -75862,8 +76291,8 @@ pinColor:marker.color}));})),
 
 
 
-React.createElement(View,{style:styles.buttonContainer},
-React.createElement(View,{style:styles.bubble},
+React.createElement(View,{style:localStyles.buttonContainer},
+React.createElement(View,{style:localStyles.bubble},
 React.createElement(Text,null,'Tap to create a marker of random color')))));}});
 
 
@@ -75872,7 +76301,7 @@ React.createElement(Text,null,'Tap to create a marker of random color')))));}});
 
 
 
-var styles=StyleSheet.create({
+var localStyles=StyleSheet.create({
 container:{
 position:'absolute',
 top:0,
@@ -77093,6 +77522,18 @@ var AIRMapCallout=requireNativeComponent('AIRMapCallout',MapCallout);
 
 module.exports=MapCallout;
 });
+__d('react-native-gps/RNLocation.js',function(global, require, module, exports) {  'use strict';var _require=
+
+
+
+
+
+
+
+
+require('react-native/Libraries/react-native/react-native.js');var NativeModules=_require.NativeModules;
+module.exports=NativeModules.RNLocation;
+});
 __d('JasaRaharjaMobileApp/App/Screens/CameraScreen.js',function(global, require, module, exports) {  'use strict';var _reactNativeCamera=require('react-native-camera/index.android.js');var _reactNativeCamera2=babelHelpers.interopRequireDefault(_reactNativeCamera);
 
 
@@ -77106,9 +77547,8 @@ Text=
 
 React.Text;var Image=React.Image;var View=React.View;var StyleSheet=React.StyleSheet;var Dimensions=React.Dimensions;var TouchableHighlight=React.TouchableHighlight;
 
-var NavigationBar=require('react-native-navbar/index.js');
-var ButtonRounded=require('JasaRaharjaMobileApp/App/Components/ButtonRounded.js');
-var Button=require('JasaRaharjaMobileApp/App/Components/Button.js');
+var styles=require('JasaRaharjaMobileApp/App/Styles/style.js');
+var Button=require('react-native-button/Button.js');
 var Actions=require('react-native-router-flux/index.js').Actions;
 var ImagePickerManager=require('NativeModules').ImagePickerManager;
 
@@ -77204,9 +77644,11 @@ avatarSource:source});}});},
 render:function(){
 
 return (
-React.createElement(View,{style:styles.container},
-React.createElement(Image,{source:this.state.avatarSource,style:styles.base}),
-React.createElement(Button,{onPress:this.selectPhoto,text:'Capture'})));}});
+React.createElement(View,{style:styles.bg},
+React.createElement(Image,{source:this.state.avatarSource,style:localStyles.preview}),
+React.createElement(Button,{onPress:this.selectPhoto,
+style:styles.buttonText,
+containerStyle:styles.buttonRounded},'Capture')));}});
 
 
 
@@ -77214,34 +77656,7 @@ React.createElement(Button,{onPress:this.selectPhoto,text:'Capture'})));}});
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var styles=StyleSheet.create({
-container:{
-flex:1},
-
+var localStyles=StyleSheet.create({
 preview:{
 flex:1,
 justifyContent:'flex-end',
@@ -77255,11 +77670,7 @@ backgroundColor:'#fff',
 borderRadius:5,
 color:'#000',
 padding:10,
-margin:40},
-
-base:{
-width:400,
-height:400}});
+margin:40}});
 
 
 
@@ -80085,10 +80496,10 @@ console.log("Navigate:",action.type,action.name);
 return state;
 case Actions.AFTER_POP:
 console.log("Navigate:",action.type,action.name);
+state=action.route;
 return state;
 case Actions.BEFORE_POP:
 console.log("Navigate:",action.type,action.name);
-state=action.route;
 
 return state;
 case Actions.AFTER_DISMISS:
@@ -80126,7 +80537,8 @@ var debug=require('JasaRaharjaMobileApp/App/debug.js');
 var initialState=Immutable.fromJS(
 {
 dataSource:[],
-isLoading:false});
+isLoading:false,
+currentTask:null});
 
 
 
@@ -80136,6 +80548,14 @@ function taskListReducer(){var state=arguments.length<=0||arguments[0]===undefin
 
 
 switch(action.type){
+case types.SEARCH_TASK_STARTED:
+console.log("TASK_STARTED",action);
+state=state.set('isLoading',true);
+
+
+
+return state;
+
 case types.SEARCH_TASK_RESULT:
 
 console.log("TASK_RESULT",action);
@@ -80151,16 +80571,6 @@ console.log("SAME2:",mergeData===oldData);
 state=state.set('dataSource',oldData.merge(newData));
 state=state.set('isLoading',false);
 
-
-
-return state;
-
-case types.SEARCH_TASK_STARTED:
-console.log("TASK_STARTED",action);
-state=state.set('isLoading',true);
-
-
-
 return state;
 
 case types.SEARCH_TASK_FAILED:
@@ -80168,8 +80578,25 @@ console.log("TASK_FAILED",action);
 state=state.set('isLoading',false);
 
 
+return state;
+
+case types.TASK_ACCEPT_STARTED:
+
 
 return state;
+
+case types.TASK_ACCEPT_RESULT:
+
+
+
+return state;
+
+case types.TASK_ACCEPT_FAILED:
+
+
+
+return state;
+
 
 default:
 return state;}}
@@ -80192,18 +80619,25 @@ var initialState=_immutable2.default.fromJS(
 username:null,
 accessToken:null,
 refreshToken:null,
-expiresIn:null});
+expiresIn:null,
+pushToken:null,
+pushTokenOS:null});
 
 
 
 function loginReducer(){var state=arguments.length<=0||arguments[0]===undefined?initialState:arguments[0];var action=arguments[1];
 switch(action.type){
 case _ActionTypes.AUTH_SET_TOKEN:
-console.log("Action:",action);
 state=state.set('accessToken',action.token.access_token);
 state=state.set('refreshToken',action.token.refresh_token);
 state=state.set('expiresIn',action.token.expires_in);
-state=state.set('username',action.username);}
+state=state.set('username',action.username);
+break;
+
+case _ActionTypes.REGISTRATION_SET_TOKEN:
+state=state.set('pushToken',action.token.token);
+state=state.set('pushTokenOS',action.token.os);
+break;}
 
 
 return state;}
@@ -80255,6 +80689,52 @@ return state;}
 
 
 module.exports=settingReducer;
+});
+__d('react-native-device-info/deviceinfo.js',function(global, require, module, exports) {  var 
+
+
+
+RNDeviceInfo=require('react-native/Libraries/react-native/react-native.js').NativeModules.RNDeviceInfo;
+
+module.exports={
+getUniqueID:function(){
+return RNDeviceInfo.uniqueId;},
+
+getDeviceId:function(){
+return RNDeviceInfo.deviceId;},
+
+getManufacturer:function(){
+return RNDeviceInfo.systemManufacturer;},
+
+getModel:function(){
+return RNDeviceInfo.model;},
+
+getSystemName:function(){
+return RNDeviceInfo.systemName;},
+
+getSystemVersion:function(){
+return RNDeviceInfo.systemVersion;},
+
+getBundleId:function(){
+return RNDeviceInfo.bundleId;},
+
+getBuildNumber:function(){
+return RNDeviceInfo.buildNumber;},
+
+getVersion:function(){
+return RNDeviceInfo.appVersion;},
+
+getReadableVersion:function(){
+return RNDeviceInfo.appVersion+"."+RNDeviceInfo.buildNumber;},
+
+getDeviceName:function(){
+return RNDeviceInfo.deviceName;},
+
+getUserAgent:function(){
+return RNDeviceInfo.userAgent;},
+
+getDeviceLocale:function(){
+return RNDeviceInfo.deviceLocale;}};
 });
 ;require("InitializeJavaScriptAppEngine");
 ;require("JasaRaharjaMobileApp/index.android.js");

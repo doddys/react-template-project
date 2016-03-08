@@ -7,9 +7,7 @@ var {
     Text,
     ListView,
     StyleSheet,
-    PullToRefreshViewAndroid,
     Platform,
-    ProgressBarAndroid,
     ActivityIndicatorIOS
 } = React;
 
@@ -185,14 +183,9 @@ var TaskListScreen = React.createClass({
 
 
 	    return (
-        <PullToRefreshViewAndroid
-          style={styles.bg}
-          refreshing={this.state.isLoading}
-          onRefresh={this._reloadTask}
-          colors={['#ff0000', '#00ff00', '#0000ff']}
-          progressBackgroundColor={'#ffff00'}>
+        <View>
           {content}
-        </PullToRefreshViewAndroid>
+        </View>
 
 	    );
   }

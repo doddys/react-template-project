@@ -18,15 +18,23 @@ import { connect } from 'react-redux';
 
 
 var ControlPanel = React.createClass({
-    selectMenu(selectedAction){
+    contextTypes: {
+       drawer: React.PropTypes.object.isRequired,
+    },
+
+    _selectMenu(selectedAction){
+      var {drawer} = this.context;
       // route to page
-      this.props.close();
+      //this.props.close();
+      drawer.close();
       selectedAction();
       // close drawer
     },
 
 
     render(){
+        var {drawer} = this.context;
+
         return (
             <View style={localStyles.container}>
               <View style={localStyles.header}>
@@ -37,7 +45,7 @@ var ControlPanel = React.createClass({
                 <TouchableHighlight
                       style={localStyles.menu}
                       underlayColor="rgba(50, 105, 69, 0.4)"
-                      onPress={() => this.selectMenu(Actions.home)}>
+                      onPress={() => this._selectMenu(Actions.home)}>
                       <View style={localStyles.row}>
                         <Icon style={localStyles.icon} name="home" size={25} />
                         <Text style={localStyles.text}> {i18n.home} </Text>
@@ -46,7 +54,7 @@ var ControlPanel = React.createClass({
                 <TouchableHighlight
                       style={localStyles.menu}
                       underlayColor="rgba(50, 105, 69, 0.4)"
-                      onPress={() => this.selectMenu(Actions.task)}>
+                      onPress={() => this._selectMenu(Actions.task)}>
                       <View style={localStyles.row}>
                         <Icon style={localStyles.icon} name="tasks" size={25} />
                         <Text style={localStyles.text}> {i18n.taskList} </Text>
@@ -55,7 +63,7 @@ var ControlPanel = React.createClass({
                 <TouchableHighlight
                     style={localStyles.menu}
                     underlayColor="rgba(50, 105, 69, 0.4)"
-                    onPress={() => this.selectMenu(Actions.approvalList)}>
+                    onPress={() => this._selectMenu(Actions.approvalList)}>
                     <View style={localStyles.row}>
                       <Icon style={localStyles.icon} name="check" size={25} />
                       <Text style={localStyles.text}> {i18n.approvalList} </Text>
@@ -64,7 +72,7 @@ var ControlPanel = React.createClass({
                 <TouchableHighlight
                     style={localStyles.menu}
                     underlayColor="rgba(50, 105, 69, 0.4)"
-                    onPress={() => this.selectMenu(Actions.setting)}>
+                    onPress={() => this._selectMenu(Actions.setting)}>
                     <View style={localStyles.row}>
                       <Icon style={localStyles.icon} name="sliders" size={25} />
                       <Text style={localStyles.text}> {i18n.setting} </Text>
@@ -73,7 +81,7 @@ var ControlPanel = React.createClass({
                 <TouchableHighlight
                    style={localStyles.menu}
                    underlayColor="rgba(50, 105, 69, 0.4)"
-                   onPress={() => this.selectMenu(Actions.map)}>
+                   onPress={() => this._selectMenu(Actions.map)}>
                    <View style={localStyles.row}>
                      <Icon style={localStyles.icon} name="map" size={25} />
                      <Text style={localStyles.text}> {i18n.map} </Text>
@@ -82,7 +90,7 @@ var ControlPanel = React.createClass({
                  <TouchableHighlight
                     style={localStyles.menu}
                     underlayColor="rgba(50, 105, 69, 0.4)"
-                    onPress={() => this.selectMenu(Actions.camera)}>
+                    onPress={() => this._selectMenu(Actions.camera)}>
                     <View style={localStyles.row}>
                       <Icon style={localStyles.icon} name="camera" size={25} />
                       <Text style={localStyles.text}> {i18n.camera} </Text>

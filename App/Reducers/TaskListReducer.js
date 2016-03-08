@@ -39,17 +39,17 @@ function taskListReducer(state = initialState, action) {
 
     case types.SEARCH_TASK_RESULT:
       //receive search task result data
-      console.log("TASK_RESULT", action);
+      //console.log("TASK_RESULT", action);
       var newData = Immutable.fromJS(action.data);
       var oldData = state.get('dataSource');
-      var mergeData = oldData.merge(newData);
-      console.log("NEWDATA:", newData.toJS());
-      console.log("OLDDATA:", oldData.toJS());
-      console.log("MERGEDATA:", mergeData.toJS());
-      console.log("SAME:", newData === oldData);
-      console.log("SAME2:", mergeData === oldData);
+      var mergeData = oldData.mergeDeep(newData);
+      // console.log("NEWDATA:", newData.last());
+      // console.log("OLDDATA:", oldData.last());
+      // console.log("MERGEDATA:", mergeData);
+      // console.log("SAME:", newData === oldData);
+      debug("Same Data: " + mergeData === oldData);
       //modify state
-      state = state.set('dataSource', oldData.merge(newData));
+      state = state.set('dataSource', mergeData);
       state = state.set('isLoading', false);
       //return state
       return state;

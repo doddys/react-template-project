@@ -31,6 +31,8 @@ let id = 1;
 
 // Initialize RNALocation
 Location.requestWhenInUseAuthorization();
+var _locationUpdatedListener;
+
 
 var MapScreen = React.createClass({
   getInitialState: function () {
@@ -52,7 +54,7 @@ var MapScreen = React.createClass({
       this.setState({renderPlaceholderOnly: false});
     });
 
-    DeviceEventEmitter.addListener('locationUpdated', function(location) {
+    _locationUpdatedListener = DeviceEventEmitter.addListener('locationUpdated', function(location) {
         console.log("New Location", location);
           this.state.region.latitude = location.latitude;
           this.state.region.longitude = location.longitude;
@@ -88,6 +90,8 @@ var MapScreen = React.createClass({
   },
 
   componentWillUnmount: function() {
+    console.log("componentWillUnmount");
+    _locationUpdatedListener.remove();
     //Location.stopMonitoringSignificantLocationChanges();
     Location.stopUpdatingLocation();
   },

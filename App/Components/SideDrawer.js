@@ -14,6 +14,8 @@ var toolbarMenu = [
 ];
 
 var SideDrawer = React.createClass({
+
+  // not used anymore. it is used by controlpanel before to close drawer on select menu
   closeControlPanel: function(){
       this.refs.drawer.close();
   },
@@ -30,7 +32,7 @@ var SideDrawer = React.createClass({
   },
 
   renderBackIcon: function(routeId){
-    console.log("PROPS:", this.props);
+    //console.log("PROPS:", this.props);
     if (routeId === "taskDetail") {
       return { uri: 'ic_chevron_left_white_36dp'};
     } else {
@@ -41,7 +43,7 @@ var SideDrawer = React.createClass({
 
 
   render: function() {
-    console.log("SideDrawer" , this.props);
+    //console.log("SideDrawer" , this.props);
     var toolbar = Platform.OS === 'android' ?
       <ToolbarAndroid
        actions={toolbarMenu}
@@ -67,7 +69,7 @@ var SideDrawer = React.createClass({
          panCloseMask={1}
 //         closeDrawerOffset={3}
          styles={drawerStyles}
-         content={ <ControlPanel currentUser={this.props.currentUser} pageId={this.props.pageId} close={ this.closeControlPanel }/> }
+         content={ <ControlPanel currentUser={this.props.currentUser} pageId={this.props.pageId} /> }
          tweenHandler={(ratio) => {
              return {
                  drawer: { shadowRadius: Math.min(ratio*5*5, 5) },
