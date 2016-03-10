@@ -131,29 +131,7 @@ var styles = StyleSheet.create({
   		fontSize: 20
     },
 
-    //Routing Styles
-    routerScene: {
-        //paddingTop: Navigator.NavigationBar.Styles.General.NavBarHeight,
-    },
-    navigationBar: {
-      flex: 1,
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#5aa0cc',
-      borderBottomColor: 'transparent',
-      borderBottomWidth: 64
-    },
-    navigationTitle: {
-      color: 'white',
-    },
-    barButtonIcon: {
-
-    },
-    barButtonText: {
-
-    },
-
+    
 });
 
 

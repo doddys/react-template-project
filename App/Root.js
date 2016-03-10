@@ -33,7 +33,8 @@ import { Provider, connect } from 'react-redux';
 const Router = connect()(RNRF.Router);
 
 const hideNavBar = Platform.OS === 'android'
-const paddingTop = Platform.OS === 'android' ? {paddingTop: 0} : {paddingTop : Navigator.NavigationBar.Styles.General.NavBarHeight};
+//const paddingTop = Platform.OS === 'android' ? {paddingTop: 0} : {paddingTop : Navigator.NavigationBar.Styles.General.NavBarHeight};
+const paddingTop = Platform.OS === 'android' ? 0 : 64;
 
 import { REGISTRATION_SET_TOKEN } from './Actions/ActionTypes';
 import { SENDER_ID } from './Config/Config';
@@ -128,36 +129,33 @@ export default class JasaRaharjaMobileApp extends Component {
             type='replace'
           />
           <Schema
-            name='main2'
+            name='main'
             sceneConfig={Navigator.SceneConfigs.FloatFromRight}
             hideNavBar={hideNavBar}
           />
+
         <Schema name="modal" sceneConfig={Navigator.SceneConfigs.FloatFromBottom}/>
 
         <Route name='auth' component={LoginScreen} schema='boot' initial={true}/>
         <Route name='logout' component={LoginScreen} schema='boot'/>
 
-        <Route name='main' title={i18n.home} hideNavBar={false} type='reset'>
+        <Route name='main' title={i18n.home} hideNavBar={true} type='reset'>
             <SideDrawer>
-              <Router hideNavBar={false}
-                sceneStyle={styles.routerScene, paddingTop}
-                navigationBarStyle={styles.navigationBar}
-                titleStyle={styles.navigationTitle}
-                barButtonIconStyle={styles.barButtonIcon}
-                barButtonTextStyle={styles.barButtonText}
+              <Router
+                sceneStyle={localStyles.routerScene}
+                navigationBarStyle={localStyles.navigationBar}
+                titleStyle={localStyles.navigationTitle}
+                barButtonIconStyle={localStyles.barButtonIcon}
+                barButtonTextStyle={localStyles.barButtonText}
                 >
-                <Route name='home' component={HomeScreen} type='transitionToTop' schema='main2' title={i18n.home} />
-                <Route name='task' type='transitionToTop' title={i18n.taskList} hideNavBar={true}>
-                  <Router>
-                    <Route name='taskList' component={TaskListScreen} schema='main2' title={i18n.taskList} />
-                    <Route name='taskDetail' component={TaskDetailScreen} schema='main2' title={i18n.taskDetail} />
-                    <Route name='taskEdit' component={TaskEditScreen} schema='main2' title={i18n.taskEdit} />
-                  </Router>
-                </Route>
-                <Route name='approvalList' component={ApprovalListScreen} type='transitionToTop' schema='main2' title={i18n.approvalList} />
-                <Route name='setting' component={SettingScreen} type='transitionToTop'  schema='main2' title={i18n.setting} />
-                <Route name='map' component={MapScreen} type='transitionToTop'  schema='main2' title={i18n.map} />
-                <Route name='camera' component={CameraScreen} type='transitionToTop' schema='main2' title={i18n.camera} />
+                <Route name='home' component={HomeScreen} type="reset" schema='main' title={i18n.home} />
+                <Route name='task' component={TaskListScreen} type="reset" schema='main' title={i18n.taskList} />
+                <Route name='taskDetail' component={TaskDetailScreen} schema='main' title={i18n.taskDetail} />
+                <Route name='taskEdit' component={TaskEditScreen} schema='main' title={i18n.taskEdit} />
+                <Route name='approvalList' component={ApprovalListScreen} type="reset" schema='main' title={i18n.approvalList} />
+                <Route name='setting' component={SettingScreen} type="reset" schema='main' title={i18n.setting} />
+                <Route name='map' component={MapScreen} type="reset" schema='main' title={i18n.map} />
+                <Route name='camera' component={CameraScreen} type="reset" schema='main' title={i18n.camera} />
               </Router>
             </SideDrawer>
         </Route>
@@ -167,3 +165,32 @@ export default class JasaRaharjaMobileApp extends Component {
     );
   }
 }
+
+var localStyles = StyleSheet.create({
+  //Routing Styles
+  routerScene: {
+      paddingTop: paddingTop,
+  },
+  nestedRouterScene: {
+      paddingTop: 100,
+  },
+  navigationBar: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#5aa0cc',
+    borderBottomColor: 'transparent',
+    //borderBottomWidth: 64
+  },
+  navigationTitle: {
+    color: 'white',
+  },
+  barButtonIcon: {
+
+  },
+  barButtonText: {
+
+  },
+
+});

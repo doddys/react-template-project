@@ -11,6 +11,7 @@ var {
     ActivityIndicatorIOS
 } = React;
 
+var ControlledRefreshableListView = require('react-native-refreshable-listview/lib/ControlledRefreshableListView');
 var dismissKeyboard = require('dismissKeyboard');
 var Actions = require('react-native-router-flux').Actions;
 
@@ -30,7 +31,7 @@ var getSectionData = (dataBlob, sectionID) => {
 var ds = new ListView.DataSource(
   {
     rowHasChanged: (r1, r2) => r1 !== r2,
-    getSectionData: getSectionData,
+
   }
 ); // assumes immutable objects
 
@@ -46,7 +47,7 @@ var TaskListScreen = React.createClass({
   componentDidMount: function (){
     debug("componentDidMount .. not fetching from server");
     // only trigger server fetch on pulldown
-    // this.props.runSearchTasks();
+    this.props.runSearchTasks();
 
   },
 
@@ -138,8 +139,7 @@ var TaskListScreen = React.createClass({
     task: Object,
     sectionID: number | string,
     rowID: number | string,
-    highlightRowFunc: (sectionID: ?number | string, rowID: ?number | string) => void,
-  ) {
+    highlightRowFunc: (sectionID: ?number | string, rowID: ?number | string) => void,) {
     return (
       <TaskCell
         key={task.id}
@@ -152,6 +152,8 @@ var TaskListScreen = React.createClass({
   },
 
 
+
+
   _reloadTask: function() {
     // returns a Promise of reload completion
     // for a Promise-free version see ControlledRefreshableListView below
@@ -161,33 +163,28 @@ var TaskListScreen = React.createClass({
 
 	render: function() {
       debug("Render Task List: "+ this.props.tasks.size);
-
-      //var data =  ds.cloneWithRows(this.props.tasks.toJS());
-
       var content = this.state.dataSource.getRowCount() === 0 ?
         <NoTask
           isLoading={this.state.isLoading}
         /> :
-        <ListView
-          ref="listview"
-          renderSeparator={this._renderSeparator}
+        <ControlledRefreshableListView
           dataSource={this.state.dataSource}
-          renderFooter={this._renderFooter}
           renderRow={this._renderRow}
-          onEndReached={this._onEndReached}
-          automaticallyAdjustContentInsets={false}
-          keyboardDismissMode="on-drag"
-          keyboardShouldPersistTaps={true}
-          showsVerticalScrollIndicator={false}
+          isRefreshing={this.state.isLoading}
+          onRefresh={this._reloadTask}
+          refreshDescription="Refreshing task"
         />;
 
 
-	    return (
-        <View>
-          {content}
-        </View>
-
-	    );
+      return (
+        <ControlledRefreshableListView
+          dataSource={this.state.dataSource}
+          renderRow={this._renderRow}
+          isRefreshing={this.state.isLoading}
+          onRefresh={this._reloadTask}
+          refreshDescription="Refreshing task"
+        />
+      );
   }
 });
 
@@ -205,15 +202,7 @@ var NoTask = React.createClass({
 
       );
     } else {
-      if (Platform.OS === 'ios') {
         return <ActivityIndicatorIOS style={localStyles.scrollSpinner} />;
-      } else {
-        return (
-          <View  style={{alignItems: 'center'}}>
-            <ProgressBarAndroid styleAttr="Small"/>
-          </View>
-        );
-      }
     }
 
   }
@@ -245,14 +234,27 @@ const localStyles = StyleSheet.create({
   },
 });
 
+var indicatorStylesheet = StyleSheet.create({
+  wrapper: {
+    backgroundColor: 'red',
+    height: 60,
+    marginTop: 10,
+  },
+  content: {
+    backgroundColor: 'blue',
+    marginTop: 10,
+    height: 60,
+  },
+})
+
 var mapStateToProps = function(state) {
   console.log("MappingStateToProps");
   //var curState = state.toJS();
   var data,isLoading;
-  if (state.getIn(['tasks','dataSource'])){
-    data = state.getIn(['tasks','dataSource']);
-    isLoading = state.getIn(['tasks','isLoading']);
-  }
+
+  data = state.getIn(['tasks','dataSource']);
+  isLoading = state.getIn(['tasks','isLoading']);
+
 
   return {
     tasks: data,

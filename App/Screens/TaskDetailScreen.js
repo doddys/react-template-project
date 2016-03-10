@@ -164,7 +164,15 @@ var localStyles = StyleSheet.create({
       flex: 1,
     },
     buttonRounded: {
-      width: 150,
+      backgroundColor: '#05A5D1',
+  	  padding: 10,
+  	  borderColor: '#05A5D1',
+  	  borderWidth:0,
+  	  borderBottomColor: '#05A5D1',
+  	  alignSelf: 'center',
+  		borderRadius: 10,
+  		width: 150,
+  		marginTop: 8,
     }
   });
 

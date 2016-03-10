@@ -1,7 +1,7 @@
 'use strict';
 
 
-export const DEBUG = false;
+export const DEBUG = true;
 export const SERVER_HOST = "http://api.rottentomatoes.com";
 export const LOGIN_URL = "http://192.168.44.55:8080/jasaraharja/oauth/token";
 export const API_KEY = "my-trusted-client-with-secret";
