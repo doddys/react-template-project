@@ -15,7 +15,12 @@ import com.remobile.splashscreen.*;
 import com.learnium.RNDeviceInfo.*;
 import com.syarul.rnlocation.RNLocation;
 import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.Answers;
+import io.fabric.sdk.android.Fabric;
+import com.smixx.fabric.FabricPackage;
 
+import android.os.Bundle;
 import java.util.Arrays;
 import java.util.List;
 
@@ -51,6 +56,7 @@ public class MainActivity extends ReactActivity {
       mImagePicker = new ImagePickerPackage(this);
       mReactNativePushNotificationPackage = new ReactNativePushNotificationPackage(this);
 
+
       return Arrays.<ReactPackage>asList(
         new MainReactPackage(),
         new VectorIconsPackage(),
@@ -61,6 +67,7 @@ public class MainActivity extends ReactActivity {
         new RNDeviceInfo(),
         new RNLocation(),
         new RCTSplashScreenPackage(this),
+        new FabricPackage(this),
         mImagePicker,
         mReactNativePushNotificationPackage
       );
@@ -77,5 +84,17 @@ public class MainActivity extends ReactActivity {
     protected void onNewIntent (Intent intent) {
       super.onNewIntent(intent);
       mReactNativePushNotificationPackage.newIntent(intent);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
+        Fabric.with(this, new Answers());
+
+        //debuggable
+        //Fabric fabric = new Fabric.Builder(this).debuggable(true).kits(new Answers()).build();
+        //Fabric.with(fabric);
+        //throw new RuntimeException("This is a crash");
     }
 }

@@ -21,3 +21,5 @@ include ':RNLocation'
 project(':RNLocation').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-gps')
 include ':react-native-push-notification'
 project(':react-native-push-notification').projectDir = file('../node_modules/react-native-push-notification/RNPushNotificationAndroid')
+include ':react-native-fabric'
+project(':react-native-fabric').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fabric/android')

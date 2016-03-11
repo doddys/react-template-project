@@ -1,9 +1,12 @@
 'use-strict'
 
 var Actions = require('react-native-router-flux').Actions;
+var Fabric = require('react-native-fabric');
+var { Answers } = Fabric;
 
 function navigationReducer(state = {}, action) {
       //console.log("STATE:", action.type, state);
+      Answers.logCustom('ReducerAction', {action: action.type });
 
       switch (action.type) {
           case Actions.BEFORE_ROUTE:

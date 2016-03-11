@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react-native');
-var { AppRegistry, Navigator, Component, BackAndroid, StyleSheet,Text,View, Platform } = React;
+var { AppRegistry, Navigator, Component, BackAndroid, StyleSheet,Text,View, Platform, NetInfo } = React;
 var RNRF = require('react-native-router-flux');
 var {Route, Schema, Animations, Actions, TabBar} = RNRF;
 var SplashScreen = require('@remobile/react-native-splashscreen');
@@ -11,6 +11,7 @@ var PushNotification = require('react-native-push-notification');
 var SideDrawer = require('./Components/SideDrawer');
 var styles = require('./Styles/style');
 var Error = require('./Components/Error');
+var debug = require('./debug');
 
 // Screens
 var HomeScreen = require('./Screens/HomeScreen');
@@ -24,6 +25,9 @@ var MapScreen = require('./Screens/MapScreen');
 var CameraScreen = require('./Screens/CameraScreen');
 var i18n = require('./i18n.js');
 var store = require('./Stores/AppStore');
+
+import { verifyCredential, setRegistrationToken } from './Actions/AuthAction'
+import { updateNetworkStatus } from './Actions/StatusAction'
 
 console.log("Language", i18n.getLanguage() );
 console.log("Setting language to id", i18n.setLanguage('id'));
@@ -56,10 +60,7 @@ if (Platform.OS === 'android'){
           console.log( 'TOKEN:', token );
 
           //dispatch action to set token in the current state
-          store.dispatch(
-            {type: REGISTRATION_SET_TOKEN,
-            token
-          });
+          store.dispatch(setRegistrationToken(token));
       },
       // (required) Called when a remote or local notification is opened or received
       onNotification: function(notification) {
@@ -77,10 +78,7 @@ if (Platform.OS === 'android'){
           console.log( 'TOKEN:', token );
 
           //dispatch action to set token in the current state
-          store.dispatch(
-            {type: REGISTRATION_SET_TOKEN,
-            token
-          });
+          store.dispatch(setRegistrationToken(token));
       },
       // (required) Called when a remote or local notification is opened or received
       onNotification: function(notification) {
@@ -108,6 +106,7 @@ if (Platform.OS === 'android'){
 
 export default class JasaRaharjaMobileApp extends Component {
   componentDidMount() {
+    debug ("App is Mounted");
     if (Platform.OS === 'android') {
       SplashScreen.hide();
 
@@ -115,7 +114,29 @@ export default class JasaRaharjaMobileApp extends Component {
       PushNotification.configure(pushOption);
     }
 
+    NetInfo.isConnected.fetch().done((isConnected) => {
+      console.log('First, is ' + (isConnected ? 'online' : 'offline'));
+      store.dispatch(updateNetworkStatus(isConnected));
+    });
 
+    //listen to network status change
+    NetInfo.isConnected.addEventListener(
+        'change',
+        this._handleConnectionInfoChange
+    );
+  }
+
+  componentWillUnmount() {
+    debug ("App is Unmounted");
+    NetInfo.isConnected.removeEventListener(
+        'change',
+        this._handleConnectionInfoChange
+    );
+  }
+
+  _handleConnectionInfoChange(isConnected) {
+    console.log("Connection", isConnected);
+    store.dispatch(updateNetworkStatus(isConnected));
   }
 
   render() {

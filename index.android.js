@@ -29,45 +29,7 @@ console.log("Device Name", DeviceInfo.getDeviceName());  // e.g. Becca's iPhone 
 console.log("User Agent", DeviceInfo.getUserAgent()); // e.g. Dalvik/2.1.0 (Linux; U; Android 5.1; Google Nexus 4 - 5.1.0 - API 22 - 768x1280 Build/LMY47D)
 console.log("Device Locale", DeviceInfo.getDeviceLocale()); // e.g en-US
 
-// var PushNotification = require('react-native-push-notification');
-// var token = null;
-//
-// function register(token, topic) {
-//   let url = 'https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic;
-//   fetch(url, {
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': 'key=AIzaSyChtJ9mhlYr9qLjGskFDdvik92Ly4bqWHA'
-//     },
-//     method: 'POST'
-//   }).then((result) => {
-//     if (result.status == 200) {
-//       console.log('Registration OK!');
-//     } else {
-//       console.log(result);
-//       console.log('Could not register for notifications!');
-//     }
-//   }).catch((err) => {
-//     console.log('Could not register for notifications!', err);
-//   })
-// }
 
-// PushNotification.configure({
-//
-//     // (optional) Called when Token is generated (iOS and Android)
-//     onRegister: function(token) {
-//         console.log( 'TOKEN:', token );
-//         register(token.token,"mytopic");
-//     },
-//
-//     // (required) Called when a remote or local notification is opened or received
-//     onNotification: function(notification) {
-//         console.log( 'NOTIFICATION:', notification );
-//     },
-//
-//     // ANDROID ONLY: (optional) GCM Sender ID.
-//     senderID: "204281280864",
-// });
 
 import JasaRaharjaMobileApp from './App/Root';
 

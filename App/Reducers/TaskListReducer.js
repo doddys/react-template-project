@@ -30,7 +30,7 @@ function taskListReducer(state = initialState, action) {
 
   switch (action.type) {
     case types.SEARCH_TASK_STARTED:
-      console.log("TASK_STARTED", action);
+      console.log("TASK_STARTED", action.name);
       state = state.set('isLoading', true);
 
       //fetching data from server is starte
@@ -42,7 +42,7 @@ function taskListReducer(state = initialState, action) {
       //console.log("TASK_RESULT", action);
       var newData = Immutable.fromJS(action.data);
       var oldData = state.get('dataSource');
-      console.log("OLD:", oldData);
+      //console.log("OLD:", oldData);
       var mergeData = oldData.mergeDeep(newData);
       // console.log("NEWDATA:", newData.last());
       // console.log("OLDDATA:", oldData.last());
@@ -56,7 +56,7 @@ function taskListReducer(state = initialState, action) {
       return state;
 
     case types.SEARCH_TASK_FAILED:
-      console.log("TASK_FAILED", action);
+      console.log("TASK_FAILED", action.name);
       state = state.set('isLoading', false);
       // Unable to fetch data
       // update state to fetching to show error

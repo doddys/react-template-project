@@ -17,6 +17,7 @@
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
     "react-native-device-info": "^0.8.4",
     "react-native-drawer": "^1.16.7",
+    "react-native-fabric": "0.0.2",
     "react-native-gps": "^0.1.1",
     "react-native-image-picker": "^0.15.0",
     "react-native-localization": "^0.1.11",

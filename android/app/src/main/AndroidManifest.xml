@@ -2,6 +2,9 @@
     package="com.jasaraharjamobileapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- for NetInfo -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- for Camera -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -17,6 +20,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!-- for Camera -->
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -28,6 +32,9 @@
       <meta-data
         android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyB6xxNfvvKN-vHJuG0TYlFlb1Ric3f07c0"/>
+      <meta-data
+        android:name="io.fabric.ApiKey"
+        android:value="69efd8f53c8f2faa625fe5867e5c928c8c6a02dd"/>
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

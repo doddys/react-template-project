@@ -2,6 +2,9 @@
 
 import Immutable from 'immutable';
 import { AUTH_SET_TOKEN, AUTH_SET_INFO, AUTH_REMOVE_TOKEN, REGISTRATION_SET_TOKEN } from '../Actions/ActionTypes';
+var Fabric = require('react-native-fabric');
+var { Crashlytics } = Fabric;
+
 
 var { Map, List, fromJS } = Immutable;
 var Actions = require('react-native-router-flux').Actions;
@@ -24,6 +27,9 @@ function loginReducer(state = initialState, action) {
           state = state.set('refreshToken', action.token.refresh_token);
           state = state.set('expiresIn', action.token.expires_in);
           state = state.set('username', action.username);
+          Crashlytics.setUserName(action.username);
+          //Crashlytics.setUserIdentifier('1234');
+          Crashlytics.setString('organization', 'Jasa Raharja');
         break;
 
         case REGISTRATION_SET_TOKEN:
