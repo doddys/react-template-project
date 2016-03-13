@@ -151,9 +151,15 @@ export default class JasaRaharjaMobileApp extends Component {
           />
           <Schema
             name='main'
+            hideNavBar={hideNavBar}
+          />
+          <Schema
+            name='sub'
             sceneConfig={Navigator.SceneConfigs.FloatFromRight}
             hideNavBar={hideNavBar}
           />
+
+
 
         <Schema name="modal" sceneConfig={Navigator.SceneConfigs.FloatFromBottom}/>
 
@@ -171,8 +177,8 @@ export default class JasaRaharjaMobileApp extends Component {
                 >
                 <Route name='home' component={HomeScreen} type="reset" schema='main' title={i18n.home} />
                 <Route name='task' component={TaskListScreen} type="reset" schema='main' title={i18n.taskList} />
-                <Route name='taskDetail' component={TaskDetailScreen} schema='main' title={i18n.taskDetail} />
-                <Route name='taskEdit' component={TaskEditScreen} schema='main' title={i18n.taskEdit} />
+                <Route name='taskDetail' component={TaskDetailScreen} schema='sub' title={i18n.taskDetail} />
+                <Route name='taskEdit' component={TaskEditScreen} schema='sub' title={i18n.taskEdit} />
                 <Route name='approvalList' component={ApprovalListScreen} type="reset" schema='main' title={i18n.approvalList} />
                 <Route name='setting' component={SettingScreen} type="reset" schema='main' title={i18n.setting} />
                 <Route name='map' component={MapScreen} type="reset" schema='main' title={i18n.map} />

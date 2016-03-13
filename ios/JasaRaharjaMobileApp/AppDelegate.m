@@ -8,14 +8,18 @@
  */
 
 #import "AppDelegate.h"
-
 #import "RCTRootView.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   NSURL *jsCodeLocation;
+
+
 
   /**
    * Loading JavaScript code - uncomment the one you want.
@@ -51,13 +55,20 @@
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
   //[RCTSplashScreen show:rootView];
+  [Fabric with:@[[Crashlytics class]]];
+
   
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+
+
   return YES;
 }
+
+
+
 
 @end

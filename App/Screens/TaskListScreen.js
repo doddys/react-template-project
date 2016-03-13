@@ -10,7 +10,8 @@ var {
     PullToRefreshViewAndroid,
     Platform,
     ProgressBarAndroid,
-    ActivityIndicatorIOS
+    ActivityIndicatorIOS,
+    InteractionManager,
 } = React;
 
 var dismissKeyboard = require('dismissKeyboard');
@@ -47,6 +48,10 @@ var TaskListScreen = React.createClass({
 
   componentDidMount: function (){
     debug("componentDidMount .. not fetching from server");
+    this.setState({isLoading: true});
+    InteractionManager.runAfterInteractions(() => {
+      this.setState({isLoading: false});
+    });
     // only trigger server fetch on pulldown
     // this.props.runSearchTasks();
 

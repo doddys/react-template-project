@@ -36,6 +36,9 @@
 		EA48B6561C8979A900985844 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA48B6551C89799C00985844 /* libRNDeviceInfo.a */; };
 		EA9045661C8C7C2100231BDA /* libRNLocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9045641C8C7C1200231BDA /* libRNLocation.a */; };
 		EA9045681C8C7C5100231BDA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9045671C8C7C5100231BDA /* CoreLocation.framework */; };
+		EAAA00D21C95A57600717194 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAA00D01C95A57600717194 /* Fabric.framework */; };
+		EAAA00D31C95A57600717194 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAA00D11C95A57600717194 /* Crashlytics.framework */; };
+		EAAA00FE1C95AB2800717194 /* libSMXCrashlytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAA00FD1C95AB0600717194 /* libSMXCrashlytics.a */; };
 		EAABFFBD1C81EF6200DAF046 /* libReactNativeLocalization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAABFFBB1C81EECD00DAF046 /* libReactNativeLocalization.a */; };
 		EAC8A2811C819B300060979E /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAC8A2801C819AD60060979E /* libRNImagePicker.a */; };
 /* End PBXBuildFile section */
@@ -146,6 +149,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNLocation;
 		};
+		EAAA00FC1C95AB0600717194 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAAA00E61C95AB0600717194 /* SMXCrashlytics.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D8D9DB831C6D03DB009FBC0E;
+			remoteInfo = SMXCrashlytics;
+		};
 		EAABFFBA1C81EECD00DAF046 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EAABFFAA1C81EECD00DAF046 /* ReactNativeLocalization.xcodeproj */;
@@ -215,6 +225,9 @@
 		EA48B6501C89799C00985844 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		EA90454F1C8C7C1200231BDA /* RNLocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNLocation.xcodeproj; path = "../node_modules/react-native-gps/RNLocation.xcodeproj"; sourceTree = "<group>"; };
 		EA9045671C8C7C5100231BDA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EAAA00D01C95A57600717194 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		EAAA00D11C95A57600717194 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		EAAA00E61C95AB0600717194 /* SMXCrashlytics.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SMXCrashlytics.xcodeproj; path = "../node_modules/react-native-fabric/ios/SMXCrashlytics.xcodeproj"; sourceTree = "<group>"; };
 		EAABFFAA1C81EECD00DAF046 /* ReactNativeLocalization.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeLocalization.xcodeproj; path = "../node_modules/react-native-localization/ReactNativeLocalization.xcodeproj"; sourceTree = "<group>"; };
 		EAC8A27B1C819AD50060979E /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		F88F7488DA5744139B2A3C61 /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
@@ -232,6 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAAA00FE1C95AB2800717194 /* libSMXCrashlytics.a in Frameworks */,
 				EA9045681C8C7C5100231BDA /* CoreLocation.framework in Frameworks */,
 				EA9045661C8C7C2100231BDA /* libRNLocation.a in Frameworks */,
 				EA48B6561C8979A900985844 /* libRNDeviceInfo.a in Frameworks */,
@@ -243,7 +257,9 @@
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
+				EAAA00D21C95A57600717194 /* Fabric.framework in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
+				EAAA00D31C95A57600717194 /* Crashlytics.framework in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
@@ -377,6 +393,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				EAAA00E61C95AB0600717194 /* SMXCrashlytics.xcodeproj */,
 				EA90454F1C8C7C1200231BDA /* RNLocation.xcodeproj */,
 				EA48B6501C89799C00985844 /* RNDeviceInfo.xcodeproj */,
 				EAABFFAA1C81EECD00DAF046 /* ReactNativeLocalization.xcodeproj */,
@@ -410,6 +427,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				EAAA00D01C95A57600717194 /* Fabric.framework */,
+				EAAA00D11C95A57600717194 /* Crashlytics.framework */,
 				EA9045671C8C7C5100231BDA /* CoreLocation.framework */,
 				13B07FAE1A68108700A75B9A /* JasaRaharjaMobileApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -458,6 +477,14 @@
 			isa = PBXGroup;
 			children = (
 				EA9045641C8C7C1200231BDA /* libRNLocation.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAAA00E71C95AB0600717194 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAAA00FD1C95AB0600717194 /* libSMXCrashlytics.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -523,6 +550,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				EAAA00CF1C95A52300717194 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -632,6 +660,10 @@
 					ProductGroup = EA48B60D1C89643000985844 /* Products */;
 					ProjectRef = A23DE55D26204D70B717CCF4 /* RNVectorIcons.xcodeproj */;
 				},
+				{
+					ProductGroup = EAAA00E71C95AB0600717194 /* Products */;
+					ProjectRef = EAAA00E61C95AB0600717194 /* SMXCrashlytics.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -740,6 +772,13 @@
 			remoteRef = EA9045631C8C7C1200231BDA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		EAAA00FD1C95AB0600717194 /* libSMXCrashlytics.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSMXCrashlytics.a;
+			remoteRef = EAAA00FC1C95AB0600717194 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		EAABFFBB1C81EECD00DAF046 /* libReactNativeLocalization.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -810,6 +849,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
+		};
+		EAAA00CF1C95A52300717194 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 69efd8f53c8f2faa625fe5867e5c928c8c6a02dd e261cf661bb3a37b5f0235d2d41053ed86d54d161155232f63892958003fd189";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -899,6 +951,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -921,6 +977,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -981,7 +1041,7 @@
 					"$(SRCROOT)/../node_modules/react-native-material-kit/iOS/RCTMaterialKit",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1025,7 +1085,7 @@
 					"$(SRCROOT)/../node_modules/react-native-material-kit/iOS/RCTMaterialKit",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
