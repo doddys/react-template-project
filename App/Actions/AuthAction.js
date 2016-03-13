@@ -42,12 +42,12 @@ export function verifyCredential(username,password){
   	AuthService.login(username, password, function(error,data){
   		if (error){
   				console.log("Error: ", error);
-          Answers.logLogin(action.username, false);
+          Answers.logLogin(username, false);
   				dispatch(removeToken())
   		} else {
   				console.log("Login Success");
   				dispatch(setToken(username,data));
-          Answers.logLogin(action.username, true);
+          Answers.logLogin(username, true);
   		}
 
   	});

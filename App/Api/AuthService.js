@@ -46,7 +46,9 @@ var AuthService = {
     	   })
     	.catch((err) => {
     		callback(err);
-    	});
+    	})
+      .done();
+      
 
 
   }

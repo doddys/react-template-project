@@ -51,7 +51,7 @@ var LoginScreen = React.createClass({
     if (Platform.OS === 'android') {
       dismissKeyboard();
     }
-    console.log("Log Info",this.state)
+    console.log("Login using ",this.username);
 
     if (!BYPASS_LOGIN){
       this.props.verifyCredential(this.state.username, this.state.password);
