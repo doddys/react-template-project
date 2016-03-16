@@ -1,4 +1,4 @@
-import { AUTH_SET_TOKEN, AUTH_SET_INFO, AUTH_REMOVE_TOKEN, REGISTRATION_SET_TOKEN} from './ActionTypes';
+import { AUTH_SET_TOKEN, AUTH_LOGIN_ERROR, AUTH_SET_INFO, AUTH_REMOVE_TOKEN, REGISTRATION_SET_TOKEN} from './ActionTypes';
 
 var Fabric = require('react-native-fabric');
 var { Answers } = Fabric;
@@ -16,6 +16,13 @@ export function setToken(username,token) {
 export function removeToken() {
   return {
     type: AUTH_REMOVE_TOKEN,
+  };
+}
+
+export function loginError(error) {
+  return {
+    type: AUTH_LOGIN_ERROR,
+    error
   };
 }
 
@@ -43,7 +50,7 @@ export function verifyCredential(username,password){
   		if (error){
   				console.log("Error: ", error);
           Answers.logLogin(username, false);
-  				dispatch(removeToken())
+  				dispatch(loginError(error));
   		} else {
   				console.log("Login Success");
   				dispatch(setToken(username,data));

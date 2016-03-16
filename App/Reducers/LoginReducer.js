@@ -1,7 +1,7 @@
 'use-strict'
 
 import Immutable from 'immutable';
-import { AUTH_SET_TOKEN, AUTH_SET_INFO, AUTH_REMOVE_TOKEN, REGISTRATION_SET_TOKEN } from '../Actions/ActionTypes';
+import { AUTH_SET_TOKEN, AUTH_LOGIN_ERROR, AUTH_SET_INFO, AUTH_REMOVE_TOKEN, REGISTRATION_SET_TOKEN } from '../Actions/ActionTypes';
 var Fabric = require('react-native-fabric');
 var { Crashlytics } = Fabric;
 
@@ -17,6 +17,7 @@ const initialState = Immutable.fromJS(
     expiresIn: null,
     pushToken: null,
     pushTokenOS: null,
+    error: null,
   },
 );
 
@@ -27,6 +28,7 @@ function loginReducer(state = initialState, action) {
           state = state.set('refreshToken', action.token.refresh_token);
           state = state.set('expiresIn', action.token.expires_in);
           state = state.set('username', action.username);
+          state = state.set('error', null);
           Crashlytics.setUserName(action.username);
           //Crashlytics.setUserIdentifier('1234');
           Crashlytics.setString('organization', 'Jasa Raharja');
@@ -36,9 +38,24 @@ function loginReducer(state = initialState, action) {
           state = state.set('pushToken', action.token.token);
           state = state.set('pushTokenOS', action.token.os);
         break;
+
+        case AUTH_REMOVE_TOKEN:
+          console.log("Removing Token");
+          state = state.set('accessToken', null);
+          state = state.set('refreshToken', null);
+          state = state.set('username', null);
+          state = state.set('expiresIn', null);
+          state = state.set('error', null);
+
+        break;
+
+        case AUTH_LOGIN_ERROR:
+          state = state.set('error', action.error);
+        break;
       }
 
-      return state;
+    return state;
+
 }
 
 module.exports = loginReducer;

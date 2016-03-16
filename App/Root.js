@@ -23,6 +23,7 @@ var TaskEditScreen = require('./Screens/TaskEditScreen');
 var SettingScreen = require('./Screens/SettingScreen');
 var MapScreen = require('./Screens/MapScreen');
 var CameraScreen = require('./Screens/CameraScreen');
+var ErrorPopUp = require('./Screens/ErrorPopUp');
 var i18n = require('./i18n.js');
 var store = require('./Stores/AppStore');
 
@@ -158,11 +159,9 @@ export default class JasaRaharjaMobileApp extends Component {
             sceneConfig={Navigator.SceneConfigs.FloatFromRight}
             hideNavBar={hideNavBar}
           />
-
-
-
         <Schema name="modal" sceneConfig={Navigator.SceneConfigs.FloatFromBottom}/>
 
+        <Route name="error" type="modal" component={ErrorPopUp}/>
         <Route name='auth' component={LoginScreen} schema='boot' initial={true}/>
         <Route name='logout' component={LoginScreen} schema='boot'/>
 

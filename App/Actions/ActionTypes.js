@@ -31,9 +31,10 @@ export const TASK_SUBMIT_FAILED = 'TASK_SUBMIT_FAILED';
 
 
 // Authentication ACTION Symbol(`auth.set_token`);
+export const AUTH_LOGIN_ERROR = 'AUTH_LOGIN_ERROR';
 export const AUTH_SET_TOKEN = 'AUTH_SET_TOKEN';
 export const AUTH_SET_INFO = 'AUTH_SET_INFO';
-export const AUTH_REMOVE_TOKEN = 'AUTH_SET_INFO';
+export const AUTH_REMOVE_TOKEN = 'AUTH_REMOVE_TOKEN';
 export const REGISTRATION_SET_TOKEN = 'REGISTRATION_SET_TOKEN';
 
 

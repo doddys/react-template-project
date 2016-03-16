@@ -38,8 +38,8 @@ var AuthService = {
     	.then((data) => {
           console.log("receive data", data);
     		  if (data.error) {
-            console.log("ERROR" , data.error);
-            throw data.error.message || 'Unable to login';
+            console.log("ERROR" , data);
+            throw data.error_description || '. Unable to login';
           }
           callback(null,data);
 
@@ -48,7 +48,7 @@ var AuthService = {
     		callback(err);
     	})
       .done();
-      
+
 
 
   }

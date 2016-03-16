@@ -20,7 +20,7 @@ var styles = require('../Styles/style');
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { verifyCredential } from '../Actions/AuthAction'
+import { verifyCredential, removeToken } from '../Actions/AuthAction'
 import { BYPASS_LOGIN } from '../Config/Config';
 
 
@@ -39,11 +39,24 @@ var LoginScreen = React.createClass({
       };
   },
 
+  componentDidMount(){
+    console.log("LOGIN PAGE", this.props);
+    if (this.props.name === "logout"){
+      this.props.removeToken();
+    }
+
+  },
+
   componentWillReceiveProps: function (nextProps) {
     console.log("Receiving new Properties: ", nextProps.isLoggedIn);
       if (nextProps.isLoggedIn) {
         Actions.main();
       }
+
+      if (nextProps.loginError && this.props.loginError !== nextProps.loginError){
+        Actions.error({data: nextProps.loginError});
+      }
+
   },
 
   // added for testing
@@ -61,6 +74,7 @@ var LoginScreen = React.createClass({
   },
 
     render: function() {
+
         return (
             <View  style={localStyles.bg}>
 
@@ -155,12 +169,14 @@ var mapStateToProps = function(state) {
 
   return {
     isLoggedIn: login,
+    loginError: state.getIn(['currentUser','error']),
   };
 };
 
 var mapDispatchToProps = function (dispatch) {
   return bindActionCreators({
 	  verifyCredential,
+    removeToken,
 	}, dispatch);
 
 };
