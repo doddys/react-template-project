@@ -48,11 +48,16 @@ var pushOption = null;
 
 if (Platform.OS === 'android'){
   BackAndroid.addEventListener('hardwareBackPress', () => {
-    //if (_navigator && _navigator.getCurrentRoutes().length > 1) {
-      Actions.pop();
-      return true;
-    //}
-    //return false;
+    try {
+      if (Actions.pop() != null) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+
   });
 
   pushOption = {

@@ -26,7 +26,7 @@ var TaskDetailScreen = React.createClass({
 
   componentDidMount: function() {
     console.log("Viewing Detail Page");
-    console.log("DETAIL:", this.props.data);
+
   },
 
 	render: function() {

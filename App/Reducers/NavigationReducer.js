@@ -4,69 +4,62 @@ var Actions = require('react-native-router-flux').Actions;
 var Fabric = require('react-native-fabric');
 var { Answers } = Fabric;
 
-function navigationReducer(state = {}, action) {
+const initialState =
+  {
+    pageTitle: null,
+    pageId: null,
+    stackSize: null,
+  };
+
+
+function navigationReducer(state = initialState, action) {
       //console.log("STATE:", action.type, state);
       Answers.logCustom('ReducerAction', {action: action.type });
 
+      //console.log("Navigate:", action);
+      console.log("Navigate:", action.type, action.name);
+
       switch (action.type) {
           case Actions.BEFORE_ROUTE:
-              console.log("Navigate:", action.type, action.name);
-              state = action.route;
-              return state;
+            state.pageId = action.route.name;
+            state.pageTitle = action.route.title;
+
+            state = {
+              pageId: action.route.name,
+              pageTitle: action.route.title,
+              stackSize: action.route.parent.stack.length,
+            };
+              //state = action.route;
+
+            return state;
           case Actions.AFTER_ROUTE:
-              console.log("Navigate:", action.type, action.name);
-              //console.log("AFTER_ROUTE:", action);
-              return state;
+            state = {
+              pageId: action.route.name,
+              pageTitle: action.route.title,
+              stackSize: action.route.parent.stack.length,
+            };
+            console.log("Updating CurrentRoute", state);
+
+            return state;
           case Actions.AFTER_POP:
-              console.log("Navigate:", action.type, action.name);
-              state = action.route;
-              return state;
+            state = {
+              pageId: action.route.name,
+              pageTitle: action.route.title,
+              stackSize: action.route.parent.stack.length,
+            };
+            console.log("Updating CurrentRoute", state);
+
+            return state;
           case Actions.BEFORE_POP:
-              console.log("Navigate:", action.type, action.name);
-              //console.log("BEFORE_POP:", action);
-              return state;
+            return state;
           case Actions.AFTER_DISMISS:
-              console.log("Navigate:", action.type, action.name);
-              //console.log("AFTER_DISMISS:", action);
-              return state;
+            return state;
           case Actions.BEFORE_DISMISS:
-              console.log("Navigate:", action.type, action.name);
-              //console.log("BEFORE_DISMISS:", action);
-              return state;
+            return state;
+
           default:
-              return state;
+            return state;
       }
 }
 
 module.exports = navigationReducer;
-
-
-// function reducer(state = {}, action) {
-//     console.log("STATE:", action.type, state.toJS());
-//
-//     switch (action.type) {
-//         case Actions.BEFORE_ROUTE:
-//             console.log("BEFORE_ROUTE:", action);
-//             state = state.set('currentRoute', action.route);
-//             return state;
-//         case Actions.AFTER_ROUTE:
-//             console.log("AFTER_ROUTE:", action);
-//             return state;
-//         case Actions.AFTER_POP:
-//             console.log("AFTER_POP:", action);
-//             state = state.set('currentRoute', action.route);
-//             return state;
-//         case Actions.BEFORE_POP:
-//             console.log("BEFORE_POP:", action);
-//             return state;
-//         case Actions.AFTER_DISMISS:
-//             console.log("AFTER_DISMISS:", action);
-//             return state;
-//         case Actions.BEFORE_DISMISS:
-//             console.log("BEFORE_DISMISS:", action);
-//             return state;
-//         default:
-//             return state;
-//     }
-//
-// }

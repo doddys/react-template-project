@@ -24,16 +24,10 @@ var SideDrawer = React.createClass({
       this.refs.drawer.open();
   },
 
-  componentDidMount: function(){
-     //console.log("PROPS:", this.props);
-  },
-  componentWillUnmount: function(){
-
-  },
-
   renderBackIcon: function(routeId){
     //console.log("PROPS:", this.props);
-    if (routeId === "taskDetail") {
+    if (this.props.stackSize > 1){
+    //if (routeId === "taskDetail") {
       return { uri: 'ic_chevron_left_white_36dp'};
     } else {
       return undefined;
@@ -43,6 +37,7 @@ var SideDrawer = React.createClass({
 
 
   render: function() {
+
     //console.log("SideDrawer" , this.props);
     var toolbar = Platform.OS === 'android' ?
       <ToolbarAndroid
@@ -110,13 +105,13 @@ var drawerStyles = {
 //closeDrawerOffset={5}
 
 var mapStateToProps = function(state) {
-  //console.log("Mapping Page Title", state.toJS());
-  //var curState = state.toJS();
+  //console.log("Mapping Page Title", state.get('currentRoute').pageTitle);
+
   return {
-    //pageTitle: state.currentRoute.title,
     // ROUTE IS NOT IMMUTABLE
-    pageTitle: state.get('currentRoute').title,
-    pageId: state.get('currentRoute').name,
+    pageTitle: state.get('currentRoute').pageTitle,
+    pageId: state.get('currentRoute').pageId,
+    stackSize: state.get('currentRoute').stackSize,
     currentUser: state.getIn(['currentUser','username']),
   };
 

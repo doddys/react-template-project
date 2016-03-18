@@ -40,8 +40,9 @@ var LoginScreen = React.createClass({
   },
 
   componentDidMount(){
-    console.log("LOGIN PAGE", this.props);
+    //console.log("LOGIN PAGE", this.props);
     if (this.props.name === "logout"){
+      console.log("logging out");
       this.props.removeToken();
     }
 
