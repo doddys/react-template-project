@@ -33,5 +33,5 @@ local.properties
 node_modules/
 npm-debug.log
 
-# release folder
+# release folder used by codepush
 release/
