@@ -8,9 +8,9 @@ var {
   TextInput,
   StyleSheet,
   Image,
-  Platform
+  Platform,
  } = React;
-
+var ProgressBar = require('ProgressBarAndroid');
 var Button = require('react-native-button');
 var Actions = require('react-native-router-flux').Actions;
 var dismissKeyboard = require('dismissKeyboard');
@@ -75,10 +75,18 @@ var LoginScreen = React.createClass({
   },
 
     render: function() {
+        var progress = (this.props.isLoading) ?
+          <ProgressBar styleAttr="Normal" /> :
+            <Button
+              onPress={this._login}
+              style={styles.buttonText}
+              containerStyle={styles.buttonRounded}  >
+              {i18n.login}
+            </Button>;
+
 
         return (
             <View  style={localStyles.bg}>
-
                 <Image source={require('image!logo')} style={localStyles.logo}/>
                 <Text style={styles.logo}>
                 Jasa Raharja
@@ -106,13 +114,9 @@ var LoginScreen = React.createClass({
                         placeholderTextColor={'rgba(255, 255, 255, 0.7'} />
                 </View>
                 <View style={{marginTop: 15}}>
-                <Button
-                  onPress={this._login}
-                  style={styles.buttonText}
-                  containerStyle={styles.buttonRounded}  >
-                  {i18n.login}
-                </Button>
+                {progress}
                 </View>
+
             </View>
         );
     }
@@ -171,6 +175,7 @@ var mapStateToProps = function(state) {
   return {
     isLoggedIn: login,
     loginError: state.getIn(['currentUser','error']),
+    isLoading: state.getIn(['currentUser','isLoading']),
   };
 };
 

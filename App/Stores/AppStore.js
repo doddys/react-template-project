@@ -77,7 +77,7 @@ engine = immutablejs(engine, [
 
 // enable only certain state is persisted
 engine = filter(engine, [
-    'currentUser',
+//    'currentUser',
     'tasks',
   ], [
     'currentRoute',
