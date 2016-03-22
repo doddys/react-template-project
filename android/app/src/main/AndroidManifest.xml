@@ -19,6 +19,7 @@
     <uses-permission android:name="com.jasaraharjamobileapp.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <!-- for Camera -->
     <uses-feature android:name="android.hardware.camera" android:required="true"/>

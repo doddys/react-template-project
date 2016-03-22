@@ -24,6 +24,7 @@ var SettingScreen = require('./Screens/SettingScreen');
 var MapScreen = require('./Screens/MapScreen');
 var CameraScreen = require('./Screens/CameraScreen');
 var ErrorPopUp = require('./Screens/ErrorPopUp');
+var FormScreen = require('./Screens/FormScreen');
 var i18n = require('./i18n.js');
 var store = require('./Stores/AppStore');
 
@@ -187,6 +188,7 @@ export default class JasaRaharjaMobileApp extends Component {
                 <Route name='setting' component={SettingScreen} type="reset" schema='main' title={i18n.setting} />
                 <Route name='map' component={MapScreen} type="reset" schema='main' title={i18n.map} />
                 <Route name='camera' component={CameraScreen} type="reset" schema='main' title={i18n.camera} />
+				<Route name='formSample' component={FormScreen} type="reset" schema='main' title='Sample Form' />
               </Router>
             </SideDrawer>
         </Route>
