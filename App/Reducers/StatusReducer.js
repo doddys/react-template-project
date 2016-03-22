@@ -17,7 +17,7 @@ function statusReducer(state = initialState , action) {
 
         case SAVE:
             console.log('Something has changed and written to disk!');
-            break;
+            return state;
 
         case STATUS_NETWORK_UPDATE:
             console.log("Updating network Status", action.name);

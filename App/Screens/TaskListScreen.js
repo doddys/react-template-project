@@ -24,7 +24,7 @@ var debug = require('../debug');
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { runSearchTasks } from '../Actions/TaskAction'
+import { runSearchTasks, moreTasks } from '../Actions/TaskAction'
 
 var getSectionData = (dataBlob, sectionID) => {
         return dataBlob[year];
@@ -101,19 +101,35 @@ var TaskListScreen = React.createClass({
 
   _hasMore: function (){
     // check if there is more data on the server
-    console.log("hasMore");
-    return false;
+    console.log("hasMore", this.props.tasks.size !== this.props.totalTasks);
+    return (
+      this.props.tasks.size !==
+      this.props.totalTasks
+    );
   },
 
-  _onEndReach: function() {
+  _onEndReached: function() {
     // if !hasMore return
+    if (!this._hasMore()){
+      console.log("onEndReach");
+      return;
+    }
+
+    if (this.props.isLoadingTail || this.props.isLoading){
+      console.log('still loading data');
+      return;
+    }
+
+    console.log('Getting more Data');
+    this.props.moreTasks(this.props.username, this.props.nextPageNumber);
+
+
     // if isLoading return
     // else fetch more data
-    console.log("onEndReach");
   },
 
   _renderFooter: function() {
-    if (!this._hasMore() || !this.state.isLoadingTail) {
+    if (!this._hasMore() || !this.props.isLoadingTail) {
       return <View style={localStyles.scrollSpinner} />;
     }
     if (Platform.OS === 'ios') {
@@ -163,7 +179,7 @@ var TaskListScreen = React.createClass({
     // returns a Promise of reload completion
     // for a Promise-free version see ControlledRefreshableListView below
     debug("Reloading Task...");
-    this.props.runSearchTasks();
+    this.props.runSearchTasks(this.props.username, null);
   },
 
 	render: function() {
@@ -260,15 +276,19 @@ const localStyles = StyleSheet.create({
 var mapStateToProps = function(state) {
   console.log("MappingStateToProps");
   //var curState = state.toJS();
-  var data,isLoading;
-  if (state.getIn(['tasks','dataSource'])){
-    data = state.getIn(['tasks','dataSource']);
-    isLoading = state.getIn(['tasks','isLoading']);
-  }
+  // var data,isLoading;
+  // if (state.getIn(['tasks','dataSource'])){
+  //   data = state.getIn(['tasks','dataSource']);
+  //   isLoading = state.getIn(['tasks','isLoading']);
+  // }
 
   return {
-    tasks: data,
-    isLoading: isLoading,
+    username: state.getIn(['currentUser','username']),
+    tasks: state.getIn(['tasks','dataSource']),
+    isLoading: state.getIn(['tasks','isLoading']),
+    isLoadingTail: state.getIn(['tasks','isLoadingTail']),
+    totalTasks: state.getIn(['tasks','totalTasks']),
+    nextPageNumber: state.getIn(['tasks','nextPageNumber']),
   };
 
 };
@@ -276,6 +296,7 @@ var mapStateToProps = function(state) {
 var mapDispatchToProps = function (dispatch) {
   return bindActionCreators({
 	  runSearchTasks,
+    moreTasks,
 	}, dispatch);
 
 };

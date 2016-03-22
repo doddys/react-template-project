@@ -85,7 +85,7 @@ engine = filter(engine, [
 );
 
 
-var storageMiddleware = storage.createMiddleware(engine, [], ['SEARCH_TASK_RESULT']);
+var storageMiddleware = storage.createMiddleware(engine, [], ['SEARCH_TASK_RESULT','MORE_SEARCH_TASK_RESULT']);
 
 
 // Defing Middlewares

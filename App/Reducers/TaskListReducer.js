@@ -20,6 +20,10 @@ const initialState = Immutable.fromJS(
     dataSource: [],
     isLoading: false,
     currentTask: null,
+    nextPageNumber: 1,
+    totalTasks: {},
+    searchQuery: {},
+    filter: '',
   },
 );
 
@@ -40,7 +44,7 @@ function taskListReducer(state = initialState, action) {
     case types.SEARCH_TASK_RESULT:
       //receive search task result data
       //console.log("TASK_RESULT", action);
-      var newData = Immutable.fromJS(action.data);
+      var newData = Immutable.fromJS(action.data.movies);
       var oldData = state.get('dataSource');
       //console.log("OLD:", oldData);
       var mergeData = oldData.mergeDeep(newData);
@@ -50,10 +54,28 @@ function taskListReducer(state = initialState, action) {
       // console.log("SAME:", newData === oldData);
       debug("Same Data: " + mergeData === oldData);
       //modify state
-      state = state.set('dataSource', mergeData);
+      state = state.set('dataSource', newData);
       state = state.set('isLoading', false);
+      state = state.set('totalTasks', action.data.total);
+      state = state.set('nextPageNumber', 2);
+
       //return state
       return state;
+
+
+    case types.MORE_SEARCH_TASK_RESULT:
+      var newData = Immutable.fromJS(action.data.movies);
+      var oldData = state.get('dataSource');
+      var mergeData = oldData.concat(newData);
+
+      state = state.set('dataSource', mergeData);
+      state = state.set('isLoading', false);
+      state = state.set('totalTasks', action.data.total);
+      state = state.update('nextPageNumber', function (v) {
+        return v + 1; }
+      );
+
+    return state;
 
     case types.SEARCH_TASK_FAILED:
       console.log("TASK_FAILED", action.name);

@@ -52,6 +52,7 @@ function loginReducer(state = initialState, action) {
           state = state.set('username', null);
           state = state.set('expiresIn', null);
           state = state.set('error', null);
+          state = state.set('isLoading', false);
 
         break;
 
