@@ -18,9 +18,11 @@ export function viewTaskDetail (task) {
 	};
 }
 
-export function editTask () {
+export function editTask (task, value) {
 	return {
 		type: types.TASK_EDIT,
+		task,
+		value,
 	};
 }
 

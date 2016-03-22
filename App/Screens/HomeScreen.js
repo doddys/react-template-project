@@ -30,6 +30,7 @@ var HomeScreen = React.createClass({
           <Button onPress={Actions.map} style={styles.buttonText} containerStyle={styles.buttonRounded}> {i18n.map} </Button>
           <Button onPress={Actions.camera} style={styles.buttonText} containerStyle={styles.buttonRounded}> {i18n.camera} </Button>
           <Button onPress={Actions.logout} style={styles.buttonText} containerStyle={styles.buttonRounded}> {i18n.logout} </Button>
+          <Button onPress={Actions.formSample} style={styles.buttonText} containerStyle={styles.buttonRounded}>Sample Form</Button>
 
 	        </View>
 	    );

@@ -33,6 +33,32 @@ function taskListReducer(state = initialState, action) {
 
 
   switch (action.type) {
+    case types.TASK_EDIT:
+      var oldData = state.get('dataSource').toJS();
+      var updatedData = action.task;
+      var updVal = action.value;
+      var mergedData = Object.assign(updatedData, updVal);
+      var finalData = oldData.reduce(function(accum, current) {
+          console.log("current", current.id);
+          if (current.id === mergedData.id) {
+            console.log("KETEMU", current);
+            accum.push(mergedData);
+          } else {
+            accum.push(current);
+          }
+          return accum;
+      }, []);
+
+      console.log("TASK_EDIT Running - oldData:", oldData);
+      console.log("TASK_EDIT Running - updatedData:", updatedData);
+      console.log("TASK_EDIT Running - updVal:", updVal);
+      console.log("TASK_EDIT Running - mergedData:", mergedData);
+      console.log("TASK_EDIT Running - finalData:", finalData);
+
+      state = state.set('dataSource', Immutable.fromJS(finalData));
+
+      return state;
+
     case types.SEARCH_TASK_STARTED:
       console.log("TASK_STARTED", action.name);
       state = state.set('isLoading', true);
