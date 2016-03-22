@@ -15,10 +15,19 @@ var Button = require('react-native-button');
 var i18n = require('../i18n.js');
 var styles = require('../Styles/style');
 
+/**
+ *  The fantastic little form library
+ */
+const t = require('tcomb-form-native');
+let Form = t.form.Form;
+
+import Dimensions from 'Dimensions';
+var {height, width} = Dimensions.get('window');
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { acceptTask, rejectTask } from '../Actions/TaskAction'
+import { acceptTask, rejectTask, editTask } from '../Actions/TaskAction'
 import { getImageSource, getStyleFromScore, getTextFromScore } from '../Api/Common';
 
 
@@ -26,10 +35,35 @@ var TaskDetailScreen = React.createClass({
 
   componentDidMount: function() {
     console.log("Viewing Detail Page");
+  },
 
+  _editTask: function() {
+    var desc =this.refs.form.getValue();
+    console.log("Accepting Task...", desc);
+    this.props.editTask(this.props.data, desc);
+    Actions.home;
   },
 
 	render: function() {
+    let options = {
+      fields: {
+        synopsis: {
+          label: 'Penjelasan',
+          multiline: true,
+          numberOfLines: 20,
+          // textAlignVertical: true,
+          editable: true
+        }
+      }
+    };
+
+    var defValue = {
+      description: this.props.data.synopsis
+    };
+    let taskForm = t.struct({
+      synopsis: t.String
+    });
+
 	    return (
         <ScrollView contentContainerStyle={localStyles.contentContainer}>
           <View style={localStyles.mainSection}>
@@ -52,9 +86,19 @@ var TaskDetailScreen = React.createClass({
             </View>
           </View>
           <View style={localStyles.separator} />
-          <Text>
-            {this.props.data.synopsis}
-          </Text>
+
+          <ScrollView contentContainerStyle={localStyles.contentContainer}>
+        	  <View>
+              <Form ref="form"
+                type={taskForm}
+                options={options}
+                value={this.props.data}
+                  />
+            </View>
+          </ScrollView>
+
+          <View style={localStyles.separator} />
+
           <View style={localStyles.separator} />
           <Casualties casualties={this.props.data.abridged_cast} />
 
@@ -62,7 +106,7 @@ var TaskDetailScreen = React.createClass({
 
           <View style={localStyles.actionButton}>
             <Button
-              onPress={this.props.acceptTask}
+              onPress={this._editTask}
               style={styles.buttonText}
               containerStyle={styles.buttonRounded,localStyles.buttonRounded}>
               {i18n.accept}
@@ -187,6 +231,7 @@ var localStyles = StyleSheet.create({
     return bindActionCreators({
   	  acceptTask,
       rejectTask,
+      editTask,
   	}, dispatch);
 
   };
