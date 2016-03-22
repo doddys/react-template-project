@@ -26,7 +26,6 @@ import java.util.List;
 
 public class MainActivity extends ReactActivity {
 
-    private ImagePickerPackage mImagePicker;
     private ReactNativePushNotificationPackage mReactNativePushNotificationPackage;
 
     /**
@@ -53,7 +52,6 @@ public class MainActivity extends ReactActivity {
    */
     @Override
     protected List<ReactPackage> getPackages() {
-      mImagePicker = new ImagePickerPackage(this);
       mReactNativePushNotificationPackage = new ReactNativePushNotificationPackage(this);
 
 
@@ -66,18 +64,13 @@ public class MainActivity extends ReactActivity {
         new AirPackage(),
         new RNDeviceInfo(),
         new RNLocation(),
+        new ImagePickerPackage(),
         new RCTSplashScreenPackage(this),
         new FabricPackage(this),
-        mImagePicker,
         mReactNativePushNotificationPackage
       );
     }
 
-    @Override
-   public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-       super.onActivityResult(requestCode, resultCode, data);
-       mImagePicker.handleActivityResult(requestCode, resultCode, data);
-   }
 
    // Add onNewIntent
     @Override

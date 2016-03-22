@@ -1,5 +1,10 @@
 'use strict';
 
+var React = require('react-native');
+var {
+  StyleSheet,
+} = React;
+
 
 export function getImageSource (task: Object, kind: ?string): {uri: ?string} {
   var uri = task && task.posters ? task.posters.thumbnail : null;
@@ -28,3 +33,10 @@ export function getStyleFromScore (score: number): StyleObj {
     ')'
   };
 };
+
+
+var styles = StyleSheet.create({
+  noScore: {
+    color: '#999999',
+  },
+});

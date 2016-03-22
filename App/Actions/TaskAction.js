@@ -87,7 +87,7 @@ function _searchTasksFailed (message) {
 	};
 }
 
-function _searchTasks (dispatch, username, nextPageToken = null) {
+function _searchTasks (dispatch, username, nextPageToken) {
 	console.log("SearchTask Started");
 	dispatch(_searchTasksStarted(username));
 
@@ -101,7 +101,7 @@ function _searchTasks (dispatch, username, nextPageToken = null) {
 				dispatch(_moreSearchTasksResultReceived(data))
 			} else {
 				console.log("Sending Data via Action");
-				dispatch(_searchTasksResultReceived(data.movies))
+				dispatch(_searchTasksResultReceived(data))
 			}
 		}
 	});

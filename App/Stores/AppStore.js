@@ -77,7 +77,7 @@ engine = immutablejs(engine, [
 
 // enable only certain state is persisted
 engine = filter(engine, [
-    'currentUser',
+//    'currentUser',
     'tasks',
   ], [
     'currentRoute',
@@ -85,7 +85,7 @@ engine = filter(engine, [
 );
 
 
-var storageMiddleware = storage.createMiddleware(engine, [], ['SEARCH_TASK_RESULT']);
+var storageMiddleware = storage.createMiddleware(engine, [], ['SEARCH_TASK_RESULT','MORE_SEARCH_TASK_RESULT']);
 
 
 // Defing Middlewares
