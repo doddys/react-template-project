@@ -63,7 +63,7 @@ var styles = StyleSheet.create({
         padding: 5,
         borderColor: '#eeeeee',
         borderWidth:1,
-        borderColor: 'transparent',
+        //borderColor: 'transparent',
      },
     controlPanel: {
       flex: 1,
@@ -131,7 +131,7 @@ var styles = StyleSheet.create({
   		fontSize: 20
     },
 
-    
+
 });
 
 

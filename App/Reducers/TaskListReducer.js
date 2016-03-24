@@ -27,7 +27,7 @@ const initialState = Immutable.fromJS(
   },
 );
 
-tasks:
+
 function taskListReducer(state = initialState, action) {
   //console.log("TaskList", state, action);
 
