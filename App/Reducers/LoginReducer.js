@@ -26,6 +26,7 @@ function loginReducer(state = initialState, action) {
       switch (action.type){
         case AUTH_SET_INFO:
           state = state.set('isLoading', true);
+          state = state.set('error', null);
         break;
 
         case AUTH_SET_TOKEN:
