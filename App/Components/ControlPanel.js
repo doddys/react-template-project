@@ -3,6 +3,7 @@
 var React = require('react-native')
 var {
     View,
+    ScrollView,
     Text,
     TouchableHighlight,
     StyleSheet
@@ -36,6 +37,7 @@ var ControlPanel = React.createClass({
         var {drawer} = this.context;
 
         return (
+          <ScrollView contentContainerStyle={localStyles.contentContainer}>
             <View style={localStyles.container}>
               <View style={localStyles.header}>
                 <Icon style={localStyles.icon} name="user" size={30} />
@@ -107,6 +109,7 @@ var ControlPanel = React.createClass({
                 </TouchableHighlight>
               </View>
             </View>
+          </ScrollView>
         )
     }
 })
@@ -117,6 +120,9 @@ var localStyles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: 'white',
     alignItems: 'stretch',
+  },
+  contentContainer: {
+    padding: 0,
   },
   header: {
     flexDirection: 'row',

@@ -11,6 +11,7 @@ var styles = require('../Styles/style');
 var {
     Text,
     View,
+    ScrollView,
     StyleSheet
 } = React;
 
@@ -19,6 +20,7 @@ var HomeScreen = React.createClass({
 	render: function() {
 
 	    return (
+        <ScrollView contentContainerStyle={localStyles.contentContainer}>
 	     	<View style={styles.bg}>
 	     		<Text style={localStyles.welcome}>
 	     			Hey There! Welcome!
@@ -33,6 +35,7 @@ var HomeScreen = React.createClass({
           <Button onPress={Actions.formSample} style={styles.buttonText} containerStyle={styles.buttonRounded}>Sample Form</Button>
 
 	        </View>
+          </ScrollView>
 	    );
   }
 });
@@ -45,6 +48,9 @@ const localStyles = StyleSheet.create({
 		marginBottom: 20,
 		marginTop: 20
 	},
+  contentContainer: {
+    padding: 1,
+  },
 
 
 });
