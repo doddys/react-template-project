@@ -27,21 +27,27 @@ var {height, width} = Dimensions.get('window');
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { acceptTask, rejectTask, editTask } from '../Actions/TaskAction'
+import { acceptTask, editTask } from '../Actions/TaskAction'
 import { getImageSource, getStyleFromScore, getTextFromScore } from '../Api/Common';
 
 
 var TaskDetailScreen = React.createClass({
 
   componentDidMount: function() {
-    console.log("Viewing Detail Page");
+    console.log("Viewing Detail Page", this.props.data);
   },
 
   _editTask: function() {
     var desc =this.refs.form.getValue();
-    console.log("Accepting Task...", desc);
+    console.log("Editing Task...", desc);
     this.props.editTask(this.props.data, desc);
     Actions.home;
+  },
+
+  _acceptTask: function() {
+    console.log("Accepting Task", this.props.data);
+    this.props.acceptTask(this.props.accessToken, this.props.data);
+    Actions.task();
   },
 
 	render: function() {
@@ -67,56 +73,16 @@ var TaskDetailScreen = React.createClass({
 	    return (
         <ScrollView contentContainerStyle={localStyles.contentContainer}>
           <View style={localStyles.mainSection}>
-            {/* $FlowIssue #7363964 - There's a bug in Flow where you cannot
-              * omit a property or set it to undefined if it's inside a shape,
-              * even if it isn't required */}
-            <Image
-              source={getImageSource(this.props.data, 'det')}
-              style={localStyles.detailsImage}
-            />
-            <View style={localStyles.rightPane}>
-              <Text style={localStyles.taskTitle}>{this.props.data.title}</Text>
-              <Text>{this.props.data.year}</Text>
-              <View style={localStyles.mpaaWrapper}>
-                <Text style={localStyles.mpaaText}>
-                  {this.props.data.mpaa_rating}
-                </Text>
-              </View>
-
+            <Text style={localStyles.taskTitle}>{this.props.data.victimName}</Text>
+            <View style={localStyles.separator} />
+            <View style={localStyles.actionButton}>
+              <Button
+                onPress={this._acceptTask}
+                style={styles.buttonText}
+                containerStyle={styles.buttonRounded,localStyles.buttonRounded}>
+                {i18n.accept}
+              </Button>
             </View>
-          </View>
-          <View style={localStyles.separator} />
-
-          <ScrollView contentContainerStyle={localStyles.contentContainer}>
-        	  <View>
-              <Form ref="form"
-                type={taskForm}
-                options={options}
-                value={this.props.data}
-                  />
-            </View>
-          </ScrollView>
-
-          <View style={localStyles.separator} />
-
-          <View style={localStyles.separator} />
-          <Casualties casualties={this.props.data.abridged_cast} />
-
-          <View style={localStyles.separator} />
-
-          <View style={localStyles.actionButton}>
-            <Button
-              onPress={this._editTask}
-              style={styles.buttonText}
-              containerStyle={styles.buttonRounded,localStyles.buttonRounded}>
-              {i18n.accept}
-            </Button>
-            <Button
-              onPress={this.props.rejectTask}
-              style={styles.buttonText}
-              containerStyle={styles.buttonRounded,localStyles.buttonRounded}>
-              {i18n.reject}
-            </Button>
           </View>
 
         </ScrollView>
@@ -223,6 +189,7 @@ var localStyles = StyleSheet.create({
   var mapStateToProps = function(state) {
     console.log("MappingStateToProps");
     return {
+      accessToken: state.getIn(['currentUser','accessToken']),
     };
 
   };
@@ -230,7 +197,6 @@ var localStyles = StyleSheet.create({
   var mapDispatchToProps = function (dispatch) {
     return bindActionCreators({
   	  acceptTask,
-      rejectTask,
       editTask,
   	}, dispatch);
 

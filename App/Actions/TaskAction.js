@@ -3,8 +3,6 @@
 import * as types from './ActionTypes';
 var TaskService = require('../Api/TaskService');
 
-
-//export const newSearchTasks = () => ({type: types.NEW_SEARCH_TASK});
 export function newSearchTask () {
 	return {
 		type: types.NEW_SEARCH_TASK,
@@ -37,8 +35,6 @@ export function submitTask () {
 		type: types.TASK_SUBMIT,
 	};
 }
-
-
 
 
 //export const runSearchTasks = (username) => (dispatch) => _searchTasks(dispatch, "dooddy");
@@ -108,16 +104,21 @@ function _searchTasks (dispatch, username, nextPageToken) {
 }
 
 
-export function acceptTask(task, username){
+export function acceptTask(authToken, task){
 	return function (dispatch) {
-		console.log("AccepTask Started");
-		dispatch(_acceptTaskStarted(task, username));
+		console.log("AccepTask Started", task);
+		dispatch(_acceptTaskStarted(task, null));
 
-		var data = {
-			status: 'success',
-		}
+		TaskService.acceptTask(authToken, task.surveyId, function(error,data){
+			if (error){
+				console.log("Error", error);
+				dispatch(_acceptTaskFailed(error))
+			} else {
+				console.log("Move task from availTask to myTask");
+				dispatch(_acceptTaskResult(task));
+			}
+		});
 
-		dispatch(_acceptTaskResult(data));
 	};
 }
 
@@ -129,10 +130,10 @@ function _acceptTaskStarted(task, username) {
 	};
 }
 
-function _acceptTaskResult(data) {
+function _acceptTaskResult(task) {
 	return {
 		type: types.TASK_ACCEPT_RESULT,
-		data,
+		task,
 	};
 }
 

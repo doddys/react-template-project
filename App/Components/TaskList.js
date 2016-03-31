@@ -142,7 +142,7 @@ var TaskList = React.createClass({
   ) {
     return (
       <TaskCell
-        key={task.id}
+        key={task.surveyId}
         onSelect={() => this._selectTask(task)}
         onHighlight={() => highlightRowFunc(sectionID, rowID)}
         onUnhighlight={() => highlightRowFunc(null, null)}

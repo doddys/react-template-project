@@ -9,8 +9,9 @@ var TASK_API_URL = 'http://192.168.135.1:9090/survey';
 //var PARAMS = '?apikey=' + API_KEY + '&page_limit=' + PAGE_SIZE;
 //var REQUEST_URL = API_URL + PARAMS;
 
-var AVAIL_TASK_URL = 'https://dev.expecc.com:18091/jasaraharja/api/survey/findByLoketName?loket_code=AAA';
-var MY_TASK_URL = 'https://dev.expecc.com:18091/jasaraharja/api/survey/findMine';
+var AVAIL_TASK_URL = 'https://dev.expecc.com:18091/api-gateway/api/survey/findByLoketName?loket_code=001';
+var MY_TASK_URL = 'https://dev.expecc.com:18091/api-gateway/api/survey/findMine';
+var ACCEPT_TASK_URL = 'https://dev.expecc.com:18091/api-gateway/api/survey/';
 
 import Immutable from 'immutable';
 import {
@@ -66,6 +67,12 @@ var TaskService = {
     }
   },
 
+  _urlForClaimTask: function(surveyId): string {
+    return(
+      ACCEPT_TASK_URL + surveyId + '/claim'
+    );
+  },
+
   fetchAvailableTasks: function(authToken, callback) {
     console.log("fetchAvailableTasks() started", AVAIL_TASK_URL);
 
@@ -109,6 +116,30 @@ var TaskService = {
           console.log("receive data", data);
 
           if (data.error) throw data.error.message || 'Unable to search';
+          callback(null,data);
+         })
+      .catch((err) => {
+        callback(err);
+      });
+
+  },
+
+  acceptTask: function(authToken, surveyId, callback) {
+    console.log("acceptTask() started", ACCEPT_TASK_URL)
+
+    var headers = new Headers();
+    headers.append("Authorization", "Bearer " + authToken);
+    headers.append("Accept",  "application/json");
+
+    fetch(this._urlForClaimTask(surveyId), {
+        method: "POST",
+        headers: headers
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+          console.log("receive data", data);
+
+          if (data.error || data.status != 0) throw data.error.message || 'Unable to Claim Task';
           callback(null,data);
          })
       .catch((err) => {

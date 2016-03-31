@@ -97,6 +97,46 @@ function taskSearchReducer(state = initialState, action) {
 
       return state;
 
+    case types.TASK_ACCEPT_STARTED:
+      console.log("TASK_ACCEPT_STARTED", action);
+      state = state.set('isLoading', true);
+      return state;
+
+    case types.TASK_ACCEPT_RESULT:
+      console.log("TASK_ACCEPT_RESULT", action);
+
+      // append accepted task to myTask list
+      var myTask = state.get('myTask').toJS();
+      console.log("myTask", myTask);
+      myTask.push(action.task);
+      console.log("myTask after push", myTask);
+
+      // remove claimed task from availTask list
+      console.log("Prune Available Task");
+      var oldData = state.get('availTask').toJS();
+      console.log("oldData", oldData);
+      var newData = oldData.reduce(function(accum, current) {
+          console.log("current", current);
+          console.log("current.surveyId", current.surveyId);
+          if (current.surveyId === action.task.surveyId) {
+            console.log("exclude claimed task");
+          } else {
+            console.log("push current");
+            accum.push(current);
+          }
+          return accum;
+      }, []);
+
+      state = state.set('availTask', Immutable.fromJS(newData));
+      state = state.set('myTask', Immutable.fromJS(myTask));
+      state = state.set('isLoading', false);
+      return state;
+
+    case types.TASK_ACCEPT_FAILED:
+      console.log("TASK_FAILED", action.name);
+      state = state.set('isLoading', false);
+      return state;
+
     default:
       return state;
   }
