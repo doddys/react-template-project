@@ -39,7 +39,7 @@ var ControlPanel = React.createClass({
             <View style={localStyles.container}>
               <View style={localStyles.header}>
                 <Icon style={localStyles.icon} name="user" size={30} />
-                <Text style={localStyles.headerText} >{this.props.currentUser} Doddy</Text>
+                <Text style={localStyles.headerText} >{this.props.currentUser}</Text>
               </View>
               <View style={localStyles.menuList}>
                 <TouchableHighlight

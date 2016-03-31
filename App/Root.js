@@ -18,13 +18,14 @@ var HomeScreen = require('./Screens/HomeScreen');
 var LoginScreen = require('./Screens/LoginScreen');
 var ApprovalListScreen = require('./Screens/ApprovalListScreen');
 var TaskListScreen = require('./Screens/TaskListScreen');
+var TaskScreen = require('./Screens/TaskScreen');
 var TaskDetailScreen = require('./Screens/TaskDetailScreen');
 var TaskEditScreen = require('./Screens/TaskEditScreen');
 var SettingScreen = require('./Screens/SettingScreen');
 var MapScreen = require('./Screens/MapScreen');
 var CameraScreen = require('./Screens/CameraScreen');
 var ErrorPopUp = require('./Screens/ErrorPopUp');
-var FormScreen = require('./Screens/FormScreen');
+// var FormScreen = require('./Screens/FormScreen');
 var i18n = require('./i18n.js');
 var store = require('./Stores/AppStore');
 
@@ -181,14 +182,14 @@ export default class JasaRaharjaMobileApp extends Component {
                 barButtonTextStyle={localStyles.barButtonText}
                 >
                 <Route name='home' component={HomeScreen} type="reset" schema='main' title={i18n.home} />
-                <Route name='task' component={TaskListScreen} type="reset" schema='main' title={i18n.taskList} />
+                <Route name='task' component={TaskScreen} type="reset" schema='main' title={i18n.taskList} />
                 <Route name='taskDetail' component={TaskDetailScreen} schema='sub' title={i18n.taskDetail} />
                 <Route name='taskEdit' component={TaskEditScreen} schema='sub' title={i18n.taskEdit} />
                 <Route name='approvalList' component={ApprovalListScreen} type="reset" schema='main' title={i18n.approvalList} />
                 <Route name='setting' component={SettingScreen} type="reset" schema='main' title={i18n.setting} />
                 <Route name='map' component={MapScreen} type="reset" schema='main' title={i18n.map} />
                 <Route name='camera' component={CameraScreen} type="reset" schema='main' title={i18n.camera} />
-				<Route name='formSample' component={FormScreen} type="reset" schema='main' title='Sample Form' />
+				        
               </Router>
             </SideDrawer>
         </Route>

@@ -16,36 +16,25 @@ import { getImageSource, getStyleFromScore, getTextFromScore } from '../Api/Comm
 
 var TaskCell = React.createClass({
   render: function() {
-    var criticsScore = this.props.task.ratings.critics_score;
+    // var criticsScore = this.props.task.ratings.critics_score;
     var TouchableElement = TouchableHighlight;
     if (Platform.OS === 'android') {
       TouchableElement = TouchableNativeFeedback;
     }
 
     return (
-      <View>
+      <View style={styles.card}>
         <TouchableElement
           onPress={this.props.onSelect}
           onShowUnderlay={this.props.onHighlight}
           onHideUnderlay={this.props.onUnhighlight}>
           <View style={styles.row}>
-            {/* $FlowIssue #7363964 - There's a bug in Flow where you cannot
-              * omit a property or set it to undefined if it's inside a shape,
-              * even if it isn't required */}
-            <Image
-              source={getImageSource(this.props.task, 'det')}
-              style={styles.cellImage}
-            />
             <View style={styles.textContainer}>
               <Text style={styles.taskTitle} numberOfLines={2}>
-                {this.props.task.title}
+                {this.props.task.victimName}
               </Text>
               <Text style={styles.taskYear} numberOfLines={1}>
-                {this.props.task.year}
-                {' '}&bull;{' '}
-                <Text style={getStyleFromScore(criticsScore)}>
-                  Critics {getTextFromScore(criticsScore)}
-                </Text>
+                Kode Tugas: {this.props.task.surveyId}
               </Text>
             </View>
           </View>
@@ -69,6 +58,10 @@ var styles = StyleSheet.create({
     color: '#999999',
     fontSize: 12,
   },
+  hospital: {
+    color: '#F2EC3A',
+    fontSize: 12,
+  },
   row: {
     alignItems: 'center',
     backgroundColor: 'white',
@@ -88,6 +81,18 @@ var styles = StyleSheet.create({
   },
   noScore: {
     color: '#999999',
+  },
+  card: {
+    borderWidth: 1,
+    backgroundColor: '#fff',
+    borderColor: 'rgba(0,0,0,0.1)',
+    margin: 5,
+    height: 75,
+    padding: 5,
+    shadowColor: '#ccc',
+    shadowOffset: { width: 2, height: 2, },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
   },
 });
 

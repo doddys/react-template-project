@@ -5,8 +5,12 @@
 var API_URL = 'http://api.rottentomatoes.com/api/public/v1.0/';
 var API_KEY = '7waqfqbprs7pajbz28mqf6vz';
 var PAGE_SIZE = 25;
+var TASK_API_URL = 'http://192.168.135.1:9090/survey';
 //var PARAMS = '?apikey=' + API_KEY + '&page_limit=' + PAGE_SIZE;
 //var REQUEST_URL = API_URL + PARAMS;
+
+var AVAIL_TASK_URL = 'https://dev.expecc.com:18091/jasaraharja/api/survey/findByLoketName?loket_code=AAA';
+var MY_TASK_URL = 'https://dev.expecc.com:18091/jasaraharja/api/survey/findMine';
 
 import Immutable from 'immutable';
 import {
@@ -62,6 +66,56 @@ var TaskService = {
     }
   },
 
+  fetchAvailableTasks: function(authToken, callback) {
+    console.log("fetchAvailableTasks() started", AVAIL_TASK_URL);
+
+    console.log("get authToken", authToken);
+
+    var headers = new Headers();
+    headers.append("Authorization", "Bearer " + authToken);
+    headers.append("Accept",  "application/json");
+
+    fetch(AVAIL_TASK_URL, {
+        method: "GET",
+        headers: headers
+    })
+    	.then((resp) => resp.json())
+    	.then((data) => {
+          console.log("receive data", data);
+
+    		  if (data.error) throw data.error.message || 'Unable to search';
+          callback(null,data);
+    	   })
+    	.catch((err) => {
+    		callback(err);
+    	});
+
+  },
+
+  fetchMyTasks: function(authToken, callback) {
+    console.log("fetchMyTasks() started", MY_TASK_URL);
+    console.log("get authToken", authToken);
+
+    var headers = new Headers();
+    headers.append("Authorization", "Bearer " + authToken);
+    headers.append("Accept",  "application/json");
+
+    fetch(MY_TASK_URL, {
+        method: "GET",
+        headers: headers
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+          console.log("receive data", data);
+
+          if (data.error) throw data.error.message || 'Unable to search';
+          callback(null,data);
+         })
+      .catch((err) => {
+        callback(err);
+      });
+
+  },
 
 }
 
