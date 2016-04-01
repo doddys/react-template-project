@@ -3,8 +3,10 @@
 // may use keymirror for more efficient writing
 export const SEARCH_TASK_STARTED = 'SEARCH_TASK_STARTED';
 export const SEARCH_TASK_RESULT = 'SEARCH_TASK_RESULT';
+export const MY_TASK_RESULT = 'MY_TASK_RESULT';
 export const SEARCH_TASK_FAILED = 'SEARCH_TASK_FAILED';
 export const MORE_SEARCH_TASK_RESULT = 'MORE_SEARCH_TASK_RESULT';
+export const MORE_MY_TASK_RESULT = 'MORE_MY_TASK_RESULT';
 export const NEW_SEARCH_TASK = 'REFRESH_SEARCH_TASK'
 
 export const TASK_ACCEPT = 'TASK_ACCEPT';
