@@ -3,7 +3,7 @@
 
 export const DEBUG = true;
 export const SERVER_HOST = "http://api.rottentomatoes.com";
-export const LOGIN_URL = "https://dev.expecc.com:18091/jasaraharja/oauth/token";
+export const LOGIN_URL = "https://dev.expecc.com:18091/api-gateway/oauth/token";
 export const API_KEY = "my-trusted-client-with-secret";
 export const API_KEY2 = "somesecret";
 export const BYPASS_LOGIN = false;

@@ -11,19 +11,19 @@ var styles = require('../Styles/style');
 var {
     Text,
     View,
-    ScrollView,
     StyleSheet
 } = React;
+
+import { connect } from 'react-redux';
 
 var HomeScreen = React.createClass({
 
 	render: function() {
 
 	    return (
-        <ScrollView contentContainerStyle={localStyles.contentContainer}>
 	     	<View style={styles.bg}>
 	     		<Text style={localStyles.welcome}>
-	     			Hey There! Welcome!
+	     			Hey There! Welcome, {this.props.username}
 	 			  </Text>
           <Button onPress={Actions.home} style={styles.buttonText} containerStyle={styles.buttonRounded}> {i18n.home} </Button>
           <Button onPress={Actions.task} style={styles.buttonText} containerStyle={styles.buttonRounded}> {i18n.taskList} </Button>
@@ -32,10 +32,7 @@ var HomeScreen = React.createClass({
           <Button onPress={Actions.map} style={styles.buttonText} containerStyle={styles.buttonRounded}> {i18n.map} </Button>
           <Button onPress={Actions.camera} style={styles.buttonText} containerStyle={styles.buttonRounded}> {i18n.camera} </Button>
           <Button onPress={Actions.logout} style={styles.buttonText} containerStyle={styles.buttonRounded}> {i18n.logout} </Button>
-          <Button onPress={Actions.formSample} style={styles.buttonText} containerStyle={styles.buttonRounded}>Sample Form</Button>
-
 	        </View>
-          </ScrollView>
 	    );
   }
 });
@@ -55,7 +52,23 @@ const localStyles = StyleSheet.create({
 
 });
 
-module.exports = HomeScreen;
+
+var mapStateToProps = function(state) {
+  console.log("MappingStateToProps");
+
+  return {
+    username: state.getIn(['currentUser','username']),
+  };
+
+};
+
+var mapDispatchToProps = function (dispatch) {
+  return {
+  };
+
+};
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
 
 
 

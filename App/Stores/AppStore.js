@@ -23,6 +23,8 @@ var initialState = Immutable.fromJS({
   currentRoute: undefined,
   tasks: {
     dataSource: [],
+    availTask: [],
+    myTask: [],
     isLoading: false,
   },
   setting: {
@@ -39,6 +41,7 @@ var initialState = Immutable.fromJS({
 // define reducers
 var navigationReducer = require('../Reducers/NavigationReducer.js');
 var taskListReducer = require('../Reducers/TaskListReducer.js');
+var taskSearchReducer = require('../Reducers/TaskSearchReducer.js');
 var loginReducer = require('../Reducers/LoginReducer.js');
 var statusReducer = require('../Reducers/StatusReducer.js');
 var settingReducer = require('../Reducers/SettingReducer.js');
@@ -56,7 +59,8 @@ var settingReducer = require('../Reducers/SettingReducer.js');
 var reducers = {
   currentUser: loginReducer,
   currentRoute: navigationReducer,
-  tasks: taskListReducer,
+  // tasks: taskListReducer,
+  tasks: taskSearchReducer,
   status: statusReducer,
   setting: settingReducer,
 };
