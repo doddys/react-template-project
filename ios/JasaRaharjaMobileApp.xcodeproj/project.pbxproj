@@ -34,6 +34,7 @@
 		D3CC47FF2C7B41D8A4A722A2 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A9AEE3D812D4955861DCF9F /* EvilIcons.ttf */; };
 		DA228890B5A84BB896279F2C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18E56FAE510B4BF09BACEC13 /* FontAwesome.ttf */; };
 		EA48B6561C8979A900985844 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA48B6551C89799C00985844 /* libRNDeviceInfo.a */; };
+		EA7A5F081CA29A94002E5C96 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA7A5F061CA29A94002E5C96 /* LaunchScreen.xib */; };
 		EA9045661C8C7C2100231BDA /* libRNLocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9045641C8C7C1200231BDA /* libRNLocation.a */; };
 		EA9045681C8C7C5100231BDA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA9045671C8C7C5100231BDA /* CoreLocation.framework */; };
 		EAAA00D21C95A57600717194 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAA00D01C95A57600717194 /* Fabric.framework */; };
@@ -223,6 +224,7 @@
 		D9FF26E1DE7C490FB6E228D3 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		E8BC521412A34AF382EF251B /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
 		EA48B6501C89799C00985844 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
+		EA7A5F071CA29A94002E5C96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = JasaRaharjaMobileApp/Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EA90454F1C8C7C1200231BDA /* RNLocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNLocation.xcodeproj; path = "../node_modules/react-native-gps/RNLocation.xcodeproj"; sourceTree = "<group>"; };
 		EA9045671C8C7C5100231BDA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		EAAA00D01C95A57600717194 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 		13B07FAE1A68108700A75B9A /* JasaRaharjaMobileApp */ = {
 			isa = PBXGroup;
 			children = (
+				EA7A5F061CA29A94002E5C96 /* LaunchScreen.xib */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -821,6 +824,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA7A5F081CA29A94002E5C96 /* LaunchScreen.xib in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				D0E281D3DF854BA790D7B0E0 /* Entypo.ttf in Resources */,
 				D3CC47FF2C7B41D8A4A722A2 /* EvilIcons.ttf in Resources */,
@@ -892,6 +896,17 @@
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EA7A5F061CA29A94002E5C96 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA7A5F071CA29A94002E5C96 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
@@ -969,6 +984,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = JasaRaharjaMobileApp;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -995,6 +1011,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = JasaRaharjaMobileApp;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

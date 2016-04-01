@@ -7,7 +7,7 @@ export const SEARCH_AVAIL_TASK_TYPE = 1;
 export const SEARCH_MY_TASK_TYPE = 2;
 
 export function runSearchTasks(taskType, authToken){
-	return function (dispatch) {
+	return function (dispatch, state) {
 		switch (taskType) {
 			case SEARCH_AVAIL_TASK_TYPE:
 				_searchTasks(dispatch, authToken);

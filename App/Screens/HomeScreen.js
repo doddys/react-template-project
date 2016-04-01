@@ -32,7 +32,7 @@ var HomeScreen = React.createClass({
           <Button onPress={Actions.map} style={styles.buttonText} containerStyle={styles.buttonRounded}> {i18n.map} </Button>
           <Button onPress={Actions.camera} style={styles.buttonText} containerStyle={styles.buttonRounded}> {i18n.camera} </Button>
           <Button onPress={Actions.logout} style={styles.buttonText} containerStyle={styles.buttonRounded}> {i18n.logout} </Button>
-	      </View>
+	        </View>
 	    );
   }
 });
@@ -45,11 +45,13 @@ const localStyles = StyleSheet.create({
 		marginBottom: 20,
 		marginTop: 20
 	},
+  contentContainer: {
+    padding: 1,
+  },
 
 
 });
 
-// module.exports = HomeScreen;
 
 var mapStateToProps = function(state) {
   console.log("MappingStateToProps");
