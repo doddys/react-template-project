@@ -138,8 +138,9 @@ var TaskService = {
       .then((resp) => resp.json())
       .then((data) => {
           console.log("receive data", data);
+          console.log("receive data.status", data.status);
 
-          if (data.error || data.status != 0) throw data.error.message || 'Unable to Claim Task';
+          if (data.error || data.status != 200) throw data.error.message || 'Unable to Claim Task';
           callback(null,data);
          })
       .catch((err) => {

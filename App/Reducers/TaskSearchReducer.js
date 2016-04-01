@@ -40,12 +40,26 @@ function taskSearchReducer(state = initialState, action) {
     case types.SEARCH_TASK_RESULT:
       console.log("SEARCH_TASK_RESULT", action.data);
 
-      var newData = Immutable.fromJS(action.data.content);
-      var oldData = state.get('availTask');
-      var mergeData = oldData.mergeDeep(newData);
-      debug("Same Data: " + mergeData === oldData);
+      // filter only task with status = 'NEW'
+      var dataFromAction = action.data.content;
+      var filteredData = dataFromAction.reduce(function(accum, current) {
+          console.log("current", current);
+          if (current.status === 'NEW') {
+            console.log("push data with status=NEW");
+            accum.push(current);
+          } else {
+            console.log("skip data");
+          }
+          return accum;
+      }, []);
 
-      state = state.set('availTask', mergeData);
+
+      // var newData = Immutable.fromJS(filteredData);
+      // var oldData = state.get('availTask');
+      // var mergeData = oldData.mergeDeep(newData);
+      // debug("Same Data: " + mergeData === oldData);
+
+      state = state.set('availTask', Immutable.fromJS(filteredData));
       state = state.set('isLoading', false);
       state = state.set('moreData', function (v) {
         if (action.data.page.number < action.data.page.totalPages - 1)
