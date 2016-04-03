@@ -9,9 +9,9 @@ var TASK_API_URL = 'http://192.168.135.1:9090/survey';
 //var PARAMS = '?apikey=' + API_KEY + '&page_limit=' + PAGE_SIZE;
 //var REQUEST_URL = API_URL + PARAMS;
 
-var AVAIL_TASK_URL = 'https://dev.expecc.com:18091/api-gateway/api/survey/findByLoketName?loket_code=001';
-var MY_TASK_URL = 'https://dev.expecc.com:18091/api-gateway/api/survey/findMine';
-var ACCEPT_TASK_URL = 'https://dev.expecc.com:18091/api-gateway/api/survey/';
+var AVAIL_TASK_URL = 'https://dev.expecc.com:9002/api-gateway/api/survey/findAvailableSurvey';
+var MY_TASK_URL = 'https://dev.expecc.com:9002/api-gateway/api/survey/findMine';
+var ACCEPT_TASK_URL = 'https://dev.expecc.com:9002/api-gateway/api/survey/';
 
 import Immutable from 'immutable';
 import {
@@ -19,6 +19,8 @@ import {
   List,
   fromJS
 } from 'immutable';
+
+// for fetch documentation go to https://github.com/bitinn/node-fetch/releases
 
 
 var TaskService = {
@@ -81,10 +83,16 @@ var TaskService = {
     var headers = new Headers();
     headers.append("Authorization", "Bearer " + authToken);
     headers.append("Accept",  "application/json");
+    // gzip is not needed by default fetch will send gzip as accept encoding
+    //headers.append("Accept-Encoding", "gzip");
 
     fetch(AVAIL_TASK_URL, {
         method: "GET",
-        headers: headers
+        headers: headers,
+        timeout: 30,
+        // this flag has no effect
+        //compress: true,
+
     })
     	.then((resp) => resp.json())
     	.then((data) => {
@@ -109,7 +117,10 @@ var TaskService = {
 
     fetch(MY_TASK_URL, {
         method: "GET",
-        headers: headers
+        headers: headers,
+        timeout: 30,
+        compress: true,
+
     })
       .then((resp) => resp.json())
       .then((data) => {
@@ -133,7 +144,10 @@ var TaskService = {
 
     fetch(this._urlForClaimTask(surveyId), {
         method: "POST",
-        headers: headers
+        headers: headers,
+        timeout: 30,
+        compress: true,
+
     })
       .then((resp) => resp.json())
       .then((data) => {
