@@ -181,7 +181,7 @@ export default class JasaRaharjaMobileApp extends Component {
                 barButtonTextStyle={localStyles.barButtonText}
                 >
                 <Route name='home' component={HomeScreen} type="reset" schema='main' title={i18n.home} />
-                <Route name='task' component={TaskScreen} type="reset" schema='main' title={i18n.taskList} />
+                <Route name='task' component={TaskScreen} type="reset" schema='sub' title={i18n.taskList} />
                 <Route name='taskDetail' component={TaskDetailScreen} schema='sub' title={i18n.taskDetail} />
                 <Route name='taskEdit' component={TaskEditScreen} schema='sub' title={i18n.taskEdit} />
                 <Route name='approvalList' component={ApprovalListScreen} type="reset" schema='main' title={i18n.approvalList} />
