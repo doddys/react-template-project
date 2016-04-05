@@ -20,6 +20,8 @@ import {
   fromJS
 } from 'immutable';
 
+// for fetch documentation go to https://github.com/bitinn/node-fetch/releases
+
 
 var TaskService = {
 
@@ -73,6 +75,8 @@ var TaskService = {
     var headers = new Headers();
     headers.append("Authorization", "Bearer " + accessToken);
     headers.append("Accept",  "application/json");
+    // gzip is not needed by default fetch will send gzip as accept encoding
+    //headers.append("Accept-Encoding", "gzip");
 
     var apiUrl = AVAIL_TASK_URL + '?page=0&size='+ PAGE_SIZE + '&sort=surveyId,asc'
     if (nextPageUrl) {
@@ -81,7 +85,11 @@ var TaskService = {
 
     fetch(apiUrl, {
         method: "GET",
-        headers: headers
+        headers: headers,
+        timeout: 30,
+        // this flag has no effect
+        //compress: true,
+
     })
     	.then((resp) => resp.json())
     	.then((data) => {
@@ -111,7 +119,10 @@ var TaskService = {
     console.log("fetchMyTasks() fetching...", apiUrl);
     fetch(apiUrl, {
         method: "GET",
-        headers: headers
+        headers: headers,
+        timeout: 30,
+        compress: true,
+
     })
     	.then((resp) => resp.json())
     	.then((data) => {
@@ -135,7 +146,10 @@ var TaskService = {
 
     fetch(this._urlForClaimTask(surveyId), {
         method: "POST",
-        headers: headers
+        headers: headers,
+        timeout: 30,
+        compress: true,
+
     })
       .then((resp) => resp.json())
       .then((data) => {
