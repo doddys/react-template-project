@@ -27,7 +27,7 @@ var {height, width} = Dimensions.get('window');
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { acceptTask, editTask } from '../Actions/TaskAction'
+import { runClaimMyTask, editTask } from '../Actions/TaskAction'
 import { getImageSource, getStyleFromScore, getTextFromScore } from '../Api/Common';
 
 
@@ -46,7 +46,7 @@ var TaskDetailScreen = React.createClass({
 
   _acceptTask: function() {
     console.log("Accepting Task", this.props.data);
-    this.props.acceptTask(this.props.accessToken, this.props.data);
+    this.props.runClaimMyTask(this.props.data);
     Actions.task();
   },
 
@@ -73,7 +73,7 @@ var TaskDetailScreen = React.createClass({
 	    return (
         <ScrollView contentContainerStyle={localStyles.contentContainer}>
           <View style={localStyles.mainSection}>
-            <Text style={localStyles.taskTitle}>{this.props.data.victimName}</Text>
+            <Text style={localStyles.taskTitle}>{this.props.data.survey.victimName}</Text>
             <View style={localStyles.separator} />
             <View style={localStyles.actionButton}>
               <Button
@@ -189,14 +189,13 @@ var localStyles = StyleSheet.create({
   var mapStateToProps = function(state) {
     console.log("MappingStateToProps");
     return {
-      accessToken: state.getIn(['currentUser','accessToken']),
     };
 
   };
 
   var mapDispatchToProps = function (dispatch) {
     return bindActionCreators({
-  	  acceptTask,
+  	  runClaimMyTask,
       editTask,
   	}, dispatch);
 

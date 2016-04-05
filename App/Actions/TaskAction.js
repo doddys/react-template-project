@@ -3,6 +3,196 @@
 import * as types from './ActionTypes';
 var TaskService = require('../Api/TaskService');
 
+// --- List of thunk-function invoked by components/screens
+export function runFetchAvailTask(){
+	return (dispatch, getState) => {
+		var accessToken = getState().getIn(['currentUser','accessToken']);
+		_fetchAvailTask(dispatch, accessToken, null) ;
+  };
+}
+
+export function runMoreAvailTask(nextPageUrl){
+	return (dispatch, getState) => {
+		var accessToken = getState().getIn(['currentUser','accessToken']);
+		_fetchAvailTask(dispatch, accessToken, nextPageUrl) ;
+  };
+}
+
+export function runFetchMyTask(){
+	return (dispatch, getState) => {
+		var accessToken = getState().getIn(['currentUser','accessToken']);
+		_fetchMyTask(dispatch, accessToken, null) ;
+  };
+}
+
+export function runMoreMyTask(nextPageUrl){
+	return (dispatch, getState) => {
+		var accessToken = getState().getIn(['currentUser','accessToken']);
+		_fetchMyTask(dispatch, accessToken, nextPageUrl) ;
+  };
+}
+
+export function runClaimMyTask(taskData){
+	return (dispatch, getState) => {
+		var accessToken = getState().getIn(['currentUser','accessToken']);
+		_acceptTask(dispatch, accessToken, taskData);
+  };
+}
+
+
+// --- List Actions
+function _fetchAvailTask (dispatch, accessToken, nextPageUrl) {
+	console.log("_fetchAvailTask Started");
+	dispatch(_fetchAvailTaskStarted());
+
+	TaskService.fetchAvailableTasks(accessToken, nextPageUrl, function(error,data){
+		if (error){
+				console.log("Error", error);
+				dispatch(_fetchAvailTaskFailed(error))
+		} else {
+			if (nextPageUrl) {
+				console.log("Sending More Available Tasks Data via Action");
+				dispatch(_moreAvailTaskResultReceived(data))
+			} else {
+				console.log("Sending Available Tasks Data via Action");
+				dispatch(_fetchAvailTaskResultReceived(data))
+			}
+		}
+	});
+}
+
+function _fetchAvailTaskStarted() {
+	return {
+		type: types.FETCH_AVAIL_TASK_STARTED,
+	};
+}
+
+function _fetchAvailTaskFailed (message) {
+	return {
+		type: types.FETCH_AVAIL_TASK_FAILED,
+		message,
+	};
+}
+
+function _moreAvailTaskResultReceived (data) {
+	return {
+		type: types.MORE_AVAIL_TASK_RESULT,
+		data,
+	};
+}
+
+function _fetchAvailTaskResultReceived(data) {
+	return {
+		type: types.FETCH_AVAIL_TASK_RESULT,
+		data
+	};
+}
+
+// -- Related to My Tasks
+function _fetchMyTask (dispatch, accessToken, nextPageUrl) {
+	console.log("_fetchMyTask - Started");
+	dispatch(_fetchMyTaskStarted());
+
+	TaskService.fetchMyTasks(accessToken, nextPageUrl, function(error,data){
+		if (error){
+				console.log("_fetchMyTask - Error", error);
+				dispatch(_fetchMyTaskFailed(error))
+		} else {
+			if (nextPageUrl) {
+				console.log("_fetchMyTask - Sending More Available Tasks Data via Action");
+				dispatch(_moreMyTaskResultReceived(data))
+			} else {
+				console.log("_fetchMyTask - Sending Available Tasks Data via Action");
+				dispatch(_fetchMyTaskResultReceived(data))
+			}
+		}
+	});
+}
+
+function _fetchMyTaskStarted() {
+	return {
+		type: types.FETCH_MY_TASK_STARTED,
+	};
+}
+
+function _fetchMyTaskFailed (message) {
+	return {
+		type: types.FETCH_MY_TASK_FAILED,
+		message,
+	};
+}
+
+function _moreMyTaskResultReceived (data) {
+	return {
+		type: types.MORE_MY_TASK_RESULT,
+		data,
+	};
+}
+
+function _fetchMyTaskResultReceived(data) {
+	return {
+		type: types.FETCH_MY_TASK_RESULT,
+		data
+	};
+}
+
+
+// -- Related to Claim Tasks
+function _acceptTask(dispatch, accessToken, taskData){
+	console.log("AccepTask Started", taskData);
+	dispatch(_acceptTaskStarted(taskData, null));
+
+	TaskService.acceptTask(accessToken, taskData.survey.surveyId, function(error,data){
+		if (error){
+			console.log("Error", error);
+			dispatch(_acceptTaskFailed(error))
+		} else {
+			console.log("Move task from availTask to myTask");
+			dispatch(_acceptTaskResult(taskData));
+		}
+	});
+}
+
+function _acceptTaskStarted(task, username) {
+	return {
+		type: types.TASK_ACCEPT_STARTED,
+		task,
+	};
+}
+
+function _acceptTaskResult(task) {
+	return {
+		type: types.TASK_ACCEPT_RESULT,
+		task,
+	};
+}
+
+function _acceptTaskFailed(message) {
+	return {
+		type: types.TASK_ACCEPT_FAILED,
+		message,
+	};
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export function newSearchTask () {
 	return {
 		type: types.NEW_SEARCH_TASK,
@@ -103,46 +293,6 @@ function _searchTasks (dispatch, username, nextPageToken) {
 	});
 }
 
-
-export function acceptTask(authToken, task){
-	return function (dispatch) {
-		console.log("AccepTask Started", task);
-		dispatch(_acceptTaskStarted(task, null));
-
-		TaskService.acceptTask(authToken, task.surveyId, function(error,data){
-			if (error){
-				console.log("Error", error);
-				dispatch(_acceptTaskFailed(error))
-			} else {
-				console.log("Move task from availTask to myTask");
-				dispatch(_acceptTaskResult(task));
-			}
-		});
-
-	};
-}
-
-function _acceptTaskStarted(task, username) {
-	return {
-		type: types.TASK_ACCEPT_STARTED,
-		task,
-		username,
-	};
-}
-
-function _acceptTaskResult(task) {
-	return {
-		type: types.TASK_ACCEPT_RESULT,
-		task,
-	};
-}
-
-function _acceptTaskFailed(message) {
-	return {
-		type: types.TASK_ACCEPT_FAILED,
-		message,
-	};
-}
 
 export function rejectTask(task, username){
 	return function (dispatch) {

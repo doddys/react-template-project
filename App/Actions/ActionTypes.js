@@ -1,18 +1,49 @@
 'use strict';
 
 // may use keymirror for more efficient writing
+
+// --- availTaskReducer Group ---
+export const FETCH_AVAIL_TASK_STARTED = 'FETCH_AVAIL_TASK_STARTED';
+export const FETCH_AVAIL_TASK_RESULT = 'FETCH_AVAIL_TASK_RESULT';
+export const MORE_AVAIL_TASK_RESULT = 'MORE_AVAIL_TASK_RESULT';
+export const FETCH_AVAIL_TASK_FAILED = 'FETCH_AVAIL_TASK_FAILED';
+
+
+// --- MyTaskReducer Group ---
+export const FETCH_MY_TASK_STARTED = 'FETCH_MY_TASK_STARTED';
+export const FETCH_MY_TASK_RESULT = 'FETCH_MY_TASK_RESULT';
+export const MORE_MY_TASK_RESULT = 'MORE_MY_TASK_RESULT';
+export const FETCH_MY_TASK_FAILED = 'FETCH_MY_TASK_FAILED';
+
+
+// --- TaskOpsReducer Group ---
+export const TASK_ACCEPT_STARTED = 'TASK_ACCEPT_STARTED';
+export const TASK_ACCEPT_RESULT = 'TASK_ACCEPT_RESULT';
+export const TASK_ACCEPT_FAILED = 'TASK_ACCEPT_FAILED';
+
+
+// -- Other Reducers ---
+// Authentication ACTION Symbol(`auth.set_token`);
+export const AUTH_LOGIN_ERROR = 'AUTH_LOGIN_ERROR';
+export const AUTH_SET_TOKEN = 'AUTH_SET_TOKEN';
+export const AUTH_SET_INFO = 'AUTH_SET_INFO';
+export const AUTH_REMOVE_TOKEN = 'AUTH_REMOVE_TOKEN';
+export const REGISTRATION_SET_TOKEN = 'REGISTRATION_SET_TOKEN';
+
+
+export const STATUS_NETWORK_UPDATE = 'STATUS_NETWORK_UPDATE';
+
+
+// -- Obsoletes
 export const SEARCH_TASK_STARTED = 'SEARCH_TASK_STARTED';
 export const SEARCH_TASK_RESULT = 'SEARCH_TASK_RESULT';
 export const MY_TASK_RESULT = 'MY_TASK_RESULT';
 export const SEARCH_TASK_FAILED = 'SEARCH_TASK_FAILED';
 export const MORE_SEARCH_TASK_RESULT = 'MORE_SEARCH_TASK_RESULT';
-export const MORE_MY_TASK_RESULT = 'MORE_MY_TASK_RESULT';
 export const NEW_SEARCH_TASK = 'REFRESH_SEARCH_TASK'
 
 export const TASK_ACCEPT = 'TASK_ACCEPT';
-export const TASK_ACCEPT_STARTED = 'TASK_ACCEPT_STARTED';
-export const TASK_ACCEPT_RESULT = 'TASK_ACCEPT_RESULT';
-export const TASK_ACCEPT_FAILED = 'TASK_ACCEPT_FAILED';
+
 
 export const TASK_REJECT = 'TASK_REJECT';
 export const TASK_REJECT_STARTED = 'TASK_REJECT_STARTED';
@@ -27,17 +58,3 @@ export const TASK_SUBMIT = 'TASK_SUBMIT';
 export const TASK_SUBMIT_STARTED = 'TASK_SUBMIT_STARTED';
 export const TASK_SUBMIT_RESULT = 'TASK_SUBMIT_RESULT';
 export const TASK_SUBMIT_FAILED = 'TASK_SUBMIT_FAILED';
-
-
-
-
-
-// Authentication ACTION Symbol(`auth.set_token`);
-export const AUTH_LOGIN_ERROR = 'AUTH_LOGIN_ERROR';
-export const AUTH_SET_TOKEN = 'AUTH_SET_TOKEN';
-export const AUTH_SET_INFO = 'AUTH_SET_INFO';
-export const AUTH_REMOVE_TOKEN = 'AUTH_REMOVE_TOKEN';
-export const REGISTRATION_SET_TOKEN = 'REGISTRATION_SET_TOKEN';
-
-
-export const STATUS_NETWORK_UPDATE = 'STATUS_NETWORK_UPDATE';

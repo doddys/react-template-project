@@ -16,7 +16,7 @@ import { getImageSource, getStyleFromScore, getTextFromScore } from '../Api/Comm
 
 var TaskCell = React.createClass({
   render: function() {
-    // var criticsScore = this.props.task.ratings.critics_score;
+    console.log("render TaskCell", this.props.task);
     var TouchableElement = TouchableHighlight;
     if (Platform.OS === 'android') {
       TouchableElement = TouchableNativeFeedback;
@@ -31,10 +31,13 @@ var TaskCell = React.createClass({
           <View style={styles.row}>
             <View style={styles.textContainer}>
               <Text style={styles.taskTitle} numberOfLines={2}>
-                {this.props.task.victimName}
+                {this.props.task.survey.victimName}
               </Text>
               <Text style={styles.taskYear} numberOfLines={1}>
-                Kode Tugas: {this.props.task.surveyId}
+                Kode Tugas: {this.props.task.survey.surveyId}
+              </Text>
+              <Text style={styles.taskYear} numberOfLines={1}>
+                Rumah Sakit: {this.props.task.survey.hospital.hospitalName}
               </Text>
             </View>
           </View>
