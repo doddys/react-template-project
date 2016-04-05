@@ -21,11 +21,29 @@ var initialState = Immutable.fromJS({
     expiredIn: null,
   },
   currentRoute: undefined,
-  tasks: {
+  // tasks: {
+  //   dataSource: [],
+  //   availTask: [],
+  //   myTask: [],
+  //   isLoading: false,
+  // },
+  availTasks: {
     dataSource: [],
-    availTask: [],
-    myTask: [],
     isLoading: false,
+    currentPage: 0,
+    totalPages: 1,
+    nextPageUrl: null,
+    prevPageUrl: null,
+    moreData: false,
+  },
+  myTasks: {
+    dataSource: [],
+    isLoading: false,
+    currentPage: 0,
+    totalPages: 1,
+    nextPageUrl: null,
+    prevPageUrl: null,
+    moreData: false,
   },
   setting: {
     lang: 'id',
@@ -40,8 +58,9 @@ var initialState = Immutable.fromJS({
 
 // define reducers
 var navigationReducer = require('../Reducers/NavigationReducer.js');
-var taskListReducer = require('../Reducers/TaskListReducer.js');
-var taskSearchReducer = require('../Reducers/TaskSearchReducer.js');
+// var taskListReducer = require('../Reducers/TaskListReducer.js');
+var availTaskReducer = require('../Reducers/AvailTaskReducer.js');
+var myTaskReducer = require('../Reducers/MyTaskReducer.js');
 var loginReducer = require('../Reducers/LoginReducer.js');
 var statusReducer = require('../Reducers/StatusReducer.js');
 var settingReducer = require('../Reducers/SettingReducer.js');
@@ -60,7 +79,9 @@ var reducers = {
   currentUser: loginReducer,
   currentRoute: navigationReducer,
   // tasks: taskListReducer,
-  tasks: taskSearchReducer,
+  //tasks: taskSearchReducer,
+  availTasks: availTaskReducer,
+  myTasks: myTaskReducer,
   status: statusReducer,
   setting: settingReducer,
 };
@@ -75,21 +96,30 @@ var engine = createEngine(STORAGE_KEY);
 //enable immutablejs for states
 engine = immutablejs(engine, [
   ['currentUser'],
-  ['tasks'],
+  // ['tasks'],
+  ['availTasks'],
+  ['myTasks'],
   ['setting'],
 ]);
 
 // enable only certain state is persisted
 engine = filter(engine, [
 //    'currentUser',
-    'tasks',
+    // 'tasks',
+    // 'availTasks',
+    'myTasks',
   ], [
     'currentRoute',
   ]
 );
 
 
-var storageMiddleware = storage.createMiddleware(engine, [], ['SEARCH_TASK_RESULT','MORE_SEARCH_TASK_RESULT']);
+var storageMiddleware = storage.createMiddleware(engine, [], [
+  // 'FETCH_AVAIL_TASK_RESULT',
+  // 'MORE_AVAIL_TASK_RESULT',
+  'TASK_ACCEPT_RESULT',
+  'FETCH_MY_TASK_RESULT',
+  'MORE_MY_TASK_RESULT']);
 
 
 // Defing Middlewares

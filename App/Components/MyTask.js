@@ -23,7 +23,7 @@ var debug = require('../debug');
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { runSearchTasks, moreTasks, SEARCH_MY_TASK_TYPE } from '../Actions/TaskSearchAction'
+import { runFetchMyTask, runMoreMyTask } from '../Actions/TaskAction'
 
 var ds = new ListView.DataSource(
   {
@@ -81,42 +81,37 @@ var TaskList = React.createClass({
 
   _hasMore: function (){
     // check if there is more data on the server
-    console.log("hasMore", this.props.tasks.moreData );
-    return (this.props.tasks.moreData);
+    console.log("hasMore", this.props.moreData );
+    return (this.props.moreData);
   },
 
-  _onEndReached: function() {
+  _onLoadMore: function() {
+
+    console.log("_onLoadMore");
+
     // if !hasMore return
     if (!this._hasMore()){
-      console.log("onEndReach");
+      console.log("_onLoadMore - No more data");
       return;
     }
 
-    if (this.props.isLoadingTail || this.props.isLoading){
-      console.log('still loading data');
+    if (this.props.isLoading){
+      console.log('_onLoadMore - Still loading data');
       return;
     }
 
-    console.log('Getting more Data');
-    this.props.moreTasks(this.props.username, this.props.nextPageNumber);
-
-
-    // if isLoading return
-    // else fetch more data
+    console.log('_onLoadMore - Getting more Data');
+    this.props.runMoreMyTask(this.props.nextPage);
   },
 
   _renderFooter: function() {
-    if (!this._hasMore() || !this.props.isLoadingTail) {
-      return <View style={localStyles.scrollSpinner} />;
-    }
-    if (Platform.OS === 'ios') {
-      return <ActivityIndicatorIOS style={localStyles.scrollSpinner} />;
-    } else {
+    console.log("_renderFooter");
+    if (this._hasMore()) {
+      console.log("_renderFooter - actionable text");
       return (
-        <View  style={{alignItems: 'center'}}>
-          <ProgressBarAndroid styleAttr="Large"/>
-        </View>
-      );
+        <View style={[styles.bg, localStyles.centerText]}>
+          <Text style={localStyles.noTasksText} onPress={this._onLoadMore} >Load More...</Text>
+        </View>);
     }
   },
 
@@ -140,6 +135,7 @@ var TaskList = React.createClass({
     rowID: number | string,
     highlightRowFunc: (sectionID: ?number | string, rowID: ?number | string) => void,
   ) {
+    console.log("_renderRow", task);
     return (
       <TaskCell
         key={task.surveyId}
@@ -155,7 +151,7 @@ var TaskList = React.createClass({
     // returns a Promise of reload completion
     // for a Promise-free version see ControlledRefreshableListView below
     debug("Reloading Task...");
-    this.props.runSearchTasks(SEARCH_MY_TASK_TYPE, this.props.accessToken);
+    this.props.runFetchMyTask();
   },
 
   render: function() {
@@ -171,7 +167,7 @@ var TaskList = React.createClass({
           dataSource={this.state.dataSource}
           renderFooter={this._renderFooter}
           renderRow={this._renderRow}
-          onEndReached={this._onEndReached}
+          // onEndReached={this._onEndReached}
           automaticallyAdjustContentInsets={false}
           keyboardDismissMode="on-drag"
           keyboardShouldPersistTaps={true}
@@ -197,7 +193,7 @@ var TaskList = React.createClass({
     centerText: {
       alignItems: 'center',
     },
-    noMoviesText: {
+    noTasksText: {
       marginTop: 80,
       color: '#888888',
     },
@@ -259,19 +255,18 @@ var TaskList = React.createClass({
 
     return {
       username: state.getIn(['currentUser','username']),
-      accessToken: state.getIn(['currentUser','accessToken']),
-      tasks: state.getIn(['tasks','myTask']),
-      isLoading: state.getIn(['tasks','isLoading']),
-      isLoadingTail: state.getIn(['tasks','isLoadingTail']),
-      moreData: state.getIn(['tasks','moreData']),
+      tasks: state.getIn(['myTasks','dataSource']),
+      nextPage: state.getIn(['myTasks','nextPageUrl']),
+      isLoading: state.getIn(['myTasks','isLoading']),
+      moreData: state.getIn(['myTasks','moreData']),
     };
 
   };
 
   var mapDispatchToProps = function (dispatch) {
     return bindActionCreators({
-  	  runSearchTasks,
-      moreTasks,
+  	  runFetchMyTask,
+      runMoreMyTask,
   	}, dispatch);
 
   };
