@@ -74,8 +74,8 @@ function availTaskReducer(state = initialState, action) {
 
       return state;
 
-    case types.MORE_MY_TASK_RESULT:
-      console.log("MORE_MY_TASK_RESULT", action.data);
+    case types.FETCH_MY_TASK_RESULT_MORE:
+      console.log("FETCH_MY_TASK_RESULT_MORE", action.data);
 
       // merge with old data
       var newData = Immutable.fromJS(action.data.content);

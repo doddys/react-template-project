@@ -1,17 +1,15 @@
 'use strict';
 
-//var client = require('../Api/HTTPClient')
-//var API_URL = 'http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json';
-var API_URL = 'http://api.rottentomatoes.com/api/public/v1.0/';
-var API_KEY = '7waqfqbprs7pajbz28mqf6vz';
-var PAGE_SIZE = 5;
-var TASK_API_URL = 'http://192.168.135.1:9090/survey';
-//var PARAMS = '?apikey=' + API_KEY + '&page_limit=' + PAGE_SIZE;
-//var REQUEST_URL = API_URL + PARAMS;
+var PAGE_SIZE = 7;
 
 var AVAIL_TASK_URL = 'https://dev.expecc.com:9002/api-gateway/api/survey/findAvailableSurvey';
 var MY_TASK_URL = 'https://dev.expecc.com:9002/api-gateway/api/survey/findMine';
 var ACCEPT_TASK_URL = 'https://dev.expecc.com:9002/api-gateway/api/survey/';
+
+// var AVAIL_TASK_URL = 'http://192.168.59.1:8080/api-gateway/api/survey/findAvailableSurvey';
+// var MY_TASK_URL = 'http://192.168.59.1:8080/api-gateway/api/survey/findMine';
+// var ACCEPT_TASK_URL = 'http://192.168.59.1:8080/api-gateway/api/survey/';
+
 
 import Immutable from 'immutable';
 import {

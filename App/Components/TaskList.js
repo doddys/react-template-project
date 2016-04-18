@@ -36,7 +36,7 @@ var TaskList = React.createClass({
   getInitialState: function() {
     debug("Get Initial State");
     return {
-      dataSource: ds.cloneWithRows(this.props.tasks.toJS()),
+      dataSource: ds.cloneWithRows(this.props.tasks),
       isLoading: false,
     }
   },
@@ -54,18 +54,19 @@ var TaskList = React.createClass({
   componentWillReceiveProps: function (nextProps) {
     debug("Receiving new Properties with Size: " + nextProps.tasks.size);
     this.setState({
+      dataSource: ds.cloneWithRows(nextProps.tasks),
       isLoading: nextProps.isLoading,
     });
-
-      if (this.props.tasks !== nextProps.tasks) {
-        debug("Updating List with new data");
-        this.setState({
-          dataSource: ds.cloneWithRows(nextProps.tasks.toJS()),
-        });
-      } else {
-        debug("New Props = Old Props");
-
-      }
+      //
+      // if (this.props.tasks !== nextProps.tasks) {
+      //   debug("Updating List with new data");
+      //   this.setState({
+      //     dataSource: ds.cloneWithRows(nextProps.tasks),
+      //   });
+      // } else {
+      //   debug("New Props = Old Props");
+      //
+      // }
   },
 
   _selectTask: function(task: Object) {
@@ -100,7 +101,7 @@ var TaskList = React.createClass({
     }
 
     console.log('_onLoadMore - Getting more Data');
-    this.props.runMoreAvailTask(this.props.nextPage);
+    this.props.runFetchAvailTask();
   },
 
   _renderFooter: function() {
@@ -149,23 +150,28 @@ var TaskList = React.createClass({
     // returns a Promise of reload completion
     // for a Promise-free version see ControlledRefreshableListView below
     debug("Reloading Task...");
-    this.props.runFetchAvailTask();
+    this.props.runFetchAvailTask(true);
+  },
+
+  _onEndReached: function() {
+    debug("_onEndReached()");
+    // BUG, it is called continuously even before scrolling to the bottom of the list
   },
 
   render: function() {
-      debug("Render Task List: "+ this.props.tasks.size);
+      debug("Render Task List: "+ this.state.dataSource.getRowCount() );
 
-      var content = this.state.dataSource.getRowCount() === 0 ?
+      var content = this.props.tasks.size === 0 ?
         <NoTask
           isLoading={this.state.isLoading}
         /> :
         <ListView
           ref="listview"
-          renderSeparator={this._renderSeparator}
+          //renderSeparator={this._renderSeparator}
           dataSource={this.state.dataSource}
           renderFooter={this._renderFooter}
           renderRow={this._renderRow}
-          // onEndReached={this._onEndReached}
+          onEndReached={this._onEndReached}
           automaticallyAdjustContentInsets={false}
           keyboardDismissMode="on-drag"
           keyboardShouldPersistTaps={true}
@@ -252,9 +258,7 @@ var TaskList = React.createClass({
     console.log("TaskList - MappingStateToProps", state);
 
     return {
-      username: state.getIn(['currentUser','username']),
       tasks: state.getIn(['availTasks','dataSource']),
-      nextPage: state.getIn(['availTasks','nextPageUrl']),
       isLoading: state.getIn(['availTasks','isLoading']),
       moreData: state.getIn(['availTasks','moreData']),
     };
@@ -264,7 +268,6 @@ var TaskList = React.createClass({
   var mapDispatchToProps = function (dispatch) {
     return bindActionCreators({
       runFetchAvailTask,
-      runMoreAvailTask,
   	}, dispatch);
 
   };

@@ -169,7 +169,7 @@ export default class JasaRaharjaMobileApp extends Component {
         <Schema name="modal" sceneConfig={Navigator.SceneConfigs.FloatFromBottom}/>
         <Route name="error" type="modal" component={ErrorPopUp} schema='boot'/>
         <Route name='auth' component={LoginScreen} schema='boot' initial={true}/>
-        <Route name='logout' component={LoginScreen} type='reset' schema='boot'/>
+        <Route name='logout' component={LoginScreen} schema='boot'/>
 
         <Route name='main' title={i18n.home} hideNavBar={true} type='reset'>
             <SideDrawer>

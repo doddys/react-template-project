@@ -4,27 +4,33 @@ import * as types from './ActionTypes';
 var TaskService = require('../Api/TaskService');
 
 // --- List of thunk-function invoked by components/screens
-export function runFetchAvailTask(){
+export function runFetchAvailTask(forceReload){
 	return (dispatch, getState) => {
 		var accessToken = getState().getIn(['currentUser','accessToken']);
-		_fetchAvailTask(dispatch, accessToken, null) ;
-  };
-}
 
-export function runMoreAvailTask(nextPageUrl){
-	return (dispatch, getState) => {
-		var accessToken = getState().getIn(['currentUser','accessToken']);
-		_fetchAvailTask(dispatch, accessToken, nextPageUrl) ;
+		//check if nextPageURL is set, if it is then pass in the next url
+		var nextPageUrl = null;
+
+		//if forcerelaod is false, get more data
+		if (!forceReload) {
+			nextPageUrl = getState().getIn(['availTasks','nextPageUrl']);
+		}
+
+		_fetchAvailTask(dispatch, accessToken, nextPageUrl);
   };
 }
 
 export function runFetchMyTask(){
 	return (dispatch, getState) => {
 		var accessToken = getState().getIn(['currentUser','accessToken']);
-		_fetchMyTask(dispatch, accessToken, null) ;
+
+		//check if nextPageURL is set, if it is then pass in the next url
+		var nextPageUrl = getState().getIn(['availTasks','nextPageUrl']);
+		_fetchMyTask(dispatch, accessToken, nextPageUrl) ;
   };
 }
 
+// deprecated
 export function runMoreMyTask(nextPageUrl){
 	return (dispatch, getState) => {
 		var accessToken = getState().getIn(['currentUser','accessToken']);
@@ -40,7 +46,7 @@ export function runClaimMyTask(taskData){
 }
 
 
-// --- List Actions
+// --- Private function used by thunk
 function _fetchAvailTask (dispatch, accessToken, nextPageUrl) {
 	console.log("_fetchAvailTask Started");
 	dispatch(_fetchAvailTaskStarted());
@@ -61,6 +67,8 @@ function _fetchAvailTask (dispatch, accessToken, nextPageUrl) {
 	});
 }
 
+
+// list of Action Creator Function
 function _fetchAvailTaskStarted() {
 	return {
 		type: types.FETCH_AVAIL_TASK_STARTED,
@@ -74,17 +82,17 @@ function _fetchAvailTaskFailed (message) {
 	};
 }
 
-function _moreAvailTaskResultReceived (data) {
-	return {
-		type: types.MORE_AVAIL_TASK_RESULT,
-		data,
-	};
-}
-
 function _fetchAvailTaskResultReceived(data) {
 	return {
 		type: types.FETCH_AVAIL_TASK_RESULT,
 		data
+	};
+}
+
+function _moreAvailTaskResultReceived (data) {
+	return {
+		type: types.FETCH_AVAIL_TASK_RESULT_MORE,
+		data,
 	};
 }
 
@@ -124,7 +132,7 @@ function _fetchMyTaskFailed (message) {
 
 function _moreMyTaskResultReceived (data) {
 	return {
-		type: types.MORE_MY_TASK_RESULT,
+		type: types.FETCH_MY_TASK_RESULT_MORE,
 		data,
 	};
 }

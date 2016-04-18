@@ -5,6 +5,7 @@ import { combineReducers } from 'redux-immutable';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import * as storage from 'redux-storage';
+import * as action from '../Actions/ActionTypes';
 import createEngine from 'redux-storage-engine-reactnativeasyncstorage';
 import immutablejs from 'redux-storage-decorator-immutablejs';
 import merger from 'redux-storage-merger-immutablejs';
@@ -119,7 +120,7 @@ var storageMiddleware = storage.createMiddleware(engine, [], [
   // 'MORE_AVAIL_TASK_RESULT',
   'TASK_ACCEPT_RESULT',
   'FETCH_MY_TASK_RESULT',
-  'MORE_MY_TASK_RESULT']);
+  'FETCH_MY_TASK_RESULT_MORE']);
 
 
 // Defing Middlewares

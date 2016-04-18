@@ -11,6 +11,7 @@ var {
   View
 } = React;
 
+import Icon from 'react-native-vector-icons/FontAwesome';
 import type { StyleObj } from 'StyleSheetTypes';
 import { getImageSource, getStyleFromScore, getTextFromScore } from '../Api/Common';
 
@@ -29,6 +30,9 @@ var TaskCell = React.createClass({
           onShowUnderlay={this.props.onHighlight}
           onHideUnderlay={this.props.onUnhighlight}>
           <View style={styles.row}>
+            <View>
+              <Icon style={styles.icon} name="user" size={30} />
+            </View>
             <View style={styles.textContainer}>
               <Text style={styles.taskTitle} numberOfLines={2}>
                 {this.props.task.survey.victimName}
@@ -97,6 +101,12 @@ var styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 3,
   },
+  icon: {
+    textAlign: 'center',
+    marginRight: 10,
+    width: 30,
+  },
+
 });
 
 module.exports = TaskCell;
